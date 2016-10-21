@@ -1,0 +1,5 @@
+# Create the patch
+git diff HEAD > new.patch
+
+# Apply the patch
+git apply new.patch
