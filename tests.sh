@@ -6,3 +6,4 @@ test_script() {
 
 test_script parse_mcpat_csv.py
 test_script parse_gem5_stat.py
+test_script simulation_wrappers.py
