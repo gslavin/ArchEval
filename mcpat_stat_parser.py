@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import csv
 
 def parse_mcpat_csv(filename):
