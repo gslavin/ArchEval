@@ -1,0 +1,7 @@
+{
+    "system_configuration": {
+        "cpu_count": "1",
+        "cpu_frquency": "3000000000",
+        "cache_size": "16777216"
+    }
+}
