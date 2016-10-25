@@ -9,6 +9,7 @@ def check_json_file(filename):
             json.loads(f.read())
         except ValueError:
             print("{} is invalid json".format(filename))
+            exit(1)
 
 def main():
     files = glob.glob("DataFormats/*.json")

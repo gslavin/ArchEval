@@ -7,3 +7,4 @@ test_script() {
 test_script gem5_stat_parser.py
 test_script mcpat_stat_parser.py
 test_script simulation_wrappers.py
+test_script validate_json.py
