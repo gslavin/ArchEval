@@ -4,6 +4,10 @@ from simulation_wrappers import SimWrap
 import csv
 
 def parse_csv(filename):
+    """
+    Parse the output csv for the mcpat simulator.
+    This
+    """
     with open(filename, 'r') as csvfile:
         mcpat_data = csv.reader(csvfile, delimiter=',')
 
@@ -40,13 +44,21 @@ class McPatSim(SimWrap):
         if not all(k in valid_params for k in params.keys()):
             raise ValueError("Not a valid McPAT config parameter")
 
+    def run_simulation(self):
+        pass
+
     def run(self):
         """
         Run the simulation
         Store statistics
         """
+        self.run_simulation()
+
+        # Collect the statistics
         self.stats = parse_csv("out.csv")
         fields = ["Area (mm2)", "Dynamic read energy (nJ)", "Dynamic write energy (nJ)"]
+        # Mcpat csv can store the restores of multiple runs.  So each field will
+        # have a list of values.  Only take the first value
         self.stats = { key: self.stats[key][0] for key in fields }
 
 def main():
