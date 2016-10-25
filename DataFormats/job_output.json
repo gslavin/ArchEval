@@ -1,0 +1,45 @@
+{
+    "job_details": {
+
+        "job_name": "Test Benchmark 0",
+
+        "job_timestamp": "Tue Oct 25 17:29:43 EDT 2016",
+
+        "job_uuid": "123e4567-e89b-12d3-a456-426655440000",
+
+        "constraints": {
+            "max_area (mm2)": "2",
+            "max_execution_time (s)": "0.003",
+            "max_execution_time (s)": "0.003"
+        },
+
+        "system_configuration": {
+            "cpu_count": "1",
+            "cpu_frquency": "3000000000",
+            "cache_size": "16777216"
+        },
+
+        "simulation_results": {
+
+            "gem5": {
+                "execution time (s)": "0.000003",
+                "op_class": {
+                    "IntAlu": "3789",
+                    "IntDiv": "0",
+                    "IntMult": "4",
+                    "IprAccess": "0",
+                    "MemRead": "1085",
+                    "MemWrite": "950",
+                    "total": "5831"
+                }
+            },
+
+            "mcpat": {
+                "Area (mm2)": "1.72355",
+                "Dynamic read energy (nJ)": "0.141064",
+                "Dynamic write energy (nJ)": "0.161979"
+            }
+
+        }
+    }
+}
