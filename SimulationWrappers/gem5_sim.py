@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
+from simulation_wrappers import SimWrap
+
 import string
 import re
 import json
 
-def parse_gem5_stat_file(filename):
+def parse_stat_file(filename):
     """
     Parses the gem5 stat.txt file and returns the
     indicated fields.  Currently only works for
@@ -28,11 +30,33 @@ def parse_gem5_stat_file(filename):
                 stats[key][var] = val
     return stats
 
+class Gem5Sim(SimWrap):
+    """
+    self.config
+        simulation configuration
+    self.stats
+        simulation results
+    """
+
+    def __init__(self, params):
+        """
+        Pass in dictionary of simulation parameters
+        Store configuration of simulation
+        """
+        self.config = params
+
+    def run(self):
+        """
+        Run the simulation
+        Store statistics
+        """
+        filename = "stats.txt"
+        self.stats = parse_stat_file(filename)
+
 def main():
-    filename = "stats.txt"
-    stats = parse_gem5_stat_file(filename)
-    f = open("src.json", 'w')
-    f.write(json.dumps(stats, sort_keys=True, indent=4))
+    sim = Gem5Sim({"freq" : 100})
+    sim.run()
+    print(sim.stats_to_json())
 
 if __name__ == "__main__":
-  main()
+    main()
