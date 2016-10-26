@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from simulation_wrappers import SimWrap
+from simulation_wrapper import SimWrap
 
 import string
 import re
