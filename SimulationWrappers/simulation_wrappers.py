@@ -27,7 +27,11 @@ class SimWrap(metaclass=ABCMeta):
         """
 
     def stats_to_json(self):
-        return json.dumps(self.stats, sort_keys=True, indent=4)
+        """
+        Outputs the stats of the simulation with the simulation class name as
+        the top level key
+        """
+        return json.dumps({self.__class__.__name__ : self.stats}, sort_keys=True, indent=4)
 
 
 def main():
