@@ -31,9 +31,10 @@ class MockSim(SimWrap):
         """
         Updates the system configuration with the passed parameters
         """
-        self.validate_params(params)
-        for k in params.keys():
-            self.config[k] = params[k]
+        if params is not None:
+            self.validate_params(params)
+            for k in params.keys():
+                self.config[k] = params[k]
 
     def validate_params(self, params):
         valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
