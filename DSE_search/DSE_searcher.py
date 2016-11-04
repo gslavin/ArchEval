@@ -164,7 +164,6 @@ class DSE_searcher:
 
         return next_config, next_fitness
 
-
 def eval_stats(stats):
     """
     Basic function to minimize
