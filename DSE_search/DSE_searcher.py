@@ -107,20 +107,22 @@ class DSE_searcher:
                 self.sys_configs[i] = new_sys_config
                 self.fitness_vals[i] = new_fitness
 
+    def vary_cache_size(self, cache_size):
+        return [cache_size/2, cache_size*2]
+
     def gen_neighbors(self, sys_config):
         """
         Find nighbors by varying cache size
         """
+        neighbors = []
         # TODO: add bounds for varying parameters
         cache_size = sys_config["cache_size"]
+        for x in self.vary_cache_size(cache_size):
+            config = copy.deepcopy(sys_config)
+            config["cache_size"] = x
+            neighbors.append(config)
 
-        smaller_config = copy.deepcopy(sys_config)
-        smaller_config["cache_size"] = cache_size/2
-
-        larger_config = copy.deepcopy(sys_config)
-        larger_config["cache_size"] = cache_size*2
-
-        return [smaller_config, larger_config]
+        return neighbors
 
     def search_neighbors(self, sys_config, current_fitness, eval_sys_config):
         """
