@@ -36,12 +36,18 @@ class DSE_searcher:
 
         # Default to elitism policy - best of N search directions is chosen
         self.policy = Neighbor_Policy.Elitism
-        # Default to searching all dimensions to determine best gradient. (-1
-        # denotes all directions. Range: {-1} ^ [1, D]
+        # Default to searching all dimensions to determine best gradient. 
+        # (-1 denotes all directions. Range: {-1} ^ [1, D]
         self.search_directions = -1
 
         self.sys_configs = []
         self.fitness_vals = []
+
+        # Store configuration parameters and their ranges
+        self.params = []
+        self.params.append(("cpu_count", list(range(1, 8))))
+        self.params.append(("cpu_frequency", list(map(lambda x: x * 10**9, range(1, 7)))))
+        self.params.append(("cache_size", list(map(lambda x: 2**x, range(10, 17)))))
 
         # Generate the intial config for each search party
         self.sys_configs = list(it.islice(self.gen_inital_sys_config(),
@@ -55,10 +61,6 @@ class DSE_searcher:
         Generates a stream of non-repeating system configuration
         based on the user constraints
         """
-        # TODO: Use single random permuation of parameters instead of n random
-        # permutations in order to promote greater distance between initial
-        # seeds
-
         #
         # TODO: FIXME This algorithm will loop infinitely if all permutations
         # have been returned already
@@ -76,10 +78,19 @@ class DSE_searcher:
         """
         Use the user constraints to generate a random configuration
         """
+
+        # Create permuation of all parameters
+        self.shuffled_params = copy.deepcopy(self.params)
+        for param in self.shuffled_params:
+            # Create a random permutation of the parameter values
+            r.shuffle(param[1])
+
         config = {}
-        config["cpu_count"] = r.randint(1, 8)
-        config["cpu_frequency"] = r.randint(1,7)*1000000000
-        config["cache_size"] =  2**(r.randint(15,25))
+        for param in self.shuffled_params:
+            config[param[0]] = param[1][0]
+            # Shift the contents of the parameter list
+            param[1].append(param[1].pop())
+
         return config
 
 
@@ -136,8 +147,8 @@ class DSE_searcher:
         else:
             search_dirs = max(len(sys_config), self.search_directions)
 
-        neighbor_configs = self.gen_neighbors(sys_config)
         # Generate possible neighbors
+        neighbor_configs = self.gen_neighbors(sys_config)
         
         # Permute order of neighbors, just in case we're not searching through
         # all of them
