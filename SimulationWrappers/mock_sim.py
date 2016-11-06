@@ -9,7 +9,9 @@ import json
 PROGRAM_LENGTH = 1000
 
 
-config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
+config_defaults = { "cpu_count": (1, [1, 2]),
+                    "cpu_frequency": (9000, [5000, 6000, 7000, 8000, 9000]),
+                    "cache_size": (1024, [1024, 2048, 4096, 8192])}
 
 class MockSim(SimWrap):
     """
@@ -19,12 +21,12 @@ class MockSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params):
+    def __init__(self, params = config_defaults):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.config = config_defaults
+        self.config = params
         self.set_config(params)
 
     def set_config(self, params):
@@ -45,9 +47,9 @@ class MockSim(SimWrap):
         pass
 
     def mock_stats(self):
-        cpu_count = self.config["cpu_count"]
-        freq = self.config["cpu_frequency"]
-        cache_size = self.config["cache_size"]
+        cpu_count = self.config["cpu_count"][0]
+        freq = self.config["cpu_frequency"][0]
+        cache_size = self.config["cache_size"][0]
         stats = {}
         stats["Area (mm2)"] = cache_size**2
         stats["Dynamic read energy (nJ)"] = cache_size

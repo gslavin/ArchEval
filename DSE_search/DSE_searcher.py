@@ -86,8 +86,9 @@ class DSE_searcher:
             r.shuffle(param[1])
 
         config = {}
-        for param in self.shuffled_params:
-            config[param[0]] = param[1][0]
+        for i in range(0, len(self.shuffled_params)):
+            # Config Format: map - name -> (value, [range])
+            config[self.shuffled_params[i][0]] = (self.shuffled_params[i][1][0], self.params[i][1])
             # Shift the contents of the parameter list
             param[1].append(param[1].pop())
 
@@ -118,20 +119,28 @@ class DSE_searcher:
                 self.sys_configs[i] = new_sys_config
                 self.fitness_vals[i] = new_fitness
 
-    def vary_cache_size(self, cache_size):
-        return [cache_size/2, cache_size*2]
-
     def gen_neighbors(self, sys_config):
         """
-        Find nighbors by varying cache size
+        Determine all possible neighbors of the given config
         """
+
         neighbors = []
-        # TODO: add bounds for varying parameters
-        cache_size = sys_config["cache_size"]
-        for x in self.vary_cache_size(cache_size):
-            config = copy.deepcopy(sys_config)
-            config["cache_size"] = x
-            neighbors.append(config)
+
+        for param in sys_config:
+
+            # If the parameter has a 'next' element, add a neighbor of the next
+            # element
+            if (sys_config[param][1].index(sys_config[param][0]) < len(sys_config[param][1]) - 1):
+                config = copy.deepcopy(sys_config)
+                config[param] = (sys_config[param][1][sys_config[param][1].index(sys_config[param][0]) + 1], sys_config[param][1])
+                neighbors.append(config)
+
+            # If the parameter has a 'prev' element, add a neighbor of the
+            # previous element
+            if (sys_config[param][1].index(sys_config[param][0]) != 0):
+                config = copy.deepcopy(sys_config)
+                config[param] = (sys_config[param][1][sys_config[param][1].index(sys_config[param][0]) - 1], sys_config[param][1])
+                neighbors.append(config)
 
         return neighbors
 
