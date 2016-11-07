@@ -97,6 +97,7 @@ class Gem5Sim():
                 for i in master:
                   if i['stat'] == fields[0]:
                     found = i
+                    master.remove(i)
                     break
 
                 if (found == None):    
@@ -104,7 +105,6 @@ class Gem5Sim():
                   temp['substat'] = []
                   master.append(copy.copy(self.update_dict(temp, fields[1:])))
                 else:
-                  pass
                   master.append((self.update_dict(found, fields[1:])))
 
 
