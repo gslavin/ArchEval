@@ -32,28 +32,30 @@ class Gem5Sim():
         pass
     
     def update_dict(self, d, value):
-      print d, value
       temp = {}
       found = None
-      if(value[1].isdigit() == False):
-        '''
+      if(value[1].isdigit() == False and 
+          value[1] != 'nan' and
+          '.' not in value[1]):
+      
         for i in d['substat']:
           if(i['stat'] == value[0]):
             found = i
             break
       
-          if (found == None):
-            temp['stat'] = value[0]
-            temp['substat'] = []
-            d['substat'].append((temp))
-            self.update_dict(temp, value[1:])
-          else:
-            update_dict(found, value[1:])
-'''
+        if (found == None):
+          temp['stat'] = value[0]
+          temp['substat'] = []
+          d['substat'].append((temp))
+          self.update_dict(temp, value[1:])
+        else:
+          self.update_dict(found, value[1:])
+        '''
         temp['stat'] = value[0]
         temp['substat'] = []
         d['substat'].append((temp))
         self.update_dict(temp, value[1:])
+        '''
       else: #base case
         temp['stat'] = value[0]
         temp['value'] = value[1]
