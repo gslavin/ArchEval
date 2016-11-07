@@ -21,12 +21,12 @@ class MockSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params = config_defaults):
+    def __init__(self, params):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.config = params
+        self.config = { k: v[0] for (k, v) in config_defaults.items() }
         self.set_config(params)
 
     def set_config(self, params):
@@ -47,9 +47,9 @@ class MockSim(SimWrap):
         pass
 
     def mock_stats(self):
-        cpu_count = self.config["cpu_count"][0]
-        freq = self.config["cpu_frequency"][0]
-        cache_size = self.config["cache_size"][0]
+        cpu_count = self.config["cpu_count"]
+        freq = self.config["cpu_frequency"]
+        cache_size = self.config["cache_size"]
         stats = {}
         stats["Area (mm2)"] = cache_size**2
         stats["Dynamic read energy (nJ)"] = cache_size
