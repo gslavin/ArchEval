@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from simulation_wrapper import SimWrap
+import subprocess
 import csv
 
 def parse_csv(filename):
@@ -44,22 +45,34 @@ class McPatSim(SimWrap):
         if not all(k in valid_params for k in params.keys()):
             raise ValueError("Not a valid McPAT config parameter")
 
-    def run_simulation(self):
-        pass
+    def run_simulation(self, output_csv):
+        #TODO: have better error handling for cacti call
+        subprocess.check_call("./cacti/cacti -infile cache_config.cfg -outfile {0}".format(output_csv), shell=True)
+
+    def gen_cache_config_file(self, template, output_file):
+        cache_size = self.config["cache_size"]
+        with open(template, 'r') as f_in, open(output_file, 'w') as f_out:
+            config = f_in.read()
+            config = config.replace("$CACHE_SIZE", str(cache_size))
+            f_out.write(config)
 
     def run(self):
         """
         Run the simulation
         Store statistics
         """
-        self.run_simulation()
+        self.gen_cache_config_file("./cacti/cache_template.cfg", "cache_config.cfg")
+
+        output_csv = "results.csv"
+        self.run_simulation(output_csv)
 
         # Collect the statistics
-        self.stats = parse_csv("out.csv")
+        self.stats = parse_csv(output_csv)
         fields = ["Area (mm2)", "Dynamic read energy (nJ)", "Dynamic write energy (nJ)"]
         # Mcpat csv can store the restores of multiple runs.  So each field will
-        # have a list of values.  Only take the first value
-        self.stats = { key: self.stats[key][0] for key in fields }
+        # have a list of values.  Only take the final value
+        last = len(self.stats[fields[0]]) - 1
+        self.stats = { key: self.stats[key][last] for key in fields }
 
 def main():
     sim = McPatSim({"cache_size" : 2048})
