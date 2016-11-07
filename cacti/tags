@@ -1,0 +1,1398 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADDRESS_BITS	const.h	/^const int ADDRESS_BITS = 42;$/;"	v
+ADJ	crossbar.cc	35;"	d	file:
+ASPECT_THRESHOLD	crossbar.cc	34;"	d	file:
+Add_htree	basic_circuit.h	/^    Add_htree,$/;"	e	enum:Htree_type
+Arbiter	arbiter.cc	/^Arbiter::Arbiter($/;"	f	class:Arbiter
+Arbiter	arbiter.h	/^class Arbiter : public Component$/;"	c
+Area	area.h	/^  Area():w(0), h(0), area(0) { }$/;"	f	class:Area
+Area	area.h	/^class Area$/;"	c
+BIGNUM	const.h	103;"	d
+BUFFER_SEPARATION_LENGTH_MULTIPLIER	const.h	165;"	d
+BULK_CU_RESISTIVITY	const.h	/^const double BULK_CU_RESISTIVITY = 0.018; \/\/ohm-micron$/;"	v
+Bank	bank.cc	/^Bank::Bank(const DynamicParameter & dyn_p):$/;"	f	class:Bank
+Bank	bank.h	/^class Bank : public Component$/;"	c
+CB_ADJ	crossbar.h	/^	  double CB_ADJ;$/;"	m	class:Crossbar
+CC	cacti.mk	/^CC  = gcc -m32$/;"	m
+CONTR_2_BANK_LAT	nuca.cc	41;"	d	file:
+CU_RESISTIVITY	const.h	/^const double CU_RESISTIVITY = 0.022; \/\/ohm-micron$/;"	v
+CXX	cacti.mk	/^CXX = g++ -m32$/;"	m
+CXXFLAGS	cacti.mk	/^CXXFLAGS = -Wno-unknown-pragmas $(DBG) $(OPT) $/;"	m
+C_bl	mat.h	/^    double   C_bl;$/;"	m	class:Mat
+C_bl	subarray.h	/^    double  C_bl, C_bl_cam;$/;"	m	class:Subarray
+C_bl_cam	subarray.h	/^    double  C_bl, C_bl_cam;$/;"	m	class:Subarray
+C_fringe	parameter.h	/^    double C_fringe;$/;"	m	class:TechnologyParameter::DeviceType
+C_g_ideal	parameter.h	/^    double C_g_ideal;$/;"	m	class:TechnologyParameter::DeviceType
+C_junc	parameter.h	/^    double C_junc;  \/\/ C_junc_area$/;"	m	class:TechnologyParameter::DeviceType
+C_junc_sidewall	parameter.h	/^    double C_junc_sidewall;$/;"	m	class:TechnologyParameter::DeviceType
+C_ld_dec_out	decoder.h	/^    double C_ld_dec_out;$/;"	m	class:Decoder
+C_ld_predec_blk_out	decoder.h	/^  double C_ld_predec_blk_out;$/;"	m	class:PredecBlk
+C_overlap	parameter.h	/^    double C_overlap;$/;"	m	class:TechnologyParameter::DeviceType
+C_ox	parameter.h	/^    double C_ox;$/;"	m	class:TechnologyParameter::DeviceType
+C_per_um	parameter.h	/^    double C_per_um;$/;"	m	class:TechnologyParameter::InterconnectType
+C_wl	subarray.h	/^    double  C_wl, C_wl_cam, C_wl_ram;$/;"	m	class:Subarray
+C_wl_cam	subarray.h	/^    double  C_wl, C_wl_cam, C_wl_ram;$/;"	m	class:Subarray
+C_wl_ram	subarray.h	/^    double  C_wl, C_wl_cam, C_wl_ram;$/;"	m	class:Subarray
+Component	component.cc	/^Component::Component()$/;"	f	class:Component
+Component	component.h	/^class Component$/;"	c
+Cpolywire	const.h	/^const double Cpolywire = 0;$/;"	v
+Crossbar	crossbar.cc	/^Crossbar::Crossbar($/;"	f	class:Crossbar
+Crossbar	crossbar.h	/^class Crossbar : public Component$/;"	c
+Cw3	arbiter.cc	/^Arbiter::Cw3(double length) {$/;"	f	class:Arbiter
+Cw3	router.cc	/^Router::Cw3(double length) {$/;"	f	class:Router
+DBG	cacti.mk	/^  DBG = $/;"	m
+DBG	cacti.mk	/^  DBG = -Wall $/;"	m
+Data_in_htree	basic_circuit.h	/^    Data_in_htree,$/;"	e	enum:Htree_type
+Data_out_htree	basic_circuit.h	/^    Data_out_htree,$/;"	e	enum:Htree_type
+Decoder	decoder.cc	/^Decoder::Decoder($/;"	f	class:Decoder
+Decoder	decoder.h	/^class Decoder : public Component$/;"	c
+DeviceType	parameter.h	/^    DeviceType(): C_g_ideal(0), C_fringe(0), C_overlap(0), C_junc(0),$/;"	f	class:TechnologyParameter::DeviceType
+DeviceType	parameter.h	/^  class DeviceType$/;"	c	class:TechnologyParameter
+Driver	decoder.cc	/^Driver::Driver(double c_gate_load_, double c_wire_load_, double r_wire_load_, bool is_dram, bool power_gating_, int nodes_DSTN_)$/;"	f	class:Driver
+Driver	decoder.h	/^class Driver : public Component$/;"	c
+DynamicParameter	parameter.cc	/^DynamicParameter::DynamicParameter($/;"	f	class:DynamicParameter
+DynamicParameter	parameter.cc	/^DynamicParameter::DynamicParameter():$/;"	f	class:DynamicParameter
+DynamicParameter	parameter.h	/^class DynamicParameter$/;"	c
+EPSILON	const.h	115;"	d
+EPSILON2	const.h	131;"	d
+EPSILON3	const.h	132;"	d
+ERP	mat.h	/^    int ERP;$/;"	m	class:Mat
+ERP	uca.h	/^    int   RWP, ERP, EWP,SCHP;$/;"	m	class:UCA
+EWP	mat.h	/^    int EWP;$/;"	m	class:Mat
+EWP	uca.h	/^    int   RWP, ERP, EWP,SCHP;$/;"	m	class:UCA
+EXTRA_TAG_BITS	const.h	/^const int EXTRA_TAG_BITS = 5;$/;"	v
+FALL	const.h	110;"	d
+FIXED_OVERHEAD	nuca.cc	39;"	d	file:
+FO4	parameter.h	/^  double FO4;$/;"	m	class:TechnologyParameter
+FREQUENCY	router.h	/^	double FREQUENCY; \/\/ move this to config file --TODO$/;"	m	class:Router
+F_sz_nm	cacti_interface.h	/^    double   F_sz_nm;          \/\/ feature size in nm$/;"	m	class:InputParameter
+F_sz_um	cacti_interface.h	/^    double   F_sz_um;          \/\/ feature size in um$/;"	m	class:InputParameter
+Gate_type	basic_circuit.h	/^enum Gate_type {$/;"	g
+Global	cacti_interface.h	/^    Global \/* gloabl wires with repeaters *\/,$/;"	e	enum:Wire_type
+Global_10	cacti_interface.h	/^    Global_10 \/* 10% delay penalty *\/,$/;"	e	enum:Wire_type
+Global_20	cacti_interface.h	/^    Global_20 \/* 20% delay penalty *\/,$/;"	e	enum:Wire_type
+Global_30	cacti_interface.h	/^    Global_30 \/* 30% delay penalty *\/,$/;"	e	enum:Wire_type
+Global_5	cacti_interface.h	/^    Global_5 \/* 5% delay penalty *\/,$/;"	e	enum:Wire_type
+HPOWERRAIL	parameter.h	/^  double HPOWERRAIL;$/;"	m	class:TechnologyParameter
+Half_net_topology	basic_circuit.h	/^enum Half_net_topology {$/;"	g
+Htree2	htree2.cc	/^Htree2::Htree2($/;"	f	class:Htree2
+Htree2	htree2.h	/^class Htree2 : public Component$/;"	c
+Htree_type	basic_circuit.h	/^enum Htree_type {$/;"	g
+I	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+INCLUDES	cacti.mk	/^INCLUDES       = -I \/usr\/include\/python2.4 -I \/usr\/lib\/python2.4\/config$/;"	m
+INCS	cacti.mk	/^INCS = -lm$/;"	m
+INF	const.h	104;"	d
+INPUT_WIRE_TO_INPUT_GATE_CAP_RATIO	const.h	164;"	d
+INV	const.h	144;"	d
+INV_LEAK_STACK_FACTOR	const.h	234;"	d
+IS_CROSSBAR	const.h	200;"	d
+I_g_on_n	parameter.h	/^    double I_g_on_n;$/;"	m	class:TechnologyParameter::DeviceType
+I_g_on_p	parameter.h	/^    double I_g_on_p;$/;"	m	class:TechnologyParameter::DeviceType
+I_off_n	parameter.h	/^    double I_off_n;$/;"	m	class:TechnologyParameter::DeviceType
+I_off_p	parameter.h	/^    double I_off_p;$/;"	m	class:TechnologyParameter::DeviceType
+I_on_n	parameter.h	/^    double I_on_n;$/;"	m	class:TechnologyParameter::DeviceType
+I_on_p	parameter.h	/^    double I_on_p;$/;"	m	class:TechnologyParameter::DeviceType
+Ilinear_to_Isat_ratio	const.h	/^const double Ilinear_to_Isat_ratio =2.0;$/;"	v
+InputParameter	cacti_interface.h	/^class InputParameter$/;"	c
+InputParameter	io.cc	/^InputParameter::InputParameter()$/;"	f	class:InputParameter
+InterconnectType	parameter.h	/^    InterconnectType(): pitch(0), R_per_um(0), C_per_um(0) { };$/;"	f	class:TechnologyParameter::InterconnectType
+InterconnectType	parameter.h	/^  class InterconnectType$/;"	c	class:TechnologyParameter
+Invalid_wtype	cacti_interface.h	/^    Invalid_wtype$/;"	e	enum:Wire_type
+Ishort_ckt	wire.cc	608;"	d	file:
+Ishort_ckt	wire.cc	772;"	d	file:
+LATCH_DELAY	nuca.cc	40;"	d	file:
+LEAKAGE_REDUCTION_DUE_TO_LONG_CHANNEL_HP_TRANSISTORS_FACTOR	const.h	207;"	d
+LENGTH_INTERCONNECT_FROM_BANK_TO_CROSSBAR	const.h	198;"	d
+LIBS	cacti.mk	/^LIBS = $/;"	m
+Low_swing	cacti_interface.h	/^    Low_swing \/* differential low power wires with high area overhead *\/,$/;"	e	enum:Wire_type
+M	router.h	/^    double M; \/\/network load$/;"	m	class:Router
+MAIN_MEM_PER_CHIP_STANDBY_CURRENT_mA	const.h	211;"	d
+MAT_LEAKAGE_REDUCTION_DUE_TO_SLEEP_TRANSISTORS_FACTOR	const.h	206;"	d
+MAX	const.h	105;"	d
+MAXDATAN	const.h	/^const unsigned int MAXDATAN     = 512;      \/\/ maximum for Ndwl and Ndbl$/;"	v
+MAXDATASPD	const.h	/^const unsigned int MAXDATASPD   = 256;      \/\/ maximum for Nspd$/;"	v
+MAXSUBARRAYCOLS	const.h	141;"	d
+MAXSUBARRAYROWS	const.h	138;"	d
+MAXSUBARRAYS	const.h	/^const unsigned int MAXSUBARRAYS = 1048576;  \/\/ maximum subarrays for data and tag arrays$/;"	v
+MAX_COL_MUX	const.h	/^const unsigned int MAX_COL_MUX  = 256;$/;"	v
+MAX_NUMBER_ARRAY_PARTITIONS	const.h	235;"	d
+MAX_NUMBER_GATES_STAGE	const.h	229;"	d
+MAX_NUMBER_HTREE_NODES	const.h	230;"	d
+MAX_PERCENT_AWAY_FROM_ALLOTED_AREA	const.h	176;"	d
+MAX_PERCENT_AWAY_FROM_ASPECT_RATIO	const.h	188;"	d
+MIN	const.h	106;"	d
+MINSUBARRAYCOLS	const.h	140;"	d
+MINSUBARRAYROWS	const.h	135;"	d
+MIN_AREA_EFFICIENCY	const.h	180;"	d
+MIN_BANKSIZE	nuca.cc	/^unsigned int MIN_BANKSIZE=65536;$/;"	v
+MIN_GAP_BET_P_AND_N_DIFFS	parameter.h	/^  double MIN_GAP_BET_P_AND_N_DIFFS;$/;"	m	class:TechnologyParameter
+MIN_GAP_BET_SAME_TYPE_DIFFS	parameter.h	/^  double MIN_GAP_BET_SAME_TYPE_DIFFS;$/;"	m	class:TechnologyParameter
+Mat	mat.cc	/^Mat::Mat(const DynamicParameter & dyn_p)$/;"	f	class:Mat
+Mat	mat.h	/^class Mat : public Component$/;"	c
+MemoryType	parameter.h	/^  class MemoryType$/;"	c	class:TechnologyParameter
+Mobility_n	parameter.h	/^    double Mobility_n;$/;"	m	class:TechnologyParameter::DeviceType
+NAND	const.h	146;"	d
+NAND2_LEAK_STACK_FACTOR	const.h	231;"	d
+NAND3_LEAK_STACK_FACTOR	const.h	232;"	d
+NCH	const.h	111;"	d
+NOR	const.h	145;"	d
+NOR2_LEAK_STACK_FACTOR	const.h	233;"	d
+NTHREADS	cacti.mk	/^  NTHREADS = 8$/;"	m
+NTi	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+NTi	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+NTid	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+NTn1	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+NTn2	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+NTod	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+NTtr	arbiter.h	/^    double NTtr, PTtr;$/;"	m	class:Arbiter
+NTtr	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+NUMBER_INPUT_PORTS_CROSSBAR	const.h	201;"	d
+NUMBER_INTERCONNECT_PROJECTION_TYPES	const.h	151;"	d
+NUMBER_MATS_PER_REDUNDANT_MAT	const.h	166;"	d
+NUMBER_OUTPUT_PORTS_CROSSBAR	const.h	202;"	d
+NUMBER_PIPELINE_STAGES	const.h	194;"	d
+NUMBER_SIGNALS_PER_PORT_CROSSBAR	const.h	203;"	d
+NUMBER_STACKED_DIE_LAYERS	const.h	168;"	d
+NUMBER_TECH_FLAVORS	const.h	149;"	d
+NUMBER_WIRE_TYPES	const.h	153;"	d
+Ndbl	cacti_interface.h	/^  int    Ndbl;$/;"	m	class:mem_array
+Ndbl	cacti_interface.h	/^  int Ndbl;$/;"	m	struct:__anon1
+Ndbl	parameter.h	/^    int Ndbl;$/;"	m	class:DynamicParameter
+Ndcm	cacti_interface.h	/^  int    Ndcm;$/;"	m	class:mem_array
+Ndcm	parameter.h	/^    int Ndcm;$/;"	m	class:DynamicParameter
+Ndsam_lev_1	cacti_interface.h	/^  int    Ndsam_lev_1;$/;"	m	class:mem_array
+Ndsam_lev_1	cacti_interface.h	/^  int Ndsam_lev_1;$/;"	m	struct:__anon1
+Ndsam_lev_1	parameter.h	/^    int Ndsam_lev_1;$/;"	m	class:DynamicParameter
+Ndsam_lev_2	cacti_interface.h	/^  int    Ndsam_lev_2;$/;"	m	class:mem_array
+Ndsam_lev_2	cacti_interface.h	/^  int Ndsam_lev_2;$/;"	m	struct:__anon1
+Ndsam_lev_2	parameter.h	/^    int Ndsam_lev_2;$/;"	m	class:DynamicParameter
+Ndwl	cacti_interface.h	/^  int    Ndwl;$/;"	m	class:mem_array
+Ndwl	cacti_interface.h	/^  int Ndwl;$/;"	m	struct:__anon1
+Ndwl	parameter.h	/^    int Ndwl;$/;"	m	class:DynamicParameter
+Nspd	cacti_interface.h	/^  double Nspd;$/;"	m	class:mem_array
+Nspd	cacti_interface.h	/^  double Nspd;$/;"	m	struct:__anon1
+Nspd	parameter.h	/^    double Nspd;$/;"	m	class:DynamicParameter
+Nspd_min	Ucache.h	/^  double   Nspd_min;$/;"	m	struct:calc_time_mt_wrapper_struct
+Nuca	nuca.cc	/^  Nuca::Nuca($/;"	f	class:Nuca
+Nuca	nuca.h	/^class Nuca : public Component$/;"	c
+O	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+OBJS	cacti.mk	/^OBJS = $(patsubst %.cc,obj_$(TAG)\/%.o,$(SRCS))$/;"	m
+OPT	cacti.mk	/^  OPT = -O3 -msse2 -mfpmath=sse -DNTHREADS=$(NTHREADS)$/;"	m
+OPT	cacti.mk	/^  OPT = -ggdb -g -O0 -DNTHREADS=1  -gstabs+$/;"	m
+Optical	cacti_interface.h	/^    Optical \/* optical wires *\/,$/;"	e	enum:Wire_type
+PAGE_MODE	const.h	209;"	d
+PCH	const.h	112;"	d
+PERMITTIVITY_FREE_SPACE	const.h	/^const double PERMITTIVITY_FREE_SPACE = 8.854e-18; \/\/F\/micron$/;"	v
+POWERGATING_H_	powergating.h	33;"	d
+PRINTDW	basic_circuit.h	52;"	d
+PRINTDW	basic_circuit.h	55;"	d
+PTi	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+PTi	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+PTid	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+PTn1	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+PTn2	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+PTod	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+PTtr	arbiter.h	/^    double NTtr, PTtr;$/;"	m	class:Arbiter
+PTtr	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+PYTHONLIB_OBJS	cacti.mk	/^PYTHONLIB_OBJS = $(patsubst %.cc,%.o,$(PYTHONLIB_SRCS)) $/;"	m
+PYTHONLIB_SRCS	cacti.mk	/^PYTHONLIB_SRCS = $(patsubst main.cc, ,$(SRCS)) obj_$(TAG)\/cacti_wrap.cc$/;"	m
+Predec	decoder.cc	/^Predec::Predec($/;"	f	class:Predec
+Predec	decoder.h	/^class Predec : public Component$/;"	c
+PredecBlk	decoder.cc	/^PredecBlk::PredecBlk($/;"	f	class:PredecBlk
+PredecBlk	decoder.h	/^class PredecBlk : public Component$/;"	c
+PredecBlkDrv	decoder.cc	/^PredecBlkDrv::PredecBlkDrv($/;"	f	class:PredecBlkDrv
+PredecBlkDrv	decoder.h	/^class PredecBlkDrv : public Component$/;"	c
+R	arbiter.h	/^    double NTn1, PTn1, NTn2, PTn2, R, PTi, NTi;$/;"	m	class:Arbiter
+RES_ADJ	wire.cc	434;"	d	file:
+RISE	const.h	109;"	d
+ROUTER_TYPES	const.h	71;"	d
+RWP	mat.h	/^    int RWP;$/;"	m	class:Mat
+RWP	uca.h	/^    int   RWP, ERP, EWP,SCHP;$/;"	m	class:UCA
+R_nch_on	parameter.h	/^    double R_nch_on;$/;"	m	class:TechnologyParameter::DeviceType
+R_pch_on	parameter.h	/^    double R_pch_on;$/;"	m	class:TechnologyParameter::DeviceType
+R_per_um	parameter.h	/^    double R_per_um;$/;"	m	class:TechnologyParameter::InterconnectType
+R_to_w	basic_circuit.cc	/^double R_to_w($/;"	f
+R_wire_dec_out	decoder.h	/^    double R_wire_dec_out;$/;"	m	class:Decoder
+R_wire_predec_blk_out	decoder.h	/^  double R_wire_predec_blk_out;$/;"	m	class:PredecBlk
+R_wl	subarray.h	/^    double  R_wl, R_wl_cam, R_wl_ram;$/;"	m	class:Subarray
+R_wl_cam	subarray.h	/^    double  R_wl, R_wl_cam, R_wl_ram;$/;"	m	class:Subarray
+R_wl_ram	subarray.h	/^    double  R_wl, R_wl_cam, R_wl_ram;$/;"	m	class:Subarray
+Router	router.cc	/^Router::Router($/;"	f	class:Router
+Router	router.h	/^class Router : public Component$/;"	c
+SCHP	mat.h	/^    int SCHP;$/;"	m	class:Mat
+SCHP	uca.h	/^    int   RWP, ERP, EWP,SCHP;$/;"	m	class:UCA
+SHELL	cacti.mk	/^SHELL = \/bin\/sh$/;"	m
+SRCS	cacti.mk	/^SRCS  = area.cc bank.cc mat.cc main.cc Ucache.cc io.cc technology.cc basic_circuit.cc parameter.cc \\$/;"	m
+STACKED_DIE_LAYER_ALLOTED_AREA_mm2	const.h	172;"	d
+STACKED_DIE_LAYER_ASPECT_RATIO	const.h	184;"	d
+ScalingFactor	parameter.h	/^    ScalingFactor(): logic_scaling_co_eff(0), core_tx_density(0),$/;"	f	class:TechnologyParameter::ScalingFactor
+ScalingFactor	parameter.h	/^  class ScalingFactor$/;"	c	class:TechnologyParameter
+Search_in_htree	basic_circuit.h	/^    Search_in_htree,$/;"	e	enum:Htree_type
+Search_out_htree	basic_circuit.h	/^    Search_out_htree,$/;"	e	enum:Htree_type
+Semi_global	cacti_interface.h	/^    Semi_global \/* mid-level wires with repeaters*\/,$/;"	e	enum:Wire_type
+Sleep_tx	powergating.cc	/^Sleep_tx::Sleep_tx($/;"	f	class:Sleep_tx
+Sleep_tx	powergating.h	/^class Sleep_tx : public Component$/;"	c
+Subarray	subarray.cc	/^Subarray::Subarray(const DynamicParameter & dp_, bool is_fa_):$/;"	f	class:Subarray
+Subarray	subarray.h	/^class Subarray : public Component$/;"	c
+TAR	makefile	/^TAR = cacti$/;"	m
+TARGET	cacti.mk	/^TARGET = cacti$/;"	m
+TARGET_CYCLE_TIME_ns	const.h	192;"	d
+TechnologyParameter	parameter.h	/^class TechnologyParameter$/;"	c
+Transmission	cacti_interface.h	/^    Transmission \/* tranmission lines with high area overhead *\/,$/;"	e	enum:Wire_type
+TriS1	arbiter.h	/^    double TriS1, TriS2;$/;"	m	class:Arbiter
+TriS1	crossbar.h	/^    double TriS1, TriS2;$/;"	m	class:Crossbar
+TriS1	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+TriS2	arbiter.h	/^    double TriS1, TriS2;$/;"	m	class:Arbiter
+TriS2	crossbar.h	/^    double TriS1, TriS2;$/;"	m	class:Crossbar
+TriS2	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+UCA	uca.cc	/^UCA::UCA(const DynamicParameter & dyn_p)$/;"	f	class:UCA
+UCA	uca.h	/^class UCA : public Component$/;"	c
+UNI_LEAK_STACK_FACTOR	basic_circuit.h	42;"	d
+VBITSENSEMIN	const.h	160;"	d
+VDD_STORAGE_LOSS_FRACTION_WORST	const.h	/^const double VDD_STORAGE_LOSS_FRACTION_WORST = 0.125;$/;"	v
+VERSION_H_	version_cacti.h	33;"	d
+VER_COMMENT_CACTI	version_cacti.h	40;"	d
+VER_MAJOR_CACTI	version_cacti.h	37;"	d
+VER_MINOR_CACTI	version_cacti.h	38;"	d
+VER_UPDATE_CACTI	version_cacti.h	41;"	d
+VER_postfix_CACTI	version_cacti.h	/^const string VER_postfix_CACTI =  "-P";$/;"	v
+VOL_SWING	wire.cc	521;"	d	file:
+VSINV	const.h	85;"	d
+VTHCOMPINV	const.h	86;"	d
+VTHEVALINV	const.h	88;"	d
+VTHFA1	const.h	79;"	d
+VTHFA2	const.h	80;"	d
+VTHFA3	const.h	81;"	d
+VTHFA4	const.h	82;"	d
+VTHFA5	const.h	83;"	d
+VTHFA6	const.h	84;"	d
+VTHMUXNAND	const.h	87;"	d
+VTHSENSEEXTDRV	const.h	89;"	d
+V_b_sense	parameter.h	/^    double V_b_sense;$/;"	m	class:DynamicParameter
+V_delta	powergating.h	/^	double  V_delta;$/;"	m	class:Sleep_tx
+Vbitfloating	parameter.h	/^    double Vbitfloating;\/\/voltage when floating bitline is supported$/;"	m	class:TechnologyParameter::MemoryType
+Vbitpre	parameter.h	/^    double Vbitpre;$/;"	m	class:TechnologyParameter::MemoryType
+Vcc_min	parameter.h	/^    double Vcc_min;\/\/same meaning as Vcc_min_default, however, this value is set by user, once it is lower than Vcc_min_default; circuit (e.g. SRAM cells) cannot retain state.$/;"	m	class:TechnologyParameter::DeviceType
+Vcc_min_default	parameter.h	/^    double Vcc_min_default;\/\/allowed min vcc; for memory cell it is the lowest vcc for data retention. for logic it is the vcc to balance the leakage reduction and wakeup latency; This is the value constrained by the IC technology and cannot by changed by external\/user voltage supply$/;"	m	class:TechnologyParameter::DeviceType
+Vdd	arbiter.h	/^    double min_w_pmos, Vdd;$/;"	m	class:Arbiter
+Vdd	crossbar.h	/^    double min_w_pmos, Vdd;$/;"	m	class:Crossbar
+Vdd	parameter.h	/^    double Vdd;$/;"	m	class:TechnologyParameter::DeviceType
+Vdd	router.h	/^    double Vdd;$/;"	m	class:Router
+Vdd_default	parameter.h	/^    double Vdd_default;$/;"	m	class:TechnologyParameter::DeviceType
+Vth	parameter.h	/^    double Vth;$/;"	m	class:TechnologyParameter::DeviceType
+WIRE_TYPES	const.h	72;"	d
+Wire	wire.cc	/^Wire::Wire($/;"	f	class:Wire
+Wire	wire.cc	/^Wire::Wire(double w_s, double s_s, \/*bool reset_repeater_sizing,*\/ enum Wire_placement wp, double resis, TechnologyParameter::DeviceType *dt)$/;"	f	class:Wire
+Wire	wire.h	/^class Wire : public Component$/;"	c
+Wire_placement	basic_circuit.h	/^enum Wire_placement {$/;"	g
+Wire_type	cacti_interface.h	/^enum Wire_type$/;"	g
+WmuxdrvNANDn	const.h	/^const double WmuxdrvNANDn = 0;$/;"	v
+WmuxdrvNANDp	const.h	/^const double WmuxdrvNANDp = 0;$/;"	v
+__ARBITER__	arbiter.h	33;"	d
+__AREA_H__	area.h	35;"	d
+__BANK_H__	bank.h	35;"	d
+__BASIC_CIRCUIT_H__	basic_circuit.h	35;"	d
+__CACTI_INTERFACE_H__	cacti_interface.h	35;"	d
+__COMPONENT_H__	component.h	35;"	d
+__CONST_H__	const.h	33;"	d
+__CROSSBAR__	crossbar.h	34;"	d
+__DECODER_H__	decoder.h	34;"	d
+__HTREE2_H__	htree2.h	34;"	d
+__IO_H__	io.h	34;"	d
+__MAT_H__	mat.h	35;"	d
+__NUCA_H__	nuca.h	34;"	d
+__PARAMETER_H__	parameter.h	35;"	d
+__ROUTER_H__	router.h	35;"	d
+__SUBARRAY_H__	subarray.h	35;"	d
+__UCACHE_H__	Ucache.h	34;"	d
+__UCA_H__	uca.h	35;"	d
+__WIRE_H__	wire.h	35;"	d
+_log2	basic_circuit.cc	/^uint32_t _log2(uint64_t num)$/;"	f
+access_mode	cacti_interface.h	/^    unsigned int access_mode;$/;"	m	class:InputParameter
+access_time	Ucache.h	/^  double access_time;$/;"	m	struct:solution
+access_time	cacti_interface.h	/^    double access_time;$/;"	m	class:uca_org_t
+access_time	cacti_interface.h	/^  double access_time;$/;"	m	class:mem_array
+access_time	cacti_interface.h	/^  double access_time;$/;"	m	struct:__anon1
+access_time	uca.h	/^    double access_time;$/;"	m	class:UCA
+activate_energy	cacti_interface.h	/^  double activate_energy, read_energy, write_energy, precharge_energy,$/;"	m	class:mem_array
+activate_energy	cacti_interface.h	/^  double activate_energy;$/;"	m	struct:__anon1
+activate_energy	uca.h	/^    double activate_energy;$/;"	m	class:UCA
+active_Isat	powergating.h	/^	double  active_Isat;$/;"	m	class:Sleep_tx
+add_bits	htree2.h	/^    int add_bits, data_in_bits,search_data_in_bits,data_out_bits,  search_data_out_bits;$/;"	m	class:Htree2
+add_ecc_b_	cacti_interface.h	/^    bool     add_ecc_b_;$/;"	m	class:InputParameter
+adjust_area	cacti_interface.cc	/^void uca_org_t::adjust_area()$/;"	f	class:uca_org_t
+all_banks_height	cacti_interface.h	/^  double all_banks_height,$/;"	m	class:mem_array
+all_banks_height	cacti_interface.h	/^  double all_banks_height;$/;"	m	struct:__anon1
+all_banks_width	cacti_interface.h	/^         all_banks_width,$/;"	m	class:mem_array
+all_banks_width	cacti_interface.h	/^  double all_banks_width;$/;"	m	struct:__anon1
+arb_grant	arbiter.cc	/^Arbiter::arb_grant() {$/;"	f	class:Arbiter
+arb_int	arbiter.cc	/^Arbiter::arb_int() {$/;"	f	class:Arbiter
+arb_pri	arbiter.cc	/^Arbiter::arb_pri() {$/;"	f	class:Arbiter
+arb_req	arbiter.cc	/^Arbiter::arb_req() {$/;"	f	class:Arbiter
+arbiter	router.h	/^    Component arbiter, crossbar, buffer;$/;"	m	class:Router
+area	Ucache.h	/^  double area;$/;"	m	struct:solution
+area	area.h	/^  double area;$/;"	m	class:Area
+area	cacti_interface.h	/^    double area;$/;"	m	class:uca_org_t
+area	cacti_interface.h	/^  double area;$/;"	m	class:mem_array
+area	cacti_interface.h	/^  double area;$/;"	m	struct:__anon1
+area	component.h	/^    Area area;$/;"	m	class:Component
+area_all_dataramcells	uca.h	/^    double area_all_dataramcells;$/;"	m	class:UCA
+area_dev	cacti_interface.h	/^        cycle_time_dev, area_dev;$/;"	m	class:InputParameter
+area_dev_nuca	cacti_interface.h	/^        cycle_time_dev_nuca, area_dev_nuca;$/;"	m	class:InputParameter
+area_efficiency	cacti_interface.h	/^         area_efficiency;$/;"	m	class:mem_array
+area_efficiency	cacti_interface.h	/^    double area_efficiency;$/;"	m	class:uca_org_t
+area_efficiency	cacti_interface.h	/^  double area_efficiency;$/;"	m	struct:__anon1
+area_ram_cells	cacti_interface.h	/^  double area_ram_cells;$/;"	m	class:mem_array
+area_wt	cacti_interface.h	/^        cycle_time_wt, area_wt;$/;"	m	class:InputParameter
+area_wt_nuca	cacti_interface.h	/^        cycle_time_wt_nuca, area_wt_nuca;$/;"	m	class:InputParameter
+arr_min	cacti_interface.h	/^  min_values_t *arr_min;$/;"	m	class:mem_array
+array_leakage	bank.h	/^    double  array_leakage;$/;"	m	class:Bank
+array_leakage	cacti_interface.h	/^  double  array_leakage;$/;"	m	class:mem_array
+array_leakage	mat.h	/^    double  array_leakage;$/;"	m	class:Mat
+array_power_gated	cacti_interface.h	/^  bool array_power_gated;$/;"	m	class:InputParameter
+array_sleep_tx_area	mat.h	/^    double   array_sleep_tx_area;$/;"	m	class:Mat
+array_wakeup_e	mat.h	/^    powerDef array_wakeup_e;$/;"	m	class:Mat
+array_wakeup_t	mat.h	/^    double   array_wakeup_t;$/;"	m	class:Mat
+aspect_ratio	parameter.h	/^    double aspect_ratio;$/;"	m	class:TechnologyParameter::InterconnectType
+assoc	cacti_interface.h	/^    unsigned int assoc;$/;"	m	class:InputParameter
+avg_hops	nuca.h	/^    double avg_hops;$/;"	m	class:nuca_org_t
+b_h	parameter.h	/^    double b_h;$/;"	m	class:TechnologyParameter::MemoryType
+b_mux_predec	mat.h	/^    Predec * b_mux_predec;$/;"	m	class:Mat
+b_w	parameter.h	/^    double b_w;$/;"	m	class:TechnologyParameter::MemoryType
+bank	uca.h	/^    Bank   bank;$/;"	m	class:UCA
+bank_count	nuca.h	/^    int bank_count;$/;"	m	class:nuca_org_t
+bank_height	cacti_interface.h	/^  double bank_height;$/;"	m	struct:__anon1
+bank_pda	nuca.h	/^    Component bank_pda;$/;"	m	class:nuca_org_t
+bank_width	cacti_interface.h	/^  double bank_width;$/;"	m	struct:__anon1
+bit_mux_dec	mat.h	/^    Decoder * bit_mux_dec;$/;"	m	class:Mat
+bit_to_byte	const.h	/^const double    bit_to_byte  = 8.0;$/;"	v
+bitline_floating	cacti_interface.h	/^  bool bitline_floating;$/;"	m	class:InputParameter
+bl_floating_wakeup_energy	cacti_interface.h	/^  double sram_sleep_wakeup_energy, wl_sleep_wakeup_energy, cl_sleep_wakeup_energy, bl_floating_wakeup_energy;$/;"	m	class:mem_array
+bl_floating_wakeup_latency	cacti_interface.h	/^  double sram_sleep_wakeup_latency, wl_sleep_wakeup_latency, cl_sleep_wakeup_latency, bl_floating_wakeup_latency;$/;"	m	class:mem_array
+bl_precharge_eq_drv	mat.h	/^    Driver * bl_precharge_eq_drv;$/;"	m	class:Mat
+blfloating_sleep_tx_area	mat.h	/^    double   blfloating_sleep_tx_area;$/;"	m	class:Mat
+blfloating_wakeup_e	mat.h	/^    powerDef blfloating_wakeup_e;$/;"	m	class:Mat
+blfloating_wakeup_t	mat.h	/^    double   blfloating_wakeup_t;$/;"	m	class:Mat
+blk	decoder.h	/^  PredecBlk * blk;$/;"	m	class:PredecBlkDrv
+blk1	decoder.h	/^    PredecBlk    * blk1;$/;"	m	class:Predec
+blk2	decoder.h	/^    PredecBlk    * blk2;$/;"	m	class:Predec
+block_power	decoder.h	/^    powerDef block_power;$/;"	m	class:Predec
+block_sz	cacti_interface.h	/^    unsigned int block_sz;  \/\/ bytes$/;"	m	class:InputParameter
+branch_effort_nand2_gate_output	decoder.h	/^  int branch_effort_nand2_gate_output;$/;"	m	class:PredecBlk
+branch_effort_nand3_gate_output	decoder.h	/^  int branch_effort_nand3_gate_output;$/;"	m	class:PredecBlk
+broadcast_addr_din_over_ver_htrees	cacti_interface.h	/^    unsigned int broadcast_addr_din_over_ver_htrees;$/;"	m	class:InputParameter
+buffer	router.h	/^    Component arbiter, crossbar, buffer;$/;"	m	class:Router
+buffer_stats	router.cc	/^void Router::buffer_stats()$/;"	f	class:Router
+burst_len	cacti_interface.h	/^    unsigned int burst_len;$/;"	m	class:InputParameter
+c_circuit_wakeup	powergating.h	/^	double  c_circuit_wakeup;$/;"	m	class:Sleep_tx
+c_gate_load	decoder.h	/^  double c_gate_load;$/;"	m	class:Driver
+c_intrinsic_sleep	powergating.h	/^	double  c_intrinsic_sleep;$/;"	m	class:Sleep_tx
+c_load_nand2_path_out	decoder.h	/^  double c_load_nand2_path_out;$/;"	m	class:PredecBlkDrv
+c_load_nand3_path_out	decoder.h	/^  double c_load_nand3_path_out;$/;"	m	class:PredecBlkDrv
+c_ox	powergating.h	/^	double  c_ox;$/;"	m	class:Sleep_tx
+c_wire_load	decoder.h	/^  double c_wire_load;$/;"	m	class:Driver
+cache_ht	cacti_interface.h	/^    double cache_ht;$/;"	m	class:uca_org_t
+cache_len	cacti_interface.h	/^    double cache_len;$/;"	m	class:uca_org_t
+cache_level	cacti_interface.h	/^    int cache_level;$/;"	m	class:InputParameter
+cache_sz	cacti_interface.h	/^    unsigned int cache_sz;  \/\/ in bytes$/;"	m	class:InputParameter
+cacti_interface	io.cc	/^uca_org_t cacti_interface($/;"	f
+cacti_interface	io.cc	/^uca_org_t cacti_interface(InputParameter  * const local_interface)$/;"	f
+cacti_interface	io.cc	/^uca_org_t cacti_interface(const string & infile_name, const char * outfile_name)$/;"	f
+calc_cycles	nuca.cc	/^Nuca::calc_cycles(double lat, double oper_freq)$/;"	f	class:Nuca
+calc_router_parameters	router.cc	/^Router::calc_router_parameters()$/;"	f	class:Router
+calc_time_mt_wrapper	Ucache.cc	/^void * calc_time_mt_wrapper(void * void_obj)$/;"	f
+calc_time_mt_wrapper_struct	Ucache.h	/^struct calc_time_mt_wrapper_struct$/;"	s
+calculate_nuca_area	nuca.cc	/^Nuca::calculate_nuca_area (nuca_org_t *nuca)$/;"	f	class:Nuca
+calculate_time	Ucache.cc	/^bool calculate_time($/;"	f
+calculate_wire_stats	wire.cc	/^Wire::calculate_wire_stats()$/;"	f	class:Wire
+cam	parameter.h	/^  MemoryType cam;$/;"	m	class:TechnologyParameter
+camFlag	mat.h	/^    bool     is_dram,is_fa, pure_cam, camFlag;$/;"	m	class:Mat
+cam_bl_precharge_eq_drv	mat.h	/^    Driver * cam_bl_precharge_eq_drv;\/\/bitline pre-charge circuit is separated for CAM and RAM arrays.$/;"	m	class:Mat
+cam_cell	mat.h	/^    Area     cell,cam_cell;$/;"	m	class:Mat
+cam_cell	parameter.h	/^    Area   cell, cam_cell;\/\/cell is the sram_cell in both nomal cache\/ram and FA.$/;"	m	class:DynamicParameter
+cam_cell	parameter.h	/^  DeviceType cam_cell;   \/\/ SRAM cell transistor$/;"	m	class:TechnologyParameter
+cam_cell	subarray.h	/^    Area    cell, cam_cell;$/;"	m	class:Subarray
+cas_latency	cacti_interface.h	/^  double cas_latency;$/;"	m	struct:__anon1
+cb_stats	router.cc	/^Router::cb_stats ()$/;"	f	class:Router
+cell	decoder.h	/^    const  Area & cell;$/;"	m	class:Decoder
+cell	mat.h	/^    Area     cell,cam_cell;$/;"	m	class:Mat
+cell	parameter.h	/^    Area   cell, cam_cell;\/\/cell is the sram_cell in both nomal cache\/ram and FA.$/;"	m	class:DynamicParameter
+cell	powergating.h	/^	const  Area & cell;$/;"	m	class:Sleep_tx
+cell	subarray.h	/^    Area    cell, cam_cell;$/;"	m	class:Subarray
+cell_a_w	parameter.h	/^    double cell_a_w;$/;"	m	class:TechnologyParameter::MemoryType
+cell_h_def	parameter.h	/^  double cell_h_def;$/;"	m	class:TechnologyParameter
+cell_nmos_w	parameter.h	/^    double cell_nmos_w;$/;"	m	class:TechnologyParameter::MemoryType
+cell_pmos_w	parameter.h	/^    double cell_pmos_w;$/;"	m	class:TechnologyParameter::MemoryType
+check_mem_org	Ucache.cc	/^bool check_mem_org(mem_array & u, const min_values_t *minval)$/;"	f
+check_nuca_org	nuca.cc	/^Nuca::check_nuca_org (nuca_org_t *n, min_values_t *minval)$/;"	f	class:Nuca
+check_uca_org	Ucache.cc	/^bool check_uca_org(uca_org_t & u, min_values_t *minval)$/;"	f
+chip_layout_overhead	parameter.h	/^  double chip_layout_overhead;$/;"	m	class:TechnologyParameter
+cl_leakage	bank.h	/^    double  cl_leakage;$/;"	m	class:Bank
+cl_leakage	cacti_interface.h	/^  double  cl_leakage;$/;"	m	class:mem_array
+cl_leakage	mat.h	/^    double  cl_leakage;$/;"	m	class:Mat
+cl_power_gated	cacti_interface.h	/^  bool cl_power_gated;$/;"	m	class:InputParameter
+cl_sleep_tx	mat.h	/^    Sleep_tx * cl_sleep_tx;$/;"	m	class:Mat
+cl_sleep_tx_area	cacti_interface.h	/^  double sram_sleep_tx_area, wl_sleep_tx_area, cl_sleep_tx_area;$/;"	m	class:mem_array
+cl_sleep_tx_area	mat.h	/^    double   cl_sleep_tx_area;$/;"	m	class:Mat
+cl_sleep_tx_width	cacti_interface.h	/^  double sram_sleep_tx_width, wl_sleep_tx_width, cl_sleep_tx_width;$/;"	m	class:mem_array
+cl_sleep_wakeup_energy	cacti_interface.h	/^  double sram_sleep_wakeup_energy, wl_sleep_wakeup_energy, cl_sleep_wakeup_energy, bl_floating_wakeup_energy;$/;"	m	class:mem_array
+cl_sleep_wakeup_latency	cacti_interface.h	/^  double sram_sleep_wakeup_latency, wl_sleep_wakeup_latency, cl_sleep_wakeup_latency, bl_floating_wakeup_latency;$/;"	m	class:mem_array
+cl_vertical	cacti_interface.h	/^  bool cl_vertical;$/;"	m	class:InputParameter
+cl_wakeup_e	mat.h	/^    powerDef cl_wakeup_e;$/;"	m	class:Mat
+cl_wakeup_t	mat.h	/^    double   cl_wakeup_t;$/;"	m	class:Mat
+cleanup	cacti_interface.cc	/^void uca_org_t :: cleanup()$/;"	f	class:uca_org_t
+cmos_Ig_leakage	basic_circuit.cc	/^double cmos_Ig_leakage($/;"	f
+cmos_Ig_n	basic_circuit.cc	/^double cmos_Ig_n($/;"	f
+cmos_Ig_p	basic_circuit.cc	/^double cmos_Ig_p($/;"	f
+cmos_Ileak	basic_circuit.cc	/^double cmos_Ileak($/;"	f
+cmos_Isub_leakage	basic_circuit.cc	/^double cmos_Isub_leakage($/;"	f
+collect_uca_results	Ucache.cc	/^void collect_uca_results($/;"	f
+columns	nuca.h	/^    int columns;$/;"	m	class:nuca_org_t
+combination	basic_circuit.cc	/^int combination(int n, int m)$/;"	f
+comm_dram	const.h	/^  comm_dram = 4$/;"	e	enum:ram_cell_tech_type_num
+comm_dram_num_cells_wl_stitching_	const.h	/^const static uint32_t comm_dram_num_cells_wl_stitching_ = 256;$/;"	v
+compute_C	subarray.cc	/^void Subarray::compute_C()$/;"	f	class:Subarray
+compute_area	decoder.cc	/^void Decoder::compute_area()$/;"	f	class:Decoder
+compute_area	decoder.cc	/^void Driver::compute_area()$/;"	f	class:Driver
+compute_area	decoder.cc	/^void PredecBlk::compute_area()$/;"	f	class:PredecBlk
+compute_area	decoder.cc	/^void PredecBlkDrv::compute_area()$/;"	f	class:PredecBlkDrv
+compute_bit_mux_sa_precharge_sa_mux_wr_drv_wr_mux_h	mat.cc	/^double Mat::compute_bit_mux_sa_precharge_sa_mux_wr_drv_wr_mux_h()$/;"	f	class:Mat
+compute_bitline_delay	mat.cc	/^double Mat::compute_bitline_delay(double inrisetime)$/;"	f	class:Mat
+compute_cam_delay	mat.cc	/^double Mat::compute_cam_delay(double inrisetime)$/;"	f	class:Mat
+compute_comparator_delay	mat.cc	/^double Mat::compute_comparator_delay(double inrisetime)$/;"	f	class:Mat
+compute_comparators_height	mat.cc	/^double Mat::compute_comparators_height($/;"	f	class:Mat
+compute_delay	decoder.cc	/^double Driver::compute_delay(double inrisetime)$/;"	f	class:Driver
+compute_delays	bank.cc	/^double Bank::compute_delays(double inrisetime)$/;"	f	class:Bank
+compute_delays	decoder.cc	/^double Decoder::compute_delays(double inrisetime)$/;"	f	class:Decoder
+compute_delays	decoder.cc	/^double Predec::compute_delays(double inrisetime)$/;"	f	class:Predec
+compute_delays	decoder.cc	/^pair<double, double> PredecBlk::compute_delays($/;"	f	class:PredecBlk
+compute_delays	decoder.cc	/^pair<double, double> PredecBlkDrv::compute_delays($/;"	f	class:PredecBlkDrv
+compute_delays	mat.cc	/^double Mat::compute_delays(double inrisetime)$/;"	f	class:Mat
+compute_delays	uca.cc	/^double UCA::compute_delays(double inrisetime)$/;"	f	class:UCA
+compute_diffusion_width	component.cc	/^double Component::compute_diffusion_width(int num_stacked_in, int num_folded_tr)$/;"	f	class:Component
+compute_gate_area	component.cc	/^double Component::compute_gate_area($/;"	f	class:Component
+compute_penalty	powergating.cc	/^double Sleep_tx::compute_penalty()$/;"	f	class:Sleep_tx
+compute_power	arbiter.cc	/^Arbiter::compute_power() {$/;"	f	class:Arbiter
+compute_power	crossbar.cc	/^void Crossbar::compute_power()$/;"	f	class:Crossbar
+compute_power_energy	bank.cc	/^void Bank::compute_power_energy()$/;"	f	class:Bank
+compute_power_energy	mat.cc	/^void Mat::compute_power_energy()$/;"	f	class:Mat
+compute_power_energy	uca.cc	/^void UCA::compute_power_energy()$/;"	f	class:UCA
+compute_power_gating	decoder.cc	/^void Decoder::compute_power_gating()$/;"	f	class:Decoder
+compute_power_gating	decoder.cc	/^void Driver::compute_power_gating()$/;"	f	class:Driver
+compute_sa_delay	mat.cc	/^double Mat::compute_sa_delay(double inrisetime)$/;"	f	class:Mat
+compute_subarray_out_drv	mat.cc	/^double Mat::compute_subarray_out_drv(double inrisetime)$/;"	f	class:Mat
+compute_tr_width_after_folding	component.cc	/^double Component::compute_tr_width_after_folding($/;"	f	class:Component
+compute_widths	decoder.cc	/^void Decoder::compute_widths()$/;"	f	class:Decoder
+compute_widths	decoder.cc	/^void Driver::compute_widths()$/;"	f	class:Driver
+compute_widths	decoder.cc	/^void PredecBlk::compute_widths()$/;"	f	class:PredecBlk
+compute_widths	decoder.cc	/^void PredecBlkDrv::compute_widths()$/;"	f	class:PredecBlkDrv
+cont_stats	nuca.cc	/^int cont_stats[2 \/*l2 or l3*\/][5\/* cores *\/][ROUTER_TYPES][7 \/*banks*\/][8 \/* cycle time *\/];$/;"	v
+contention	nuca.h	/^    double contention;$/;"	m	class:nuca_org_t
+core_tx_density	parameter.h	/^    double core_tx_density;$/;"	m	class:TechnologyParameter::ScalingFactor
+cores	cacti_interface.h	/^    int cores;$/;"	m	class:InputParameter
+crossbar	router.h	/^    Component arbiter, crossbar, buffer;$/;"	m	class:Router
+crossbar_ctrline	arbiter.cc	/^Arbiter::crossbar_ctrline() {$/;"	f	class:Arbiter
+crossbar_ctrline	router.cc	/^Router::crossbar_ctrline() {$/;"	f	class:Router
+crossbar_inpline	router.cc	/^Router::crossbar_inpline() {$/;"	f	class:Router
+crossbar_outline	router.cc	/^Router::crossbar_outline() {$/;"	f	class:Router
+csv	parse_csv.py	/^import csv$/;"	i
+cycle_time	Ucache.h	/^  double cycle_time;$/;"	m	struct:solution
+cycle_time	cacti_interface.h	/^    double cycle_time;$/;"	m	class:uca_org_t
+cycle_time	cacti_interface.h	/^  double cycle_time;$/;"	m	class:mem_array
+cycle_time	cacti_interface.h	/^  double cycle_time;$/;"	m	struct:__anon1
+cycle_time	component.h	/^    double cycle_time;$/;"	m	class:Component
+cycle_time	router.h	/^    double cycle_time, max_cyc;$/;"	m	class:Router
+cycle_time_dev	cacti_interface.h	/^        cycle_time_dev, area_dev;$/;"	m	class:InputParameter
+cycle_time_dev_nuca	cacti_interface.h	/^        cycle_time_dev_nuca, area_dev_nuca;$/;"	m	class:InputParameter
+cycle_time_wt	cacti_interface.h	/^        cycle_time_wt, area_wt;$/;"	m	class:InputParameter
+cycle_time_wt_nuca	cacti_interface.h	/^        cycle_time_wt_nuca, area_wt_nuca;$/;"	m	class:InputParameter
+data	parse_csv.py	/^    data = dict((name, []) for name in names)$/;"	v
+data_arr	Ucache.h	/^  list<mem_array *> data_arr;$/;"	m	struct:calc_time_mt_wrapper_struct
+data_arr_peri_global_tech_type	cacti_interface.h	/^    unsigned int data_arr_peri_global_tech_type;$/;"	m	class:InputParameter
+data_arr_ram_cell_tech_type	cacti_interface.h	/^    unsigned int data_arr_ram_cell_tech_type;$/;"	m	class:InputParameter
+data_array	cacti_interface.h	/^    results_mem_array data_array;$/;"	m	class:uca_org_t
+data_array2	cacti_interface.h	/^    mem_array * data_array2;$/;"	m	class:uca_org_t
+data_array_index	Ucache.h	/^  int    data_array_index;$/;"	m	struct:solution
+data_array_iter	Ucache.h	/^  list<mem_array *>::iterator data_array_iter;$/;"	m	struct:solution
+data_assoc	cacti_interface.h	/^    unsigned int data_assoc;$/;"	m	class:InputParameter
+data_in_bits	htree2.h	/^    int add_bits, data_in_bits,search_data_in_bits,data_out_bits,  search_data_out_bits;$/;"	m	class:Htree2
+data_num_c_subarray	parameter.h	/^    int data_num_c_subarray;$/;"	m	class:DynamicParameter
+data_num_r_subarray	parameter.h	/^    int data_num_r_subarray;$/;"	m	class:DynamicParameter
+data_out_bits	htree2.h	/^    int add_bits, data_in_bits,search_data_in_bits,data_out_bits,  search_data_out_bits;$/;"	m	class:Htree2
+data_res	Ucache.h	/^  min_values_t * data_res;$/;"	m	struct:calc_time_mt_wrapper_struct
+dec	decoder.h	/^  Decoder   * dec;$/;"	m	class:PredecBlkDrv
+dec	decoder.h	/^  Decoder * dec;$/;"	m	class:PredecBlk
+deg_bl_muxing	cacti_interface.h	/^  int    deg_bl_muxing;$/;"	m	class:mem_array
+deg_bl_muxing	cacti_interface.h	/^  int deg_bl_muxing;$/;"	m	struct:__anon1
+deg_bl_muxing	mat.h	/^    int      deg_bl_muxing;$/;"	m	class:Mat
+deg_bl_muxing	parameter.h	/^    int deg_bl_muxing;$/;"	m	class:DynamicParameter
+deg_senseamp_muxing_non_associativity	parameter.h	/^    int deg_senseamp_muxing_non_associativity;$/;"	m	class:DynamicParameter
+delay	component.h	/^    double delay;$/;"	m	class:Component
+delay	decoder.h	/^    double delay;$/;"	m	class:Decoder
+delay	decoder.h	/^  double delay;$/;"	m	class:Driver
+delay	powergating.h	/^	double  delay, wakeup_delay;$/;"	m	class:Sleep_tx
+delay_addr_din_horizontal_htree	cacti_interface.h	/^  double delay_addr_din_horizontal_htree;$/;"	m	struct:__anon1
+delay_addr_din_vertical_htree	cacti_interface.h	/^  double delay_addr_din_vertical_htree;$/;"	m	struct:__anon1
+delay_array_to_sa_mux_lev_1_decoder	uca.h	/^    double delay_array_to_sa_mux_lev_1_decoder;$/;"	m	class:UCA
+delay_array_to_sa_mux_lev_2_decoder	uca.h	/^    double delay_array_to_sa_mux_lev_2_decoder;$/;"	m	class:UCA
+delay_before_decoder	mat.h	/^    double   delay_before_decoder;$/;"	m	class:Mat
+delay_before_subarray_output_driver	cacti_interface.h	/^  double delay_before_subarray_output_driver;$/;"	m	class:mem_array
+delay_before_subarray_output_driver	uca.h	/^    double delay_before_subarray_output_driver;$/;"	m	class:UCA
+delay_bit_mux_decoder	cacti_interface.h	/^  double delay_bit_mux_decoder;$/;"	m	struct:__anon1
+delay_bit_mux_predecode_driver_and_block	cacti_interface.h	/^  double delay_bit_mux_predecode_driver_and_block;$/;"	m	struct:__anon1
+delay_bitline	mat.h	/^    double   delay_bitline;$/;"	m	class:Mat
+delay_bitlines	cacti_interface.h	/^         delay_bitlines,$/;"	m	class:mem_array
+delay_bitlines	cacti_interface.h	/^  double delay_bitlines;$/;"	m	struct:__anon1
+delay_bl_restore	mat.h	/^    double   delay_bl_restore;$/;"	m	class:Mat
+delay_cam	mat.h	/^    double   delay_fa_tag, delay_cam;$/;"	m	class:Mat
+delay_cam_ml_reset	mat.h	/^    double   delay_cam_ml_reset;$/;"	m	class:Mat
+delay_cam_sl_restore	mat.h	/^    double   delay_cam_sl_restore;$/;"	m	class:Mat
+delay_comparator	cacti_interface.h	/^         delay_comparator,$/;"	m	class:mem_array
+delay_comparator	cacti_interface.h	/^  double delay_comparator;$/;"	m	struct:__anon1
+delay_comparator	mat.h	/^    double   delay_comparator;$/;"	m	class:Mat
+delay_crossbar	cacti_interface.h	/^  double delay_crossbar;$/;"	m	struct:__anon1
+delay_dev	cacti_interface.h	/^    int delay_dev, dynamic_power_dev, leakage_power_dev,$/;"	m	class:InputParameter
+delay_dev_nuca	cacti_interface.h	/^    int delay_dev_nuca, dynamic_power_dev_nuca, leakage_power_dev_nuca,$/;"	m	class:InputParameter
+delay_dout_horizontal_htree	cacti_interface.h	/^  double delay_dout_horizontal_htree;$/;"	m	struct:__anon1
+delay_dout_htree	cacti_interface.h	/^         delay_dout_htree,$/;"	m	class:mem_array
+delay_dout_vertical_htree	cacti_interface.h	/^  double delay_dout_vertical_htree;$/;"	m	struct:__anon1
+delay_fa_ram_wl	mat.h	/^    double   delay_fa_ram_wl;$/;"	m	class:Mat
+delay_fa_tag	mat.h	/^    double   delay_fa_tag, delay_cam;$/;"	m	class:Mat
+delay_from_subarray_out_drv_to_out	uca.h	/^    double delay_from_subarray_out_drv_to_out;$/;"	m	class:UCA
+delay_from_subarray_output_driver_to_output	cacti_interface.h	/^  double delay_from_subarray_output_driver_to_output;$/;"	m	class:mem_array
+delay_hit_miss	mat.h	/^    double   delay_hit_miss;$/;"	m	class:Mat
+delay_hit_miss_reset	mat.h	/^    double   delay_hit_miss_reset;$/;"	m	class:Mat
+delay_input_htree	cacti_interface.h	/^         delay_input_htree,$/;"	m	class:mem_array
+delay_input_htree	cacti_interface.h	/^  double delay_input_htree;$/;"	m	struct:__anon1
+delay_inside_mat	cacti_interface.h	/^  double delay_inside_mat;$/;"	m	struct:__anon1
+delay_matchchline	mat.h	/^    double   delay_matchchline;$/;"	m	class:Mat
+delay_matchlines	cacti_interface.h	/^         delay_matchlines;$/;"	m	class:mem_array
+delay_nand2_path	decoder.h	/^  double delay_nand2_path;$/;"	m	class:PredecBlk
+delay_nand2_path	decoder.h	/^  double delay_nand2_path;$/;"	m	class:PredecBlkDrv
+delay_nand3_path	decoder.h	/^  double delay_nand3_path;$/;"	m	class:PredecBlk
+delay_nand3_path	decoder.h	/^  double delay_nand3_path;$/;"	m	class:PredecBlkDrv
+delay_optimal_wire	wire.cc	/^void Wire::delay_optimal_wire (\/*bool reset_repeater_sizing*\/)$/;"	f	class:Wire
+delay_output_htree	cacti_interface.h	/^  double delay_output_htree;$/;"	m	struct:__anon1
+delay_reply_network	cacti_interface.h	/^  double delay_reply_network;$/;"	m	struct:__anon1
+delay_request_network	cacti_interface.h	/^  double delay_request_network;$/;"	m	struct:__anon1
+delay_route_to_bank	cacti_interface.h	/^  double delay_route_to_bank,$/;"	m	class:mem_array
+delay_route_to_bank	cacti_interface.h	/^  double delay_route_to_bank;$/;"	m	struct:__anon1
+delay_row_decoder	cacti_interface.h	/^         delay_row_decoder,$/;"	m	class:mem_array
+delay_row_decoder	cacti_interface.h	/^  double delay_row_decoder;$/;"	m	struct:__anon1
+delay_row_predecode_driver_and_block	cacti_interface.h	/^         delay_row_predecode_driver_and_block,$/;"	m	class:mem_array
+delay_row_predecode_driver_and_block	cacti_interface.h	/^  double delay_row_predecode_driver_and_block;$/;"	m	struct:__anon1
+delay_sa	mat.h	/^    double   delay_sa;$/;"	m	class:Mat
+delay_searchline	mat.h	/^    double   delay_searchline;$/;"	m	class:Mat
+delay_sense_amp	cacti_interface.h	/^         delay_sense_amp,$/;"	m	class:mem_array
+delay_sense_amp	cacti_interface.h	/^  double delay_sense_amp;$/;"	m	struct:__anon1
+delay_senseamp_mux_decoder	cacti_interface.h	/^  double delay_senseamp_mux_decoder;$/;"	m	class:mem_array
+delay_senseamp_mux_lev_1_decoder	cacti_interface.h	/^  double delay_senseamp_mux_lev_1_decoder;$/;"	m	struct:__anon1
+delay_senseamp_mux_lev_1_predecode_driver_and_block	cacti_interface.h	/^  double delay_senseamp_mux_lev_1_predecode_driver_and_block;$/;"	m	struct:__anon1
+delay_senseamp_mux_lev_2_decoder	cacti_interface.h	/^  double delay_senseamp_mux_lev_2_decoder;$/;"	m	struct:__anon1
+delay_senseamp_mux_lev_2_predecode_driver_and_block	cacti_interface.h	/^  double delay_senseamp_mux_lev_2_predecode_driver_and_block;$/;"	m	struct:__anon1
+delay_subarray_out_drv	mat.h	/^    double   delay_subarray_out_drv;$/;"	m	class:Mat
+delay_subarray_out_drv_htree	mat.h	/^    double   delay_subarray_out_drv_htree;$/;"	m	class:Mat
+delay_subarray_output_driver	cacti_interface.h	/^         delay_subarray_output_driver,$/;"	m	class:mem_array
+delay_subarray_output_driver	cacti_interface.h	/^  double delay_subarray_output_driver;$/;"	m	struct:__anon1
+delay_wl_reset	mat.h	/^    double   delay_wl_reset;$/;"	m	class:Mat
+delay_writeback	mat.h	/^    double   delay_writeback;$/;"	m	class:Mat
+delay_wt	cacti_interface.h	/^    int delay_wt, dynamic_power_wt, leakage_power_wt,$/;"	m	class:InputParameter
+delay_wt_nuca	cacti_interface.h	/^    int delay_wt_nuca, dynamic_power_wt_nuca, leakage_power_wt_nuca,$/;"	m	class:InputParameter
+deviceType	arbiter.h	/^    TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Arbiter
+deviceType	crossbar.h	/^	TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Crossbar
+deviceType	htree2.h	/^    TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Htree2
+deviceType	nuca.h	/^    TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Nuca
+deviceType	router.h	/^	TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Router
+deviceType	wire.h	/^    TechnologyParameter::DeviceType *deviceType;$/;"	m	class:Wire
+diff_cap	router.cc	/^Router::diff_cap(double w, int type \/*0 for n-mos and 1 for p-mos*\/,$/;"	f	class:Router
+display	parameter.cc	/^void TechnologyParameter::DeviceType::display(uint32_t indent)$/;"	f	class:TechnologyParameter::DeviceType
+display	parameter.cc	/^void TechnologyParameter::InterconnectType::display(uint32_t indent)$/;"	f	class:TechnologyParameter::InterconnectType
+display	parameter.cc	/^void TechnologyParameter::MemoryType::display(uint32_t indent)$/;"	f	class:TechnologyParameter::MemoryType
+display	parameter.cc	/^void TechnologyParameter::ScalingFactor::display(uint32_t indent)$/;"	f	class:TechnologyParameter::ScalingFactor
+display	parameter.cc	/^void TechnologyParameter::display(uint32_t indent)$/;"	f	class:TechnologyParameter
+display_ip	io.cc	/^InputParameter::display_ip()$/;"	f	class:InputParameter
+dp	bank.h	/^    const DynamicParameter & dp;$/;"	m	class:Bank
+dp	mat.h	/^    const DynamicParameter & dp;$/;"	m	class:Mat
+dp	subarray.h	/^    const DynamicParameter & dp;$/;"	m	class:Subarray
+dp	uca.h	/^    DynamicParameter dp;$/;"	m	class:UCA
+drain_C_	basic_circuit.cc	/^double drain_C_($/;"	f
+dram	parameter.h	/^  MemoryType dram;$/;"	m	class:TechnologyParameter
+dram_acc	parameter.h	/^  DeviceType dram_acc;    \/\/ DRAM access transistor$/;"	m	class:TechnologyParameter
+dram_array_availability	cacti_interface.h	/^  double dram_array_availability;$/;"	m	struct:__anon1
+dram_cell_C	parameter.h	/^  double dram_cell_C;$/;"	m	class:TechnologyParameter
+dram_cell_I_off_worst_case_len_temp	parameter.h	/^  double dram_cell_I_off_worst_case_len_temp;$/;"	m	class:TechnologyParameter
+dram_cell_I_on	parameter.h	/^  double dram_cell_I_on;$/;"	m	class:TechnologyParameter
+dram_cell_Vdd	parameter.h	/^  double dram_cell_Vdd;$/;"	m	class:TechnologyParameter
+dram_cell_tech_flavor	const.h	/^const int dram_cell_tech_flavor = 3;$/;"	v
+dram_num_cells_wl_stitching_	const.h	/^const static uint32_t dram_num_cells_wl_stitching_ = 64;$/;"	v
+dram_refresh_period	cacti_interface.h	/^  double dram_refresh_period;$/;"	m	struct:__anon1
+dram_refresh_period	parameter.h	/^    double dram_refresh_period;$/;"	m	class:DynamicParameter
+dram_wl	parameter.h	/^  DeviceType dram_wl;     \/\/ DRAM wordline transistor$/;"	m	class:TechnologyParameter
+driver_power	decoder.h	/^    powerDef driver_power;$/;"	m	class:Predec
+drv1	decoder.h	/^    PredecBlkDrv * drv1;$/;"	m	class:Predec
+drv2	decoder.h	/^    PredecBlkDrv * drv2;$/;"	m	class:Predec
+dummy_way_sel_predec_blk1	mat.h	/^    PredecBlk * dummy_way_sel_predec_blk1;$/;"	m	class:Mat
+dummy_way_sel_predec_blk2	mat.h	/^    PredecBlk * dummy_way_sel_predec_blk2;$/;"	m	class:Mat
+dummy_way_sel_predec_blk_drv2	mat.h	/^    PredecBlkDrv * dummy_way_sel_predec_blk_drv2;$/;"	m	class:Mat
+dvs_voltage	cacti_interface.h	/^  std::vector<double> dvs_voltage;$/;"	m	class:InputParameter
+dyn_read_energy_from_closed_page	cacti_interface.h	/^  double dyn_read_energy_from_closed_page;$/;"	m	struct:__anon1
+dyn_read_energy_from_closed_page	uca.h	/^    double dyn_read_energy_from_closed_page;$/;"	m	class:UCA
+dyn_read_energy_from_open_page	cacti_interface.h	/^  double dyn_read_energy_from_open_page;$/;"	m	struct:__anon1
+dyn_read_energy_from_open_page	uca.h	/^    double dyn_read_energy_from_open_page;$/;"	m	class:UCA
+dyn_read_energy_remaining_words_in_burst	uca.h	/^    double dyn_read_energy_remaining_words_in_burst;$/;"	m	class:UCA
+dynamic	cacti_interface.h	/^    double dynamic;$/;"	m	class:powerComponents
+dynamic_power_dev	cacti_interface.h	/^    int delay_dev, dynamic_power_dev, leakage_power_dev,$/;"	m	class:InputParameter
+dynamic_power_dev_nuca	cacti_interface.h	/^    int delay_dev_nuca, dynamic_power_dev_nuca, leakage_power_dev_nuca,$/;"	m	class:InputParameter
+dynamic_power_wt	cacti_interface.h	/^    int delay_wt, dynamic_power_wt, leakage_power_wt,$/;"	m	class:InputParameter
+dynamic_power_wt_nuca	cacti_interface.h	/^    int delay_wt_nuca, dynamic_power_wt_nuca, leakage_power_wt_nuca,$/;"	m	class:InputParameter
+ed	cacti_interface.h	/^    int ed; \/\/ED or ED2 optimization$/;"	m	class:InputParameter
+efficiency	Ucache.h	/^  double efficiency;$/;"	m	struct:solution
+error_checking	io.cc	/^bool InputParameter::error_checking()$/;"	f	class:InputParameter
+exist	decoder.h	/^    bool   exist;$/;"	m	class:Decoder
+exist	decoder.h	/^  bool exist;$/;"	m	class:PredecBlk
+factorial	basic_circuit.cc	/^int factorial(int n, int m)$/;"	f
+fast_access	cacti_interface.h	/^    bool     fast_access;$/;"	m	class:InputParameter
+file_n	cacti_interface.h	/^    char file_n[100];$/;"	m	class:uca_org_t
+filter_data_arr	Ucache.cc	/^void filter_data_arr(list<mem_array *> & curr_list)$/;"	f
+filter_tag_arr	Ucache.cc	/^void filter_tag_arr(const min_values_t * min, list<mem_array *> & list)$/;"	f
+find_area	cacti_interface.cc	/^void uca_org_t::find_area()$/;"	f	class:uca_org_t
+find_cyc	cacti_interface.cc	/^void uca_org_t::find_cyc()$/;"	f	class:uca_org_t
+find_delay	cacti_interface.cc	/^void uca_org_t::find_delay()$/;"	f	class:uca_org_t
+find_energy	cacti_interface.cc	/^void uca_org_t::find_energy()$/;"	f	class:uca_org_t
+find_optimal_nuca	nuca.cc	/^Nuca::find_optimal_nuca (list<nuca_org_t *> *n, min_values_t *minval)$/;"	f	class:Nuca
+find_optimal_uca	Ucache.cc	/^void find_optimal_uca(uca_org_t *res, min_values_t * minval, list<uca_org_t> & ulist)$/;"	f
+flag_L2_gate	decoder.h	/^  int flag_L2_gate;$/;"	m	class:PredecBlk
+flag_driver_exists	decoder.h	/^  int flag_driver_exists;$/;"	m	class:PredecBlkDrv
+flag_two_unique_paths	decoder.h	/^  bool   flag_two_unique_paths;$/;"	m	class:PredecBlk
+flit_size	arbiter.h	/^    double flit_size;$/;"	m	class:Arbiter
+flit_size	crossbar.h	/^    double flit_size;$/;"	m	class:Crossbar
+flit_size	router.h	/^    double flit_size;$/;"	m	class:Router
+fopt	const.h	162;"	d
+force_cache_config	cacti_interface.h	/^    bool force_cache_config;$/;"	m	class:InputParameter
+force_nuca_bank	cacti_interface.h	/^    int force_nuca_bank;$/;"	m	class:InputParameter
+force_wiretype	cacti_interface.h	/^    int force_wiretype;$/;"	m	class:InputParameter
+fringe_cap	parameter.h	/^  double fringe_cap;$/;"	m	class:TechnologyParameter
+fully_assoc	cacti_interface.h	/^    bool     fully_assoc;$/;"	m	class:InputParameter
+fully_assoc	decoder.h	/^    bool   fully_assoc;$/;"	m	class:Decoder
+fully_assoc	parameter.h	/^    bool fully_assoc;$/;"	m	class:DynamicParameter
+g_tp	parameter.cc	/^TechnologyParameter g_tp;$/;"	v
+gate_C	basic_circuit.cc	/^double gate_C($/;"	f
+gate_C_pass	basic_circuit.cc	/^double gate_C_pass($/;"	f
+gate_cap	router.cc	/^Router::gate_cap(double w) {$/;"	f	class:Router
+gate_leakage	cacti_interface.h	/^    double gate_leakage;$/;"	m	class:powerComponents
+get_area	area.h	/^  double get_area() const$/;"	f	class:Area
+get_h	area.h	/^  double get_h() const { return h; }$/;"	f	class:Area
+get_max_delay_before_decoder	decoder.cc	/^pair<double, double> Predec::get_max_delay_before_decoder($/;"	f	class:Predec
+get_rdOp_dynamic_E	decoder.cc	/^double PredecBlkDrv::get_rdOp_dynamic_E(int num_act_mats_hor_dir)$/;"	f	class:PredecBlkDrv
+get_router_area	router.cc	/^Router::get_router_area()$/;"	f	class:Router
+get_router_delay	router.cc	/^Router::get_router_delay ()$/;"	f	class:Router
+get_router_power	router.cc	/^Router::get_router_power()$/;"	f	class:Router
+get_total_cell_area	subarray.cc	/^double Subarray::get_total_cell_area()$/;"	f	class:Subarray
+get_w	area.h	/^  double get_w() const { return w; }$/;"	f	class:Area
+global	wire.cc	/^    Component Wire::global;$/;"	m	class:Wire	file:
+global	wire.h	/^    static Component global;$/;"	m	class:Wire
+global_10	wire.cc	/^    Component Wire::global_10;$/;"	m	class:Wire	file:
+global_10	wire.h	/^    static Component global_10;$/;"	m	class:Wire
+global_20	wire.cc	/^    Component Wire::global_20;$/;"	m	class:Wire	file:
+global_20	wire.h	/^    static Component global_20;$/;"	m	class:Wire
+global_30	wire.cc	/^    Component Wire::global_30;$/;"	m	class:Wire	file:
+global_30	wire.h	/^    static Component global_30;$/;"	m	class:Wire
+global_5	wire.cc	/^    Component Wire::global_5;$/;"	m	class:Wire	file:
+global_5	wire.h	/^    static Component global_5;$/;"	m	class:Wire
+gm_sense_amp_latch	parameter.h	/^  double gm_sense_amp_latch;$/;"	m	class:TechnologyParameter
+h	area.h	/^  double h;$/;"	m	class:Area
+h_dec	parameter.h	/^  uint64_t h_dec;$/;"	m	class:TechnologyParameter
+h_wire	nuca.h	/^    Wire *h_wire;$/;"	m	class:nuca_org_t
+height	cacti_interface.h	/^  double height;$/;"	m	class:mem_array
+height_sense_amplifier	component.cc	/^double Component::height_sense_amplifier(double pitch_sense_amp)$/;"	f	class:Component
+horiz_dielectric_constant	parameter.h	/^    double horiz_dielectric_constant;$/;"	m	class:TechnologyParameter::InterconnectType
+horowitz	basic_circuit.cc	/^double horowitz($/;"	f
+hp_Vdd	cacti_interface.h	/^    double   hp_Vdd;			   \/\/ user specified vdd$/;"	m	class:InputParameter
+ht	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+htree_hnodes	htree2.h	/^    double htree_hnodes;$/;"	m	class:Htree2
+htree_in_add	bank.h	/^    Htree2 *htree_in_add;$/;"	m	class:Bank
+htree_in_add	uca.h	/^    Htree2   * htree_in_add;$/;"	m	class:UCA
+htree_in_data	bank.h	/^    Htree2 *htree_in_data;$/;"	m	class:Bank
+htree_in_data	uca.h	/^    Htree2   * htree_in_data;$/;"	m	class:UCA
+htree_in_search	bank.h	/^    Htree2 *htree_in_search;$/;"	m	class:Bank
+htree_in_search	uca.h	/^    Htree2   * htree_in_search;$/;"	m	class:UCA
+htree_out_data	bank.h	/^    Htree2 *htree_out_data;$/;"	m	class:Bank
+htree_out_data	uca.h	/^    Htree2   * htree_out_data;$/;"	m	class:UCA
+htree_out_search	bank.h	/^    Htree2 *htree_out_search;$/;"	m	class:Bank
+htree_out_search	uca.h	/^    Htree2   * htree_out_search;$/;"	m	class:UCA
+htree_vnodes	htree2.h	/^    double htree_vnodes;$/;"	m	class:Htree2
+ic_proj_type	cacti_interface.h	/^    unsigned int ic_proj_type;      \/\/ interconnect_projection_type$/;"	m	class:InputParameter
+ild_thickness	parameter.h	/^    double ild_thickness;$/;"	m	class:TechnologyParameter::InterconnectType
+in_htree	htree2.cc	/^Htree2::in_htree()$/;"	f	class:Htree2
+in_rise_time	htree2.h	/^    double in_rise_time, out_rise_time;$/;"	m	class:Htree2
+in_rise_time	wire.h	/^    double in_rise_time, out_rise_time;$/;"	m	class:Wire
+init_cont	nuca.cc	/^Nuca::init_cont()$/;"	f	class:Nuca
+init_interface	io.cc	/^uca_org_t init_interface(InputParameter* const local_interface)$/;"	f
+init_tech_params	technology.cc	/^void init_tech_params(double technology, bool is_tag)$/;"	f
+init_wire	wire.cc	/^Wire::init_wire(\/*bool reset_repeater_sizing*\/){$/;"	f	class:Wire
+init_wire_bw	htree2.h	/^    double init_wire_bw;  \/\/ bus width at root$/;"	m	class:Htree2
+initialized	wire.cc	/^    int Wire::initialized;$/;"	m	class:Wire	file:
+initialized	wire.h	/^    static int initialized;$/;"	m	class:Wire
+input_nand	htree2.cc	/^void Htree2::input_nand(double s1, double s2, double l_eff)$/;"	f	class:Htree2
+inside_mat	basic_circuit.h	/^    inside_mat,$/;"	e	enum:Wire_placement
+int_prefetch_w	cacti_interface.h	/^    unsigned int int_prefetch_w;$/;"	m	class:InputParameter
+interconect_power_gated	cacti_interface.h	/^  bool interconect_power_gated;$/;"	m	class:InputParameter
+inv	basic_circuit.h	/^	inv,$/;"	e	enum:Gate_type
+is_cache	cacti_interface.h	/^    bool     is_cache;$/;"	m	class:InputParameter
+is_dram	decoder.h	/^    bool   is_dram;$/;"	m	class:Decoder
+is_dram	mat.h	/^    bool     is_dram,is_fa, pure_cam, camFlag;$/;"	m	class:Mat
+is_dram	parameter.h	/^    bool is_dram;$/;"	m	class:DynamicParameter
+is_dram_	decoder.h	/^  bool   is_dram_;$/;"	m	class:Driver
+is_dram_	decoder.h	/^  bool  is_dram_;$/;"	m	class:PredecBlkDrv
+is_dram_	decoder.h	/^  bool is_dram_;$/;"	m	class:PredecBlk
+is_fa	mat.h	/^    bool     is_dram,is_fa, pure_cam, camFlag;$/;"	m	class:Mat
+is_fa	subarray.h	/^    bool    is_fa;$/;"	m	class:Subarray
+is_footer	powergating.h	/^	bool    is_footer;$/;"	m	class:Sleep_tx
+is_main_mem	Ucache.h	/^  bool     is_main_mem;$/;"	m	struct:calc_time_mt_wrapper_struct
+is_main_mem	cacti_interface.h	/^    bool     is_main_mem;$/;"	m	class:InputParameter
+is_main_mem	parameter.h	/^    bool   is_main_mem;$/;"	m	class:DynamicParameter
+is_pow2	basic_circuit.cc	/^bool is_pow2(int64_t val)$/;"	f
+is_seq_acc	cacti_interface.h	/^    bool     is_seq_acc;$/;"	m	class:InputParameter
+is_sleep_tx	powergating.h	/^	bool    is_sleep_tx;$/;"	m	class:Sleep_tx
+is_tag	Ucache.h	/^  bool     is_tag;$/;"	m	struct:calc_time_mt_wrapper_struct
+is_tag	parameter.h	/^    bool is_tag;$/;"	m	class:DynamicParameter
+is_valid	parameter.h	/^    bool   is_valid;$/;"	m	class:DynamicParameter
+is_wl_tr	decoder.h	/^    bool   is_wl_tr;$/;"	m	class:Decoder
+itrs_hp	const.h	/^  itrs_hp   = 0,$/;"	e	enum:ram_cell_tech_type_num
+itrs_lop	const.h	/^  itrs_lop  = 2,$/;"	e	enum:ram_cell_tech_type_num
+itrs_lstp	const.h	/^  itrs_lstp = 1,$/;"	e	enum:ram_cell_tech_type_num
+kinv	parameter.h	/^  double kinv;$/;"	m	class:TechnologyParameter
+l_elec	parameter.h	/^    double l_elec;$/;"	m	class:TechnologyParameter::DeviceType
+l_phy	parameter.h	/^    double l_phy;$/;"	m	class:TechnologyParameter::DeviceType
+l_wire	wire.h	/^    Component l_wire;$/;"	m	class:Wire
+latency	cacti_interface.h	/^  double latency;$/;"	m	class:InputParameter
+leak_power_request_and_reply_networks	cacti_interface.h	/^  double leak_power_request_and_reply_networks;$/;"	m	struct:__anon1
+leak_power_request_and_reply_networks	cacti_interface.h	/^  leak_power_request_and_reply_networks;$/;"	m	class:mem_array
+leak_power_request_and_reply_networks	uca.h	/^    double leak_power_request_and_reply_networks;$/;"	m	class:UCA
+leak_power_sense_amps_closed_page_state	mat.h	/^    double   leak_power_sense_amps_closed_page_state;$/;"	m	class:Mat
+leak_power_sense_amps_open_page_state	mat.h	/^    double   leak_power_sense_amps_open_page_state;$/;"	m	class:Mat
+leak_power_subbank_closed_page	cacti_interface.h	/^  double leak_power_subbank_closed_page;$/;"	m	struct:__anon1
+leak_power_subbank_closed_page	cacti_interface.h	/^  refresh_power, leak_power_subbank_closed_page, leak_power_subbank_open_page,$/;"	m	class:mem_array
+leak_power_subbank_closed_page	uca.h	/^    double leak_power_subbank_closed_page;$/;"	m	class:UCA
+leak_power_subbank_open_page	cacti_interface.h	/^  double leak_power_subbank_open_page;$/;"	m	struct:__anon1
+leak_power_subbank_open_page	cacti_interface.h	/^  refresh_power, leak_power_subbank_closed_page, leak_power_subbank_open_page,$/;"	m	class:mem_array
+leak_power_subbank_open_page	uca.h	/^    double leak_power_subbank_open_page;$/;"	m	class:UCA
+leak_power_with_sleep_transistors_in_mats	cacti_interface.h	/^    double leak_power_with_sleep_transistors_in_mats;$/;"	m	class:uca_org_t
+leakage	cacti_interface.h	/^    double leakage;$/;"	m	class:powerComponents
+leakage_feedback	decoder.cc	/^void Decoder::leakage_feedback(double temperature)$/;"	f	class:Decoder
+leakage_feedback	decoder.cc	/^void Predec::leakage_feedback(double temperature)$/;"	f	class:Predec
+leakage_feedback	decoder.cc	/^void PredecBlk::leakage_feedback(double temperature)$/;"	f	class:PredecBlk
+leakage_feedback	decoder.cc	/^void PredecBlkDrv::leakage_feedback(double temperature)$/;"	f	class:PredecBlkDrv
+leakage_feedback	powergating.h	/^	void leakage_feedback(double temperature){};$/;"	f	class:Sleep_tx
+leakage_power_dev	cacti_interface.h	/^    int delay_dev, dynamic_power_dev, leakage_power_dev,$/;"	m	class:InputParameter
+leakage_power_dev_nuca	cacti_interface.h	/^    int delay_dev_nuca, dynamic_power_dev_nuca, leakage_power_dev_nuca,$/;"	m	class:InputParameter
+leakage_power_wt	cacti_interface.h	/^    int delay_wt, dynamic_power_wt, leakage_power_wt,$/;"	m	class:InputParameter
+leakage_power_wt_nuca	cacti_interface.h	/^    int delay_wt_nuca, dynamic_power_wt_nuca, leakage_power_wt_nuca,$/;"	m	class:InputParameter
+line_sz	cacti_interface.h	/^    unsigned int line_sz;$/;"	m	class:InputParameter
+local_wires	basic_circuit.h	/^    local_wires$/;"	e	enum:Wire_placement
+logic_scaling_co_eff	parameter.h	/^    double logic_scaling_co_eff;$/;"	m	class:TechnologyParameter::ScalingFactor
+logical_effort	component.cc	/^int Component::logical_effort($/;"	f	class:Component
+logtwo	basic_circuit.cc	/^double logtwo (double x)$/;"	f
+long_channel_device	cacti_interface.h	/^  bool long_channel_device;$/;"	m	class:InputParameter
+long_channel_leakage_reduction	parameter.h	/^    double long_channel_leakage_reduction;$/;"	m	class:TechnologyParameter::DeviceType
+long_channel_leakage_reduction	parameter.h	/^    double long_channel_leakage_reduction;$/;"	m	class:TechnologyParameter::ScalingFactor
+long_channel_leakage_reduction_memcell	cacti_interface.h	/^  double long_channel_leakage_reduction_memcell;$/;"	m	class:mem_array
+long_channel_leakage_reduction_memcell	uca.h	/^    double long_channel_leakage_reduction_memcell;$/;"	m	class:UCA
+long_channel_leakage_reduction_periperal	cacti_interface.h	/^  double long_channel_leakage_reduction_periperal;$/;"	m	class:mem_array
+long_channel_leakage_reduction_periperal	uca.h	/^    double long_channel_leakage_reduction_periperal;$/;"	m	class:UCA
+longer_channel_leakage	cacti_interface.h	/^    double longer_channel_leakage;$/;"	m	class:powerComponents
+lop_Vdd	cacti_interface.h	/^    double   lop_Vdd;$/;"	m	class:InputParameter
+low_swing	wire.cc	/^    Component Wire::low_swing;$/;"	m	class:Wire	file:
+low_swing	wire.h	/^    static Component low_swing;$/;"	m	class:Wire
+low_swing_model	wire.cc	/^Wire::low_swing_model()$/;"	f	class:Wire
+lp_dram	const.h	/^  lp_dram   = 3,$/;"	e	enum:ram_cell_tech_type_num
+lstp_Vdd	cacti_interface.h	/^    double   lstp_Vdd;$/;"	m	class:InputParameter
+lt	cacti_interface.cc	/^bool mem_array::lt(const mem_array * m1, const mem_array * m2)$/;"	f	class:mem_array
+macro_layout_overhead	parameter.h	/^  double macro_layout_overhead;$/;"	m	class:TechnologyParameter
+main	main.cc	/^int main(int argc,char *argv[])$/;"	f
+mat	bank.h	/^    Mat   mat;$/;"	m	class:Bank
+mat_height	cacti_interface.h	/^  double mat_height;$/;"	m	class:mem_array
+mat_height	cacti_interface.h	/^  double mat_height;$/;"	m	struct:__anon1
+mat_height	htree2.h	/^    double mat_height;$/;"	m	class:Htree2
+mat_length	cacti_interface.h	/^  double mat_length;$/;"	m	class:mem_array
+mat_width	cacti_interface.h	/^  double mat_width;$/;"	m	struct:__anon1
+mat_width	htree2.h	/^    double mat_width;$/;"	m	class:Htree2
+max_cyc	router.h	/^    double cycle_time, max_cyc;$/;"	m	class:Router
+max_unpipelined_link_delay	htree2.h	/^    double max_unpipelined_link_delay;$/;"	m	class:Htree2
+max_w_nmos_	parameter.h	/^  double max_w_nmos_;$/;"	m	class:TechnologyParameter
+max_w_nmos_dec	parameter.h	/^  double max_w_nmos_dec;$/;"	m	class:TechnologyParameter
+mcpat_data	parse_csv.py	/^    mcpat_data = csv.reader(csvfile, delimiter=',')$/;"	v
+mem_array	cacti_interface.h	/^class mem_array$/;"	c
+miller_value	parameter.h	/^    double miller_value;$/;"	m	class:TechnologyParameter::InterconnectType
+min_area	Ucache.h	/^    double min_area;$/;"	m	class:min_values_t
+min_cyc	Ucache.h	/^    double min_cyc;$/;"	m	class:min_values_t
+min_delay	Ucache.h	/^    double min_delay;$/;"	m	class:min_values_t
+min_dyn	Ucache.h	/^    double min_dyn;$/;"	m	class:min_values_t
+min_leakage	Ucache.h	/^    double min_leakage;$/;"	m	class:min_values_t
+min_number_gates	decoder.h	/^  int    min_number_gates;$/;"	m	class:Driver
+min_number_gates	decoder.h	/^  int min_number_gates;$/;"	m	class:PredecBlkDrv
+min_number_gates_L1	decoder.h	/^  int min_number_gates_L1;$/;"	m	class:PredecBlk
+min_number_gates_L2	decoder.h	/^  int min_number_gates_L2;$/;"	m	class:PredecBlk
+min_values_t	Ucache.h	/^    min_values_t() : min_delay(BIGNUM), min_dyn(BIGNUM), min_leakage(BIGNUM), min_area(BIGNUM), min_cyc(BIGNUM) { }$/;"	f	class:min_values_t
+min_values_t	Ucache.h	/^class min_values_t$/;"	c
+min_w_nmos	htree2.h	/^    double min_w_nmos;$/;"	m	class:Htree2
+min_w_nmos_	parameter.h	/^  double min_w_nmos_;$/;"	m	class:TechnologyParameter
+min_w_pmos	arbiter.h	/^    double min_w_pmos, Vdd;$/;"	m	class:Arbiter
+min_w_pmos	crossbar.h	/^    double min_w_pmos, Vdd;$/;"	m	class:Crossbar
+min_w_pmos	htree2.h	/^    double min_w_pmos;$/;"	m	class:Htree2
+min_w_pmos	router.h	/^    double min_w_pmos;$/;"	m	class:Router
+min_w_pmos	wire.h	/^    double min_w_pmos;$/;"	m	class:Wire
+ml_precharge_drv	mat.h	/^    Driver * ml_precharge_drv;\/\/matchline prechange driver$/;"	m	class:Mat
+ml_to_ram_wl_drv	mat.h	/^    Driver * ml_to_ram_wl_drv;\/\/search line data driver$/;"	m	class:Mat
+mobility	powergating.h	/^	double  mobility;\/\/of sleep tx$/;"	m	class:Sleep_tx
+multisubbank_interleave_cycle_time	cacti_interface.h	/^  double multisubbank_interleave_cycle_time;$/;"	m	class:mem_array
+multisubbank_interleave_cycle_time	cacti_interface.h	/^  double multisubbank_interleave_cycle_time;$/;"	m	struct:__anon1
+multisubbank_interleave_cycle_time	uca.h	/^    double multisubbank_interleave_cycle_time;$/;"	m	class:UCA
+n_inp	crossbar.h	/^    double n_inp, n_out;$/;"	m	class:Crossbar
+n_out	crossbar.h	/^    double n_inp, n_out;$/;"	m	class:Crossbar
+n_to_p_eff_curr_drv_ratio	parameter.h	/^    double n_to_p_eff_curr_drv_ratio;$/;"	m	class:TechnologyParameter::DeviceType
+names	parse_csv.py	/^    names = list(filter(lambda x: x, map(lambda x: x.strip(), names)))$/;"	v
+names	parse_csv.py	/^    names = next(mcpat_data)$/;"	v
+nand	basic_circuit.h	/^    nand,$/;"	e	enum:Gate_type
+nbanks	cacti_interface.h	/^    unsigned int nbanks;$/;"	m	class:InputParameter
+nbanks	uca.h	/^    uint32_t nbanks;$/;"	m	class:UCA
+ndbl	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+ndbl	htree2.h	/^    int ndbl, ndwl;$/;"	m	class:Htree2
+ndcm	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+ndsam1	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+ndsam2	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+ndwl	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+ndwl	htree2.h	/^    int ndbl, ndwl;$/;"	m	class:Htree2
+nmos	basic_circuit.h	/^    nmos,$/;"	e	enum:Gate_type
+nodes_DSTN	decoder.h	/^    int nodes_DSTN;$/;"	m	class:Decoder
+nodes_DSTN	decoder.h	/^  int nodes_DSTN;$/;"	m	class:Driver
+nor	basic_circuit.h	/^    nor,$/;"	e	enum:Gate_type
+nsense	wire.h	/^    int nsense; \/\/ no. of sense amps connected to a low-swing wire if it$/;"	m	class:Wire
+nsets	cacti_interface.h	/^    unsigned int nsets;  \/\/ == number_of_sets$/;"	m	class:InputParameter
+nspd	cacti_interface.h	/^    int ndbl, ndwl, nspd, ndsam1, ndsam2, ndcm;$/;"	m	class:InputParameter
+nthreads	Ucache.cc	/^const uint32_t nthreads = NTHREADS;$/;"	v
+nuca	cacti_interface.h	/^    int nuca;$/;"	m	class:InputParameter
+nuca_bank_count	cacti_interface.h	/^    int nuca_bank_count;$/;"	m	class:InputParameter
+nuca_cache_sz	cacti_interface.h	/^    unsigned int nuca_cache_sz; \/\/ TODO$/;"	m	class:InputParameter
+nuca_org_t	nuca.h	/^class nuca_org_t {$/;"	c
+nuca_pda	nuca.h	/^    Component nuca_pda;$/;"	m	class:nuca_org_t
+num_L1_active_nand2_path	decoder.h	/^  int num_L1_active_nand2_path;$/;"	m	class:PredecBlk
+num_L1_active_nand3_path	decoder.h	/^  int num_L1_active_nand3_path;$/;"	m	class:PredecBlk
+num_act_mats_hor_dir	mat.h	/^    int      num_act_mats_hor_dir;$/;"	m	class:Mat
+num_act_mats_hor_dir	parameter.h	/^    int num_act_mats_hor_dir;$/;"	m	class:DynamicParameter
+num_act_mats_hor_dir_sl	parameter.h	/^    int num_act_mats_hor_dir_sl;$/;"	m	class:DynamicParameter
+num_active_mats	cacti_interface.h	/^  int num_active_mats;$/;"	m	class:mem_array
+num_addr_b_bank	uca.h	/^    int   num_addr_b_bank;$/;"	m	class:UCA
+num_addr_b_mat	bank.h	/^    int  num_addr_b_mat;$/;"	m	class:Bank
+num_addr_b_routed_to_mat_for_act	bank.h	/^    int  num_addr_b_routed_to_mat_for_act;$/;"	m	class:Bank
+num_addr_b_routed_to_mat_for_rd_or_wr	bank.h	/^    int  num_addr_b_routed_to_mat_for_rd_or_wr;$/;"	m	class:Bank
+num_addr_b_row_dec	bank.h	/^    int  num_addr_b_row_dec;$/;"	m	class:Bank
+num_addr_bits_nand2_path	decoder.h	/^  inline int num_addr_bits_nand2_path()$/;"	f	class:PredecBlkDrv
+num_addr_bits_nand3_path	decoder.h	/^  inline int num_addr_bits_nand3_path()$/;"	f	class:PredecBlkDrv
+num_bits_per_ecc_b_	const.h	/^const static double num_bits_per_ecc_b_          = 8.0;$/;"	v
+num_buffers_driving_1_nand2_load	decoder.h	/^  int num_buffers_driving_1_nand2_load;$/;"	m	class:PredecBlkDrv
+num_buffers_driving_2_nand2_load	decoder.h	/^  int num_buffers_driving_2_nand2_load;$/;"	m	class:PredecBlkDrv
+num_buffers_driving_2_nand3_load	decoder.h	/^  int num_buffers_driving_2_nand3_load;$/;"	m	class:PredecBlkDrv
+num_buffers_driving_4_nand2_load	decoder.h	/^  int num_buffers_driving_4_nand2_load;$/;"	m	class:PredecBlkDrv
+num_buffers_driving_8_nand3_load	decoder.h	/^  int num_buffers_driving_8_nand3_load;$/;"	m	class:PredecBlkDrv
+num_buffers_nand3_path	decoder.h	/^  int num_buffers_nand3_path;$/;"	m	class:PredecBlkDrv
+num_c_subarray	parameter.h	/^    unsigned int num_c_subarray;$/;"	m	class:DynamicParameter
+num_cols	subarray.h	/^    unsigned int num_cols;$/;"	m	class:Subarray
+num_cols_fa_cam	subarray.h	/^    int32_t num_cols_fa_cam;$/;"	m	class:Subarray
+num_cols_fa_ram	subarray.h	/^    int32_t num_cols_fa_ram;$/;"	m	class:Subarray
+num_di_b_bank	uca.h	/^    int   num_di_b_bank;$/;"	m	class:UCA
+num_di_b_bank_per_port	parameter.h	/^    int num_di_b_bank_per_port;$/;"	m	class:DynamicParameter
+num_di_b_mat	parameter.h	/^    int num_di_b_mat;$/;"	m	class:DynamicParameter
+num_di_b_subbank	parameter.h	/^    int num_di_b_subbank;$/;"	m	class:DynamicParameter
+num_do_b_bank	uca.h	/^    int   num_do_b_bank;$/;"	m	class:UCA
+num_do_b_bank_per_port	parameter.h	/^    int num_do_b_bank_per_port;$/;"	m	class:DynamicParameter
+num_do_b_mat	mat.h	/^    int      num_do_b_mat;$/;"	m	class:Mat
+num_do_b_mat	parameter.h	/^    int num_do_b_mat;$/;"	m	class:DynamicParameter
+num_do_b_subbank	parameter.h	/^    int num_do_b_subbank;$/;"	m	class:DynamicParameter
+num_gates	decoder.h	/^    int    num_gates;$/;"	m	class:Decoder
+num_gates_min	decoder.h	/^    int    num_gates_min;$/;"	m	class:Decoder
+num_in_signals	decoder.h	/^    int    num_in_signals;$/;"	m	class:Decoder
+num_mats	mat.h	/^    int      num_mats;$/;"	m	class:Mat
+num_mats	parameter.h	/^    int num_mats;       \/\/ only for leakage computation  -- the number of mats per bank$/;"	m	class:DynamicParameter
+num_mats_h_dir	parameter.h	/^    int num_mats_h_dir;$/;"	m	class:DynamicParameter
+num_mats_hor_dir	bank.h	/^    int  num_mats_hor_dir;$/;"	m	class:Bank
+num_mats_v_dir	parameter.h	/^    int num_mats_v_dir;$/;"	m	class:DynamicParameter
+num_mats_ver_dir	bank.h	/^    int  num_mats_ver_dir;$/;"	m	class:Bank
+num_r_subarray	parameter.h	/^    unsigned int num_r_subarray;$/;"	m	class:DynamicParameter
+num_rd_ports	cacti_interface.h	/^    unsigned int num_rd_ports;$/;"	m	class:InputParameter
+num_rd_ports	parameter.h	/^    unsigned int num_rd_ports;$/;"	m	class:DynamicParameter
+num_rows	subarray.h	/^    unsigned int num_rows;$/;"	m	class:Subarray
+num_rw_ports	cacti_interface.h	/^    unsigned int num_rw_ports;$/;"	m	class:InputParameter
+num_rw_ports	parameter.h	/^    unsigned int num_rw_ports;$/;"	m	class:DynamicParameter
+num_sa_subarray	mat.h	/^    int      num_sa_subarray;$/;"	m	class:Mat
+num_sa_subarray_search	mat.h	/^    int      num_sa_subarray_search;$/;"	m	class:Mat
+num_se_rd_ports	cacti_interface.h	/^    unsigned int num_se_rd_ports;  \/\/ number of single ended read ports$/;"	m	class:InputParameter
+num_se_rd_ports	parameter.h	/^    unsigned int num_se_rd_ports;  \/\/ number of single ended read ports$/;"	m	class:DynamicParameter
+num_search_ports	cacti_interface.h	/^    unsigned int num_search_ports;  \/\/ number of search ports for CAM$/;"	m	class:InputParameter
+num_search_ports	parameter.h	/^    unsigned int num_search_ports;$/;"	m	class:DynamicParameter
+num_si_b_bank	uca.h	/^    int   num_si_b_bank;$/;"	m	class:UCA
+num_si_b_bank_per_port	parameter.h	/^	int num_si_b_bank_per_port;$/;"	m	class:DynamicParameter
+num_si_b_mat	parameter.h	/^    int num_si_b_mat;$/;"	m	class:DynamicParameter
+num_si_b_subbank	parameter.h	/^    int num_si_b_subbank;$/;"	m	class:DynamicParameter
+num_sleep_tx	powergating.h	/^	int     num_sleep_tx;$/;"	m	class:Sleep_tx
+num_so_b_bank	uca.h	/^    int   num_so_b_bank;$/;"	m	class:UCA
+num_so_b_bank_per_port	parameter.h	/^	int num_so_b_bank_per_port;$/;"	m	class:DynamicParameter
+num_so_b_mat	mat.h	/^    int      num_so_b_mat;$/;"	m	class:Mat
+num_so_b_mat	parameter.h	/^    int num_so_b_mat;$/;"	m	class:DynamicParameter
+num_so_b_subbank	parameter.h	/^    int num_so_b_subbank;$/;"	m	class:DynamicParameter
+num_subarrays	parameter.h	/^    int num_subarrays;  \/\/ only for leakage computation  -- the number of subarrays per bank$/;"	m	class:DynamicParameter
+num_subarrays_per_mat	mat.h	/^    uint32_t num_subarrays_per_mat;  \/\/ the number of subarrays in a mat$/;"	m	class:Mat
+num_subarrays_per_row	mat.h	/^    uint32_t num_subarrays_per_row;  \/\/ the number of subarrays in a row of a mat$/;"	m	class:Mat
+num_submarray_mats	cacti_interface.h	/^  int num_submarray_mats;$/;"	m	class:mem_array
+num_wr_ports	cacti_interface.h	/^    unsigned int num_wr_ports;$/;"	m	class:InputParameter
+num_wr_ports	parameter.h	/^    unsigned int num_wr_ports;$/;"	m	class:DynamicParameter
+number_activated_mats_horizontal_direction	cacti_interface.h	/^  int number_activated_mats_horizontal_direction;$/;"	m	struct:__anon1
+number_addr_bits_mat	parameter.h	/^    int number_addr_bits_mat;             \/\/ per port$/;"	m	class:DynamicParameter
+number_gates	decoder.h	/^  int    number_gates;$/;"	m	class:Driver
+number_gates_L1_nand2_path	decoder.h	/^  int number_gates_L1_nand2_path;$/;"	m	class:PredecBlk
+number_gates_L1_nand3_path	decoder.h	/^  int number_gates_L1_nand3_path;$/;"	m	class:PredecBlk
+number_gates_L2	decoder.h	/^  int number_gates_L2;$/;"	m	class:PredecBlk
+number_gates_nand2_path	decoder.h	/^  int number_gates_nand2_path;$/;"	m	class:PredecBlkDrv
+number_gates_nand3_path	decoder.h	/^  int number_gates_nand3_path;$/;"	m	class:PredecBlkDrv
+number_input_addr_bits	decoder.h	/^  int number_input_addr_bits;$/;"	m	class:PredecBlk
+number_input_addr_bits	decoder.h	/^  int number_input_addr_bits;$/;"	m	class:PredecBlkDrv
+number_inputs_L1_gate	decoder.h	/^  int number_inputs_L1_gate;$/;"	m	class:PredecBlk
+number_subbanks	cacti_interface.h	/^  int number_subbanks;$/;"	m	struct:__anon1
+number_subbanks_decode	parameter.h	/^    int number_subbanks_decode;           \/\/ per_port$/;"	m	class:DynamicParameter
+number_way_select_signals_mat	parameter.h	/^    int number_way_select_signals_mat;$/;"	m	class:DynamicParameter
+o_len	arbiter.h	/^    double o_len;$/;"	m	class:Arbiter
+obj_func_cycle_t	cacti_interface.h	/^    unsigned int obj_func_cycle_t;$/;"	m	class:InputParameter
+obj_func_dyn_energy	cacti_interface.h	/^    unsigned int obj_func_dyn_energy;$/;"	m	class:InputParameter
+obj_func_dyn_power	cacti_interface.h	/^    unsigned int obj_func_dyn_power;$/;"	m	class:InputParameter
+obj_func_leak_power	cacti_interface.h	/^    unsigned int obj_func_leak_power;$/;"	m	class:InputParameter
+operator *	io.cc	/^powerComponents operator*(const powerComponents & x, double const * const y)$/;"	f
+operator *	io.cc	/^powerDef operator*(const powerDef & x, double const * const y)$/;"	f
+operator +	io.cc	/^powerComponents operator+(const powerComponents & x, const powerComponents & y)$/;"	f
+operator +	io.cc	/^powerDef operator+(const powerDef & x, const powerDef & y)$/;"	f
+operator =	cacti_interface.h	/^    powerComponents & operator=(const powerComponents & rhs)$/;"	f	class:powerComponents
+out_htree	htree2.cc	/^void Htree2::out_htree()$/;"	f	class:Htree2
+out_rise_time	htree2.h	/^    double in_rise_time, out_rise_time;$/;"	m	class:Htree2
+out_rise_time	wire.h	/^    double in_rise_time, out_rise_time;$/;"	m	class:Wire
+out_w	cacti_interface.h	/^    unsigned int out_w;\/\/ == nr_bits_out$/;"	m	class:InputParameter
+out_w	parameter.h	/^    unsigned int out_w;\/\/ == nr_bits_out$/;"	m	class:DynamicParameter
+output_UCA	io.cc	/^void output_UCA(uca_org_t *fr)$/;"	f
+output_buffer	crossbar.cc	/^double Crossbar::output_buffer()$/;"	f	class:Crossbar
+output_buffer	htree2.cc	/^void Htree2::output_buffer(double s1, double s2, double l_eff)$/;"	f	class:Htree2
+output_data_csv	io.cc	/^void output_data_csv(const uca_org_t & fin_res, const char * output_file)$/;"	f
+outside_mat	basic_circuit.h	/^    outside_mat,$/;"	e	enum:Wire_placement
+page_size_in_bits	cacti_interface.h	/^  int page_size_in_bits;$/;"	m	struct:__anon1
+page_sz_bits	cacti_interface.h	/^    unsigned int page_sz_bits;$/;"	m	class:InputParameter
+parallel	basic_circuit.h	/^    parallel,$/;"	e	enum:Half_net_topology
+parse_cfg	io.cc	/^InputParameter::parse_cfg(const string & in_file)$/;"	f	class:InputParameter
+per_bitline_read_energy	mat.h	/^    double   per_bitline_read_energy;$/;"	m	class:Mat
+per_stage_vector	cacti_interface.h	/^  int per_stage_vector;$/;"	m	class:InputParameter
+perf_with_sleep_tx	powergating.h	/^	double  perf_with_sleep_tx;$/;"	m	class:Sleep_tx
+perfloss	cacti_interface.h	/^  double perfloss;$/;"	m	class:InputParameter
+peri_global	parameter.h	/^  DeviceType peri_global; \/\/ peripheral global$/;"	m	class:TechnologyParameter
+peri_global_tech_type	cacti_interface.h	/^    unsigned int peri_global_tech_type;$/;"	m	class:InputParameter
+pipelinable	cacti_interface.h	/^  bool pipelinable;$/;"	m	class:InputParameter
+pipeline_stages	cacti_interface.h	/^  int pipeline_stages;$/;"	m	class:InputParameter
+pitch	parameter.h	/^    double pitch;$/;"	m	class:TechnologyParameter::InterconnectType
+pmos	basic_circuit.h	/^    pmos,$/;"	e	enum:Gate_type
+pmos_to_nmos_sz_ratio	basic_circuit.cc	/^double pmos_to_nmos_sz_ratio($/;"	f
+power	cacti_interface.h	/^    powerDef power;$/;"	m	class:uca_org_t
+power	cacti_interface.h	/^  powerDef power;$/;"	m	class:mem_array
+power	component.h	/^    powerDef power,rt_power;$/;"	m	class:Component
+power	powergating.h	/^	powerDef power, wakeup_power;$/;"	m	class:Sleep_tx
+powerComponents	cacti_interface.h	/^    powerComponents() : dynamic(0), leakage(0), gate_leakage(0), short_circuit(0),$/;"	f	class:powerComponents
+powerComponents	cacti_interface.h	/^    powerComponents(const powerComponents & obj) { *this = obj; }$/;"	f	class:powerComponents
+powerComponents	cacti_interface.h	/^class powerComponents$/;"	c
+powerDef	cacti_interface.h	/^    powerDef() : readOp(), writeOp(), searchOp() { }$/;"	f	class:powerDef
+powerDef	cacti_interface.h	/^class powerDef$/;"	c
+power_L2	decoder.h	/^  powerDef power_L2;$/;"	m	class:PredecBlk
+power_addr_horizontal_htree	cacti_interface.h	/^  powerDef power_addr_horizontal_htree;$/;"	m	struct:__anon1
+power_addr_input_htree	cacti_interface.h	/^  powerDef power_addr_input_htree;$/;"	m	class:mem_array
+power_addr_input_htree	cacti_interface.h	/^  powerDef power_addr_input_htree;$/;"	m	struct:__anon1
+power_addr_vertical_htree	cacti_interface.h	/^  powerDef power_addr_vertical_htree;$/;"	m	struct:__anon1
+power_bit	htree2.h	/^    powerDef power_bit;$/;"	m	class:Htree2
+power_bit_mux_decoders	cacti_interface.h	/^  powerDef power_bit_mux_decoders;$/;"	m	class:mem_array
+power_bit_mux_decoders	cacti_interface.h	/^  powerDef power_bit_mux_decoders;$/;"	m	struct:__anon1
+power_bit_mux_decoders	mat.h	/^    powerDef power_bit_mux_decoders;$/;"	m	class:Mat
+power_bit_mux_predecoder_blocks	cacti_interface.h	/^  powerDef power_bit_mux_predecoder_blocks;$/;"	m	class:mem_array
+power_bit_mux_predecoder_blocks	cacti_interface.h	/^  powerDef power_bit_mux_predecoder_blocks;$/;"	m	struct:__anon1
+power_bit_mux_predecoder_drivers	cacti_interface.h	/^  powerDef power_bit_mux_predecoder_drivers;$/;"	m	class:mem_array
+power_bit_mux_predecoder_drivers	cacti_interface.h	/^  powerDef power_bit_mux_predecoder_drivers;$/;"	m	struct:__anon1
+power_bitline	mat.h	/^    powerDef power_bitline, power_searchline, power_matchline, power_bitline_gated;$/;"	m	class:Mat
+power_bitline_gated	mat.h	/^    powerDef power_bitline, power_searchline, power_matchline, power_bitline_gated;$/;"	m	class:Mat
+power_bitlines	cacti_interface.h	/^  powerDef power_bitlines;$/;"	m	class:mem_array
+power_bitlines	cacti_interface.h	/^  powerDef power_bitlines;$/;"	m	struct:__anon1
+power_bl_precharge_eq_drv	mat.h	/^    powerDef power_bl_precharge_eq_drv;$/;"	m	class:Mat
+power_cam_all_active	mat.h	/^    powerDef power_cam_all_active;$/;"	m	class:Mat
+power_cam_bitline_precharge_eq_drv	cacti_interface.h	/^  powerDef power_cam_bitline_precharge_eq_drv;$/;"	m	class:mem_array
+power_comparator	mat.h	/^    powerDef power_comparator;$/;"	m	class:Mat
+power_comparators	cacti_interface.h	/^  powerDef power_comparators;$/;"	m	class:mem_array
+power_comparators	cacti_interface.h	/^  powerDef power_comparators;$/;"	m	struct:__anon1
+power_crossbar	cacti_interface.h	/^  powerDef power_crossbar;$/;"	m	struct:__anon1
+power_data_input_htree	cacti_interface.h	/^  powerDef power_data_input_htree;$/;"	m	class:mem_array
+power_data_input_htree	cacti_interface.h	/^  powerDef power_data_input_htree;$/;"	m	struct:__anon1
+power_data_output_htree	cacti_interface.h	/^  powerDef power_data_output_htree;$/;"	m	class:mem_array
+power_data_output_htree	cacti_interface.h	/^  powerDef power_data_output_htree;$/;"	m	struct:__anon1
+power_datain_horizontal_htree	cacti_interface.h	/^  powerDef power_datain_horizontal_htree;$/;"	m	struct:__anon1
+power_datain_vertical_htree	cacti_interface.h	/^  powerDef power_datain_vertical_htree;$/;"	m	struct:__anon1
+power_dataout_horizontal_htree	cacti_interface.h	/^  powerDef power_dataout_horizontal_htree;$/;"	m	struct:__anon1
+power_dataout_vertical_htree	cacti_interface.h	/^  powerDef power_dataout_vertical_htree;$/;"	m	class:mem_array
+power_dataout_vertical_htree	cacti_interface.h	/^  powerDef power_dataout_vertical_htree;$/;"	m	struct:__anon1
+power_fa_cam	mat.h	/^    powerDef power_fa_cam;  \/\/ TODO: leakage power is not computed yet$/;"	m	class:Mat
+power_gated_leakage	cacti_interface.h	/^    double power_gated_leakage;$/;"	m	class:powerComponents
+power_gated_with_long_channel_leakage	cacti_interface.h	/^    double power_gated_with_long_channel_leakage;$/;"	m	class:powerComponents
+power_gating	cacti_interface.h	/^  bool power_gating;$/;"	m	class:InputParameter
+power_gating	decoder.h	/^    bool   power_gating;$/;"	m	class:Decoder
+power_gating	decoder.h	/^  bool   power_gating;$/;"	m	class:Driver
+power_htree_in_search	cacti_interface.h	/^  powerDef power_htree_in_search;$/;"	m	class:mem_array
+power_htree_out_search	cacti_interface.h	/^  powerDef power_htree_out_search;$/;"	m	class:mem_array
+power_matchline	mat.h	/^    powerDef power_bitline, power_searchline, power_matchline, power_bitline_gated;$/;"	m	class:Mat
+power_matchline_precharge	cacti_interface.h	/^  powerDef power_matchline_precharge;$/;"	m	class:mem_array
+power_matchline_precharge	mat.h	/^    powerDef power_matchline_precharge;$/;"	m	class:Mat
+power_matchline_to_wordline_drv	cacti_interface.h	/^  powerDef power_matchline_to_wordline_drv;$/;"	m	class:mem_array
+power_matchlines	cacti_interface.h	/^  powerDef power_matchlines;$/;"	m	class:mem_array
+power_ml_to_ram_wl_drv	mat.h	/^    powerDef power_ml_to_ram_wl_drv;$/;"	m	class:Mat
+power_nand2_path	decoder.h	/^  powerDef power_nand2_path;$/;"	m	class:PredecBlk
+power_nand2_path	decoder.h	/^  powerDef power_nand2_path;$/;"	m	class:PredecBlkDrv
+power_nand3_path	decoder.h	/^  powerDef power_nand3_path;$/;"	m	class:PredecBlk
+power_nand3_path	decoder.h	/^  powerDef power_nand3_path;$/;"	m	class:PredecBlkDrv
+power_output_drivers_at_subarray	cacti_interface.h	/^  powerDef power_output_drivers_at_subarray;$/;"	m	class:mem_array
+power_output_drivers_at_subarray	cacti_interface.h	/^  powerDef power_output_drivers_at_subarray;$/;"	m	struct:__anon1
+power_prechg_eq_drivers	cacti_interface.h	/^  powerDef power_prechg_eq_drivers;$/;"	m	class:mem_array
+power_prechg_eq_drivers	cacti_interface.h	/^  powerDef power_prechg_eq_drivers;$/;"	m	struct:__anon1
+power_routing_to_bank	cacti_interface.h	/^  powerDef power_routing_to_bank;$/;"	m	class:mem_array
+power_routing_to_bank	cacti_interface.h	/^  powerDef power_routing_to_bank;$/;"	m	struct:__anon1
+power_routing_to_bank	uca.h	/^    powerDef power_routing_to_bank;$/;"	m	class:UCA
+power_row_decoders	cacti_interface.h	/^  powerDef power_row_decoders;$/;"	m	class:mem_array
+power_row_decoders	cacti_interface.h	/^  powerDef power_row_decoders;$/;"	m	struct:__anon1
+power_row_decoders	mat.h	/^    powerDef power_row_decoders;$/;"	m	class:Mat
+power_row_predecoder_blocks	cacti_interface.h	/^  powerDef power_row_predecoder_blocks;$/;"	m	class:mem_array
+power_row_predecoder_blocks	cacti_interface.h	/^  powerDef power_row_predecoder_blocks;$/;"	m	struct:__anon1
+power_row_predecoder_drivers	cacti_interface.h	/^  powerDef power_row_predecoder_drivers;$/;"	m	class:mem_array
+power_row_predecoder_drivers	cacti_interface.h	/^  powerDef power_row_predecoder_drivers;$/;"	m	struct:__anon1
+power_sa	mat.h	/^    powerDef power_sa;$/;"	m	class:Mat
+power_sa_mux_lev_1_decoders	mat.h	/^    powerDef power_sa_mux_lev_1_decoders;$/;"	m	class:Mat
+power_sa_mux_lev_2_decoders	mat.h	/^    powerDef power_sa_mux_lev_2_decoders;$/;"	m	class:Mat
+power_searchline	cacti_interface.h	/^  powerDef power_searchline;$/;"	m	class:mem_array
+power_searchline	mat.h	/^    powerDef power_bitline, power_searchline, power_matchline, power_bitline_gated;$/;"	m	class:Mat
+power_searchline_precharge	cacti_interface.h	/^  powerDef power_searchline_precharge;$/;"	m	class:mem_array
+power_searchline_precharge	mat.h	/^    powerDef power_searchline_precharge;$/;"	m	class:Mat
+power_sense_amps	cacti_interface.h	/^  powerDef power_sense_amps;$/;"	m	class:mem_array
+power_sense_amps	cacti_interface.h	/^  powerDef power_sense_amps;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_1_decoders	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_decoders;$/;"	m	class:mem_array
+power_senseamp_mux_lev_1_decoders	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_decoders;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_1_predecoder_blocks	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_predecoder_blocks;$/;"	m	class:mem_array
+power_senseamp_mux_lev_1_predecoder_blocks	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_predecoder_blocks;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_1_predecoder_drivers	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_predecoder_drivers;$/;"	m	class:mem_array
+power_senseamp_mux_lev_1_predecoder_drivers	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_1_predecoder_drivers;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_2_decoders	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_decoders;$/;"	m	class:mem_array
+power_senseamp_mux_lev_2_decoders	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_decoders;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_2_predecoder_blocks	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_predecoder_blocks;$/;"	m	class:mem_array
+power_senseamp_mux_lev_2_predecoder_blocks	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_predecoder_blocks;$/;"	m	struct:__anon1
+power_senseamp_mux_lev_2_predecoder_drivers	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_predecoder_drivers;$/;"	m	class:mem_array
+power_senseamp_mux_lev_2_predecoder_drivers	cacti_interface.h	/^  powerDef power_senseamp_mux_lev_2_predecoder_drivers;$/;"	m	struct:__anon1
+power_subarray_out_drv	mat.h	/^    powerDef power_subarray_out_drv;$/;"	m	class:Mat
+powers	basic_circuit.cc	/^int powers (int base, int n)$/;"	f
+pppm	const.h	/^const double pppm[4]      = {1,1,1,1};$/;"	v
+pppm_Ig	const.h	/^const double pppm_Ig[4]   = {0,0,1,0};$/;"	v
+pppm_Isub	const.h	/^const double pppm_Isub[4] = {0,1,0,0};$/;"	v
+pppm_dyn	const.h	/^const double pppm_dyn[4]  = {1,0,0,0};$/;"	v
+pppm_lkg	const.h	/^const double pppm_lkg[4]  = {0,1,1,0};$/;"	v
+pppm_sc	const.h	/^const double pppm_sc[4]   = {0,0,0,1};$/;"	v
+precharge_delay	cacti_interface.h	/^  double precharge_delay;$/;"	m	class:mem_array
+precharge_delay	cacti_interface.h	/^  double precharge_delay;$/;"	m	struct:__anon1
+precharge_delay	uca.h	/^    double precharge_delay;$/;"	m	class:UCA
+precharge_energy	cacti_interface.h	/^  double activate_energy, read_energy, write_energy, precharge_energy,$/;"	m	class:mem_array
+precharge_energy	cacti_interface.h	/^  double precharge_energy;$/;"	m	struct:__anon1
+precharge_energy	uca.h	/^    double precharge_energy;$/;"	m	class:UCA
+print_arbiter	arbiter.cc	/^void Arbiter::print_arbiter()$/;"	f	class:Arbiter
+print_cont_stats	nuca.cc	/^Nuca::print_cont_stats()$/;"	f	class:Nuca
+print_crossbar	crossbar.cc	/^void Crossbar::print_crossbar()$/;"	f	class:Crossbar
+print_detail	cacti_interface.h	/^    int print_detail;$/;"	m	class:InputParameter
+print_input_args	cacti_interface.h	/^    bool print_input_args;$/;"	m	class:InputParameter
+print_nuca	nuca.cc	/^Nuca::print_nuca (nuca_org_t *fr)$/;"	f	class:Nuca
+print_router	router.cc	/^Router::print_router()$/;"	f	class:Router
+print_wire	wire.cc	/^Wire::print_wire()$/;"	f	class:Wire
+pure_cam	Ucache.h	/^  bool     pure_cam;$/;"	m	struct:calc_time_mt_wrapper_struct
+pure_cam	cacti_interface.h	/^    bool     pure_cam;$/;"	m	class:InputParameter
+pure_cam	mat.h	/^    bool     is_dram,is_fa, pure_cam, camFlag;$/;"	m	class:Mat
+pure_cam	parameter.h	/^    bool pure_cam;$/;"	m	class:DynamicParameter
+pure_ram	Ucache.h	/^  bool     pure_ram;$/;"	m	struct:calc_time_mt_wrapper_struct
+pure_ram	cacti_interface.h	/^    bool     pure_ram;$/;"	m	class:InputParameter
+pure_ram	parameter.h	/^    bool pure_ram;$/;"	m	class:DynamicParameter
+r_load_nand2_path_out	decoder.h	/^  double r_load_nand2_path_out;$/;"	m	class:PredecBlkDrv
+r_load_nand3_path_out	decoder.h	/^  double r_load_nand3_path_out;$/;"	m	class:PredecBlkDrv
+r_predec	mat.h	/^    Predec * r_predec;$/;"	m	class:Mat
+r_wire_load	decoder.h	/^  double r_wire_load;$/;"	m	class:Driver
+ram_cell_tech_type	cacti_interface.h	/^    unsigned int ram_cell_tech_type;$/;"	m	class:InputParameter
+ram_cell_tech_type	parameter.h	/^    uint32_t ram_cell_tech_type;$/;"	m	class:DynamicParameter
+ram_cell_tech_type_num	const.h	/^enum ram_cell_tech_type_num$/;"	g
+ram_wl_stitching_overhead_	parameter.h	/^  double ram_wl_stitching_overhead_;$/;"	m	class:TechnologyParameter
+readOp	cacti_interface.h	/^    powerComponents readOp;$/;"	m	class:powerDef
+read_energy	cacti_interface.h	/^  double activate_energy, read_energy, write_energy, precharge_energy,$/;"	m	class:mem_array
+read_energy	cacti_interface.h	/^  double read_energy;$/;"	m	struct:__anon1
+read_energy	uca.h	/^    double read_energy;$/;"	m	class:UCA
+reconfigure	io.cc	/^void reconfigure(InputParameter *local_interface, uca_org_t *fin_res)$/;"	f
+refresh_power	cacti_interface.h	/^  double refresh_power;$/;"	m	struct:__anon1
+refresh_power	cacti_interface.h	/^  refresh_power, leak_power_subbank_closed_page, leak_power_subbank_open_page,$/;"	m	class:mem_array
+refresh_power	uca.h	/^    double refresh_power;  \/\/ only for DRAM$/;"	m	class:UCA
+repeated_wire	wire.h	/^    list <Component> repeated_wire;$/;"	m	class:Wire
+repeater_size	wire.h	/^    double repeater_size;$/;"	m	class:Wire
+repeater_size_init	wire.cc	/^    double Wire::repeater_size_init; \/\/ value used in initialization should not be reused in final output$/;"	m	class:Wire	file:
+repeater_size_init	wire.h	/^    static double repeater_size_init; \/\/ value used in initialization should not be reused in final output$/;"	m	class:Wire
+repeater_spacing	wire.h	/^    double repeater_spacing;$/;"	m	class:Wire
+repeater_spacing_init	wire.cc	/^    double Wire::repeater_spacing_init;$/;"	m	class:Wire	file:
+repeater_spacing_init	wire.h	/^    static double repeater_spacing_init;$/;"	m	class:Wire
+reset	cacti_interface.h	/^    void reset() { dynamic = 0; leakage = 0; gate_leakage = 0; short_circuit = 0;$/;"	f	class:powerComponents
+reset	cacti_interface.h	/^    void reset() { readOp.reset(); writeOp.reset(); searchOp.reset();}$/;"	f	class:powerDef
+reset	parameter.h	/^    void reset()$/;"	f	class:TechnologyParameter::DeviceType
+reset	parameter.h	/^    void reset()$/;"	f	class:TechnologyParameter::InterconnectType
+reset	parameter.h	/^    void reset()$/;"	f	class:TechnologyParameter::MemoryType
+reset	parameter.h	/^    void reset()$/;"	f	class:TechnologyParameter::ScalingFactor
+reset	parameter.h	/^  void reset()$/;"	f	class:TechnologyParameter
+resistivity	wire.h	/^    double resistivity;$/;"	m	class:Wire
+results_mem_array	cacti_interface.h	/^} results_mem_array;$/;"	t	typeref:struct:__anon1
+router	nuca.h	/^    Router *router;$/;"	m	class:nuca_org_t
+routing_area_height_within_bank	cacti_interface.h	/^  double routing_area_height_within_bank;$/;"	m	struct:__anon1
+routing_area_width_within_bank	cacti_interface.h	/^  double routing_area_width_within_bank;$/;"	m	struct:__anon1
+row_dec	mat.h	/^    Decoder * row_dec;$/;"	m	class:Mat
+rows	nuca.h	/^    int rows;$/;"	m	class:nuca_org_t
+rpters_in_htree	cacti_interface.h	/^    bool     rpters_in_htree;  \/\/ if there are repeaters in htree segment$/;"	m	class:InputParameter
+rt_power	component.h	/^    powerDef power,rt_power;$/;"	m	class:Component
+s_scale	wire.h	/^    double w_scale, s_scale;$/;"	m	class:Wire
+sa_mux_lev_1_dec	mat.h	/^    Decoder * sa_mux_lev_1_dec;$/;"	m	class:Mat
+sa_mux_lev_1_predec	mat.h	/^    Predec * sa_mux_lev_1_predec;$/;"	m	class:Mat
+sa_mux_lev_2_dec	mat.h	/^    Decoder * sa_mux_lev_2_dec;$/;"	m	class:Mat
+sa_mux_lev_2_predec	mat.h	/^    Predec * sa_mux_lev_2_predec;$/;"	m	class:Mat
+scaling_factor	parameter.h	/^  ScalingFactor scaling_factor;$/;"	m	class:TechnologyParameter
+sckt_co_eff	parameter.h	/^  double sckt_co_eff;$/;"	m	class:TechnologyParameter
+searchOp	cacti_interface.h	/^    powerComponents searchOp;\/\/Sheng: for CAM and FA$/;"	m	class:powerDef
+search_data_in_bits	htree2.h	/^    int add_bits, data_in_bits,search_data_in_bits,data_out_bits,  search_data_out_bits;$/;"	m	class:Htree2
+search_data_out_bits	htree2.h	/^    int add_bits, data_in_bits,search_data_in_bits,data_out_bits,  search_data_out_bits;$/;"	m	class:Htree2
+search_tree	htree2.h	/^    bool search_tree;$/;"	m	class:Htree2
+sense_amp	wire.h	/^    Component sense_amp;$/;"	m	class:Wire
+sense_amp_input_cap	wire.cc	/^Wire::sense_amp_input_cap()$/;"	f	class:Wire
+sense_delay	parameter.h	/^  double sense_delay;$/;"	m	class:TechnologyParameter
+sense_dy_power	parameter.h	/^  double sense_dy_power;$/;"	m	class:TechnologyParameter
+series	basic_circuit.h	/^    series$/;"	e	enum:Half_net_topology
+set_area	area.h	/^  void set_area(double a_) { area = a_; }$/;"	f	class:Area
+set_h	area.h	/^  void set_h(double h_) { h = h_; }$/;"	f	class:Area
+set_in_rise_time	htree2.h	/^    void set_in_rise_time(double rt)$/;"	f	class:Htree2
+set_in_rise_time	wire.h	/^    void set_in_rise_time(double rt)$/;"	f	class:Wire
+set_pppm	basic_circuit.h	/^inline void set_pppm($/;"	f
+set_sppm	basic_circuit.h	/^inline void set_sppm($/;"	f
+set_w	area.h	/^  void set_w(double w_) { w = w_; }$/;"	f	class:Area
+short_circuit	cacti_interface.h	/^    double short_circuit;$/;"	m	class:powerComponents
+shortcircuit	basic_circuit.cc	/^double shortcircuit($/;"	f
+shortcircuit_simple	basic_circuit.cc	/^double shortcircuit_simple($/;"	f
+signal_fall_time	wire.cc	/^Wire::signal_fall_time ()$/;"	f	class:Wire
+signal_rise_time	wire.cc	/^double Wire::signal_rise_time ()$/;"	f	class:Wire
+sim_nuca	nuca.cc	/^Nuca::sim_nuca()$/;"	f	class:Nuca
+simplified_nmos_Isat	basic_circuit.cc	/^double simplified_nmos_Isat($/;"	f
+simplified_nmos_leakage	basic_circuit.cc	/^double simplified_nmos_leakage($/;"	f
+simplified_pmos_Isat	basic_circuit.cc	/^double simplified_pmos_Isat($/;"	f
+simplified_pmos_leakage	basic_circuit.cc	/^double simplified_pmos_leakage($/;"	f
+sl_data_drv	mat.h	/^    Driver * sl_data_drv;\/\/search line data driver$/;"	m	class:Mat
+sl_precharge_eq_drv	mat.h	/^    Driver * sl_precharge_eq_drv;\/\/searchline prechage driver$/;"	m	class:Mat
+sleep_tx	parameter.h	/^  DeviceType sleep_tx;   \/\/ Sleep transistor cell transistor$/;"	m	class:TechnologyParameter
+sleeptx	decoder.h	/^    Sleep_tx * sleeptx;$/;"	m	class:Decoder
+sleeptx	decoder.h	/^  Sleep_tx * sleeptx;$/;"	m	class:Driver
+solution	Ucache.h	/^struct solution$/;"	s
+solve	Ucache.cc	/^void solve(uca_org_t *fin_res)$/;"	f
+spacing_poly_to_contact	parameter.h	/^  double spacing_poly_to_contact;$/;"	m	class:TechnologyParameter
+spacing_poly_to_poly	parameter.h	/^  double spacing_poly_to_poly;$/;"	m	class:TechnologyParameter
+specific_hp_vdd	cacti_interface.h	/^    bool     specific_hp_vdd;     \/\/ whether to have user defined vdd that is different from ITRS$/;"	m	class:InputParameter
+specific_lop_vdd	cacti_interface.h	/^    bool     specific_lop_vdd;     \/\/ whether to have user defined vdd that is different from ITRS$/;"	m	class:InputParameter
+specific_lstp_vdd	cacti_interface.h	/^    bool     specific_lstp_vdd;     \/\/ whether to have user defined vdd that is different from ITRS$/;"	m	class:InputParameter
+specific_tag	cacti_interface.h	/^    bool     specific_tag;$/;"	m	class:InputParameter
+specific_vcc_min	cacti_interface.h	/^    bool     specific_vcc_min;     \/\/ whether to have user defined vcc_min for power-gating that is different from the value constrained by technology for maintaining states$/;"	m	class:InputParameter
+sram	parameter.h	/^  MemoryType sram;$/;"	m	class:TechnologyParameter
+sram_cell	parameter.h	/^  DeviceType sram_cell;   \/\/ SRAM cell transistor$/;"	m	class:TechnologyParameter
+sram_num_cells_wl_stitching_	const.h	/^const static uint32_t sram_num_cells_wl_stitching_ = 16;$/;"	v
+sram_sleep_tx	mat.h	/^    Sleep_tx * sram_sleep_tx;$/;"	m	class:Mat
+sram_sleep_tx_area	cacti_interface.h	/^  double sram_sleep_tx_area, wl_sleep_tx_area, cl_sleep_tx_area;$/;"	m	class:mem_array
+sram_sleep_tx_width	cacti_interface.h	/^  double sram_sleep_tx_width, wl_sleep_tx_width, cl_sleep_tx_width;$/;"	m	class:mem_array
+sram_sleep_wakeup_energy	cacti_interface.h	/^  double sram_sleep_wakeup_energy, wl_sleep_wakeup_energy, cl_sleep_wakeup_energy, bl_floating_wakeup_energy;$/;"	m	class:mem_array
+sram_sleep_wakeup_latency	cacti_interface.h	/^  double sram_sleep_wakeup_latency, wl_sleep_wakeup_latency, cl_sleep_wakeup_latency, bl_floating_wakeup_latency;$/;"	m	class:mem_array
+subarray	mat.h	/^    Subarray subarray;$/;"	m	class:Mat
+subarray_height	cacti_interface.h	/^  double subarray_height;$/;"	m	class:mem_array
+subarray_length	cacti_interface.h	/^  double subarray_length;$/;"	m	class:mem_array
+subarray_memory_cell_area_height	cacti_interface.h	/^  double subarray_memory_cell_area_height;$/;"	m	struct:__anon1
+subarray_memory_cell_area_width	cacti_interface.h	/^  double subarray_memory_cell_area_width;$/;"	m	struct:__anon1
+subarray_out_wire	mat.h	/^    Wire   * subarray_out_wire;$/;"	m	class:Mat
+t_ox	parameter.h	/^    double t_ox;$/;"	m	class:TechnologyParameter::DeviceType
+tag_arr	Ucache.h	/^  list<mem_array *> tag_arr;$/;"	m	struct:calc_time_mt_wrapper_struct
+tag_arr_peri_global_tech_type	cacti_interface.h	/^    unsigned int tag_arr_peri_global_tech_type;$/;"	m	class:InputParameter
+tag_arr_ram_cell_tech_type	cacti_interface.h	/^    unsigned int tag_arr_ram_cell_tech_type;$/;"	m	class:InputParameter
+tag_array	cacti_interface.h	/^    results_mem_array tag_array;$/;"	m	class:uca_org_t
+tag_array2	cacti_interface.h	/^    mem_array * tag_array2;$/;"	m	class:uca_org_t
+tag_array_index	Ucache.h	/^  int    tag_array_index;$/;"	m	struct:solution
+tag_array_iter	Ucache.h	/^  list<mem_array *>::iterator tag_array_iter;$/;"	m	struct:solution
+tag_assoc	cacti_interface.h	/^    unsigned int tag_assoc;$/;"	m	class:InputParameter
+tag_num_c_subarray	parameter.h	/^    int tag_num_c_subarray;$/;"	m	class:DynamicParameter
+tag_num_r_subarray	parameter.h	/^    int tag_num_r_subarray;\/\/sheng: fully associative cache tag and data must be computed together, data and tag must be separate$/;"	m	class:DynamicParameter
+tag_res	Ucache.h	/^  min_values_t * tag_res;$/;"	m	struct:calc_time_mt_wrapper_struct
+tag_w	cacti_interface.h	/^    unsigned int tag_w;$/;"	m	class:InputParameter
+tagbits	parameter.h	/^    int tagbits;$/;"	m	class:DynamicParameter
+temp	cacti_interface.h	/^    unsigned int temp;$/;"	m	class:InputParameter
+tg	basic_circuit.h	/^    tg$/;"	e	enum:Gate_type
+throughput	cacti_interface.h	/^  double throughput;$/;"	m	class:InputParameter
+tid	Ucache.h	/^  uint32_t tid;$/;"	m	struct:calc_time_mt_wrapper_struct
+total_driver_nwidth	decoder.h	/^    double total_driver_nwidth;$/;"	m	class:Decoder
+total_driver_nwidth	decoder.h	/^  double total_driver_nwidth;$/;"	m	class:Driver
+total_driver_pwidth	decoder.h	/^    double total_driver_pwidth;$/;"	m	class:Decoder
+total_driver_pwidth	decoder.h	/^  double total_driver_pwidth;$/;"	m	class:Driver
+total_power	Ucache.h	/^  powerDef total_power;$/;"	m	struct:solution
+total_power	cacti_interface.h	/^  powerDef total_power;$/;"	m	struct:__anon1
+tr_R_on	basic_circuit.cc	/^double tr_R_on($/;"	f
+tr_crossbar_power	router.cc	/^Router::tr_crossbar_power() {$/;"	f	class:Router
+transmission_buf_ctrcap	arbiter.cc	/^Arbiter::transmission_buf_ctrcap() {$/;"	f	class:Arbiter
+transmission_buf_ctrcap	router.cc	/^Router::transmission_buf_ctrcap() {$/;"	f	class:Router
+transmission_buf_inpcap	router.cc	/^Router::transmission_buf_inpcap() {$/;"	f	class:Router
+transmission_buf_outcap	router.cc	/^Router::transmission_buf_outcap() {$/;"	f	class:Router
+transmitter	wire.h	/^    Component transmitter;$/;"	m	class:Wire
+trcd	cacti_interface.h	/^  double trcd;$/;"	m	struct:__anon1
+tree_type	htree2.h	/^    enum Htree_type tree_type;$/;"	m	class:Htree2	typeref:enum:Htree2::Htree_type
+tri	basic_circuit.h	/^    tri,$/;"	e	enum:Gate_type
+tri_ctr_cap	crossbar.h	/^    double tri_inp_cap, tri_out_cap, tri_ctr_cap, tri_int_cap;$/;"	m	class:Crossbar
+tri_inp_cap	crossbar.h	/^    double tri_inp_cap, tri_out_cap, tri_ctr_cap, tri_int_cap;$/;"	m	class:Crossbar
+tri_int_cap	crossbar.h	/^    double tri_inp_cap, tri_out_cap, tri_ctr_cap, tri_int_cap;$/;"	m	class:Crossbar
+tri_out_cap	crossbar.h	/^    double tri_inp_cap, tri_out_cap, tri_ctr_cap, tri_int_cap;$/;"	m	class:Crossbar
+uca_org_t	cacti_interface.cc	/^uca_org_t :: uca_org_t()$/;"	f	class:uca_org_t
+uca_org_t	cacti_interface.h	/^class uca_org_t$/;"	c
+uca_pg_reference	cacti_interface.h	/^    uca_org_t * uca_pg_reference;\/\/for references results when power gating is enabled.$/;"	m	class:uca_org_t
+uca_q	cacti_interface.h	/^    std::vector<uca_org_t * > uca_q;\/\/for results share the same settings (g_ip and dyn_p) but with different tech settings such as DVFS$/;"	m	class:uca_org_t
+uca_tree	htree2.h	/^    bool uca_tree; \/\/ should have full bandwidth to access all banks in the array simultaneously$/;"	m	class:Htree2
+unit_len_wire_del	parameter.h	/^  double unit_len_wire_del;$/;"	m	class:TechnologyParameter
+update_dvs	Ucache.cc	/^void update_dvs(uca_org_t *fin_res)$/;"	f
+update_fullswing	wire.cc	/^void Wire::update_fullswing()$/;"	f	class:Wire
+update_min_values	Ucache.cc	/^void min_values_t::update_min_values(const mem_array * res)$/;"	f	class:min_values_t
+update_min_values	Ucache.cc	/^void min_values_t::update_min_values(const min_values_t * val)$/;"	f	class:min_values_t
+update_min_values	Ucache.cc	/^void min_values_t::update_min_values(const nuca_org_t * res)$/;"	f	class:min_values_t
+update_min_values	Ucache.cc	/^void min_values_t::update_min_values(const uca_org_t & res)$/;"	f	class:min_values_t
+update_pg	Ucache.cc	/^void update_pg(uca_org_t *fin_res)$/;"	f
+use_inp_params	parameter.h	/^    int use_inp_params;$/;"	m	class:DynamicParameter
+user_defined_vcc_min	cacti_interface.h	/^    double   user_defined_vcc_min;$/;"	m	class:InputParameter
+user_defined_vcc_underflow	cacti_interface.h	/^    bool     user_defined_vcc_underflow; \/\/flag to indicate when user defined vcc is too low for the circuit to retain state$/;"	m	class:InputParameter
+v_wire	nuca.h	/^    Wire *v_wire;$/;"	m	class:nuca_org_t
+valid	cacti_interface.h	/^    bool valid;$/;"	m	class:uca_org_t
+vc_buffer_size	router.h	/^    double vc_buffer_size; \/* vc size = vc_buffer_size * flit_size *\/$/;"	m	class:Router
+vc_count	router.h	/^    double vc_count;$/;"	m	class:Router
+vdd	powergating.h	/^	double  vdd;\/\/ of circuit block not sleep tx$/;"	m	class:Sleep_tx
+vdd_periph_global	cacti_interface.h	/^    double vdd_periph_global;$/;"	m	class:uca_org_t
+ver_htree_wires_over_array	cacti_interface.h	/^    unsigned int ver_htree_wires_over_array;$/;"	m	class:InputParameter
+vert_dielectric_constant	parameter.h	/^    double vert_dielectric_constant;$/;"	m	class:TechnologyParameter::InterconnectType
+vpp	parameter.h	/^  double vpp;$/;"	m	class:TechnologyParameter
+vt_circuit	powergating.h	/^	double  vt_circuit;$/;"	m	class:Sleep_tx
+vt_sleep_tx	powergating.h	/^	double  vt_sleep_tx;$/;"	m	class:Sleep_tx
+w	area.h	/^  double w;$/;"	m	class:Area
+w_L1_nand2_n	decoder.h	/^  double w_L1_nand2_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_L1_nand2_p	decoder.h	/^  double w_L1_nand2_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_L1_nand3_n	decoder.h	/^  double w_L1_nand3_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_L1_nand3_p	decoder.h	/^  double w_L1_nand3_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_L2_n	decoder.h	/^  double w_L2_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_L2_p	decoder.h	/^  double w_L2_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlk
+w_comp_inv_n1	parameter.h	/^  double w_comp_inv_n1;$/;"	m	class:TechnologyParameter
+w_comp_inv_n2	parameter.h	/^  double w_comp_inv_n2;$/;"	m	class:TechnologyParameter
+w_comp_inv_n3	parameter.h	/^  double w_comp_inv_n3;$/;"	m	class:TechnologyParameter
+w_comp_inv_p1	parameter.h	/^  double w_comp_inv_p1;$/;"	m	class:TechnologyParameter
+w_comp_inv_p2	parameter.h	/^  double w_comp_inv_p2;$/;"	m	class:TechnologyParameter
+w_comp_inv_p3	parameter.h	/^  double w_comp_inv_p3;$/;"	m	class:TechnologyParameter
+w_comp_n	parameter.h	/^  double w_comp_n;$/;"	m	class:TechnologyParameter
+w_comp_p	parameter.h	/^  double w_comp_p;$/;"	m	class:TechnologyParameter
+w_dec_n	decoder.h	/^    double w_dec_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:Decoder
+w_dec_p	decoder.h	/^    double w_dec_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:Decoder
+w_eval_inv_n	parameter.h	/^  double w_eval_inv_n;$/;"	m	class:TechnologyParameter
+w_eval_inv_p	parameter.h	/^  double w_eval_inv_p;$/;"	m	class:TechnologyParameter
+w_iso	parameter.h	/^  double w_iso;$/;"	m	class:TechnologyParameter
+w_nmos_b_mux	parameter.h	/^  double w_nmos_b_mux;$/;"	m	class:TechnologyParameter
+w_nmos_sa_mux	parameter.h	/^  double w_nmos_sa_mux;$/;"	m	class:TechnologyParameter
+w_pmos_bl_eq	parameter.h	/^  double w_pmos_bl_eq;$/;"	m	class:TechnologyParameter
+w_pmos_bl_precharge	parameter.h	/^  double w_pmos_bl_precharge;$/;"	m	class:TechnologyParameter
+w_poly_contact	parameter.h	/^  double w_poly_contact;$/;"	m	class:TechnologyParameter
+w_scale	wire.h	/^    double w_scale, s_scale;$/;"	m	class:Wire
+w_sense_en	parameter.h	/^  double w_sense_en;$/;"	m	class:TechnologyParameter
+w_sense_n	parameter.h	/^  double w_sense_n;$/;"	m	class:TechnologyParameter
+w_sense_p	parameter.h	/^  double w_sense_p;$/;"	m	class:TechnologyParameter
+wakeup_delay	powergating.h	/^	double  delay, wakeup_delay;$/;"	m	class:Sleep_tx
+wakeup_power	powergating.h	/^	powerDef power, wakeup_power;$/;"	m	class:Sleep_tx
+way_sel_drv1	mat.h	/^    PredecBlkDrv * way_sel_drv1;$/;"	m	class:Mat
+way_select	decoder.h	/^  int   way_select;$/;"	m	class:PredecBlkDrv
+width	cacti_interface.h	/^  double width;$/;"	m	class:mem_array
+width	powergating.h	/^	double  width;$/;"	m	class:Sleep_tx
+width_n	decoder.h	/^  double width_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:Driver
+width_nand2_path_n	decoder.h	/^  double width_nand2_path_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlkDrv
+width_nand2_path_p	decoder.h	/^  double width_nand2_path_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlkDrv
+width_nand3_path_n	decoder.h	/^  double width_nand3_path_n[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlkDrv
+width_nand3_path_p	decoder.h	/^  double width_nand3_path_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:PredecBlkDrv
+width_p	decoder.h	/^  double width_p[MAX_NUMBER_GATES_STAGE];$/;"	m	class:Driver
+width_write_driver_or_write_mux	mat.cc	/^double Mat::width_write_driver_or_write_mux()$/;"	f	class:Mat
+wire_bw	htree2.h	/^    double wire_bw;$/;"	m	class:Htree2
+wire_cap	wire.cc	/^double Wire::wire_cap (double len \/* in m *\/, bool call_from_outside)$/;"	f	class:Wire
+wire_capacitance	technology.cc	/^double wire_capacitance(double wire_width, double wire_thickness, double wire_spacing,$/;"	f
+wire_dvs_update	wire.cc	/^Wire::wire_dvs_update()$/;"	f	class:Wire
+wire_horizontal	nuca.h	/^         *wire_horizontal[WIRE_TYPES];$/;"	m	class:Nuca
+wire_inside_mat	parameter.h	/^  InterconnectType wire_inside_mat;$/;"	m	class:TechnologyParameter
+wire_is_mat_type	cacti_interface.h	/^    unsigned int wire_is_mat_type;  \/\/ wire_inside_mat_type$/;"	m	class:InputParameter
+wire_length	wire.h	/^    double wire_length;$/;"	m	class:Wire
+wire_local	parameter.h	/^  InterconnectType wire_local;$/;"	m	class:TechnologyParameter
+wire_model	wire.cc	/^powerDef Wire::wire_model (double space, double size, double *delay)$/;"	f	class:Wire
+wire_os_mat_type	cacti_interface.h	/^    unsigned int wire_os_mat_type; \/\/ wire_outside_mat_type$/;"	m	class:InputParameter
+wire_outside_mat	parameter.h	/^  InterconnectType wire_outside_mat;$/;"	m	class:TechnologyParameter
+wire_pda	nuca.h	/^    Component wire_pda;$/;"	m	class:nuca_org_t
+wire_placement	router.h	/^    enum Wire_placement wire_placement;$/;"	m	class:Router	typeref:enum:Router::Wire_placement
+wire_placement	wire.h	/^    enum Wire_placement wire_placement;$/;"	m	class:Wire	typeref:enum:Wire::Wire_placement
+wire_res	wire.cc	/^Wire::wire_res (double len \/*(in m)*\/)$/;"	f	class:Wire
+wire_resistance	technology.cc	/^double wire_resistance(double resistivity, double wire_width, double wire_thickness,$/;"	f
+wire_spacing	wire.h	/^    double wire_spacing;$/;"	m	class:Wire
+wire_spacing_init	wire.cc	/^    double Wire::wire_spacing_init;$/;"	m	class:Wire	file:
+wire_spacing_init	wire.h	/^    static double wire_spacing_init;$/;"	m	class:Wire
+wire_vertical	nuca.h	/^    Wire *wire_vertical[WIRE_TYPES],$/;"	m	class:Nuca
+wire_width	wire.h	/^    double wire_width;$/;"	m	class:Wire
+wire_width_init	wire.cc	/^    double Wire::wire_width_init;$/;"	m	class:Wire	file:
+wire_width_init	wire.h	/^    static double wire_width_init;$/;"	m	class:Wire
+with_clock_grid	cacti_interface.h	/^  bool with_clock_grid;$/;"	m	class:InputParameter
+wl_leakage	bank.h	/^    double  wl_leakage;$/;"	m	class:Bank
+wl_leakage	cacti_interface.h	/^  double  wl_leakage;$/;"	m	class:mem_array
+wl_leakage	mat.h	/^    double  wl_leakage;$/;"	m	class:Mat
+wl_power_gated	cacti_interface.h	/^  bool wl_power_gated;$/;"	m	class:InputParameter
+wl_sleep_tx	mat.h	/^    Sleep_tx * wl_sleep_tx;$/;"	m	class:Mat
+wl_sleep_tx_area	cacti_interface.h	/^  double sram_sleep_tx_area, wl_sleep_tx_area, cl_sleep_tx_area;$/;"	m	class:mem_array
+wl_sleep_tx_area	mat.h	/^    double   wl_sleep_tx_area;$/;"	m	class:Mat
+wl_sleep_tx_width	cacti_interface.h	/^  double sram_sleep_tx_width, wl_sleep_tx_width, cl_sleep_tx_width;$/;"	m	class:mem_array
+wl_sleep_wakeup_energy	cacti_interface.h	/^  double sram_sleep_wakeup_energy, wl_sleep_wakeup_energy, cl_sleep_wakeup_energy, bl_floating_wakeup_energy;$/;"	m	class:mem_array
+wl_sleep_wakeup_latency	cacti_interface.h	/^  double sram_sleep_wakeup_latency, wl_sleep_wakeup_latency, cl_sleep_wakeup_latency, bl_floating_wakeup_latency;$/;"	m	class:mem_array
+wl_wakeup_e	mat.h	/^    powerDef wl_wakeup_e;$/;"	m	class:Mat
+wl_wakeup_t	mat.h	/^    double   wl_wakeup_t;$/;"	m	class:Mat
+writeOp	cacti_interface.h	/^    powerComponents writeOp;$/;"	m	class:powerDef
+write_energy	cacti_interface.h	/^  double activate_energy, read_energy, write_energy, precharge_energy,$/;"	m	class:mem_array
+write_energy	cacti_interface.h	/^  double write_energy;$/;"	m	struct:__anon1
+write_energy	uca.h	/^    double write_energy;$/;"	m	class:UCA
+wt	cacti_interface.h	/^    enum Wire_type wt;$/;"	m	class:InputParameter	typeref:enum:InputParameter::Wire_type
+wt	cacti_interface.h	/^  enum Wire_type wt;$/;"	m	class:mem_array	typeref:enum:mem_array::Wire_type
+wt	htree2.h	/^    enum Wire_type wt;$/;"	m	class:Htree2	typeref:enum:Htree2::Wire_type
+wt	router.h	/^    double NTtr, PTtr, wt, ht, I, O, NTi, PTi, NTid, PTid, NTod, PTod, TriS1, TriS2;$/;"	m	class:Router
+wt	wire.h	/^    enum Wire_type wt;$/;"	m	class:Wire	typeref:enum:Wire::Wire_type
+wt_max	nuca.h	/^    int wt_min, wt_max;$/;"	m	class:Nuca
+wt_min	nuca.h	/^    int wt_min, wt_max;$/;"	m	class:Nuca
+wtype	router.h	/^    enum Wire_type wtype;$/;"	m	class:Router	typeref:enum:Router::Wire_type
+~Arbiter	arbiter.cc	/^Arbiter::~Arbiter(){}$/;"	f	class:Arbiter
+~Bank	bank.cc	/^Bank::~Bank()$/;"	f	class:Bank
+~Component	component.cc	/^Component::~Component()$/;"	f	class:Component
+~Crossbar	crossbar.cc	/^Crossbar::~Crossbar(){}$/;"	f	class:Crossbar
+~Decoder	decoder.h	/^    ~Decoder()$/;"	f	class:Decoder
+~Driver	decoder.h	/^  ~Driver()$/;"	f	class:Driver
+~Htree2	htree2.h	/^    ~Htree2() {};$/;"	f	class:Htree2
+~Mat	mat.cc	/^Mat::~Mat()$/;"	f	class:Mat
+~Nuca	nuca.cc	/^Nuca::~Nuca(){$/;"	f	class:Nuca
+~Router	router.cc	/^Router::~Router(){}$/;"	f	class:Router
+~Sleep_tx	powergating.h	/^	~Sleep_tx(){};$/;"	f	class:Sleep_tx
+~Subarray	subarray.cc	/^Subarray::~Subarray()$/;"	f	class:Subarray
+~UCA	uca.cc	/^UCA::~UCA()$/;"	f	class:UCA
+~Wire	wire.cc	/^Wire::~Wire()$/;"	f	class:Wire
+~nuca_org_t	nuca.cc	/^nuca_org_t::~nuca_org_t() {$/;"	f	class:nuca_org_t
+~uca_org_t	cacti_interface.cc	/^uca_org_t :: ~uca_org_t()$/;"	f	class:uca_org_t
