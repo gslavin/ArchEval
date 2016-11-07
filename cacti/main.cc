@@ -83,7 +83,6 @@ int main(int argc,char *argv[])
     }
     else
     {
-      printf("arg: %s\n", outfile_name.c_str());
       result = cacti_interface(infile_name, outfile_name);
     }
   }
