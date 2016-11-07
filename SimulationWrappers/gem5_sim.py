@@ -1,55 +1,114 @@
 #!/usr/bin/python3
 
-from simulation_wrapper import SimWrap
+#from simulation_wrapper import SimWrap
 
 import string
 import re
 import json
+import copy 
 
-def parse_stat_file(filename):
-    """
-    Parses the gem5 stat.txt file and returns the
-    indicated fields.  Currently only works for
-    op classes
-    """
-    with open(filename, 'r') as f:
-        stats = {'op_class':{}}
-        params = ['op_class']
-        for line in f:
-            # strip out comment
-            line = line.split("#")[0].strip()
-            #Split into fields
-            fields = re.split(' +', line)
-            name = fields[0]
-
-            # Get class, field names, and field values
-            if any(x in name for x in params):
-                key = re.split('[.:]+', name)[2]
-                var = re.split('[.:]+', name)[3]
-                val = fields[1]
-                stats[key][var] = val
-    return stats
-
-class Gem5Sim(SimWrap):
+class Gem5Sim():
     """
     self.config
         simulation configuration
-    self.stats
+    self.stats ## dict of information 
         simulation results
     """
 
-    def __init__(self, params):
+    def __init__(self):
         """
-        Pass in dictionary of simulation parameters
+        Pass in dictionary of simulation parameters // Expecting a list preferrably
         Store configuration of simulation
         """
-        self.validate_params(params)
-        self.config = params
+        ## self.validate_params(params)
+        ## self.config = params
+        pass
 
     def validate_params(self, params):
-        valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
+        """valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
         if not all(k in valid_params for k in params.keys()):
             raise ValueError("Not a valid gem5 config parameter")
+        """
+        pass
+    
+    def update_dict(self, d, value):
+      print d, value
+      temp = {}
+      found = None
+      if(value[1].isdigit() == False):
+        '''
+        for i in d['substat']:
+          if(i['stat'] == value[0]):
+            found = i
+            break
+      
+          if (found == None):
+            temp['stat'] = value[0]
+            temp['substat'] = []
+            d['substat'].append((temp))
+            self.update_dict(temp, value[1:])
+          else:
+            update_dict(found, value[1:])
+'''
+        temp['stat'] = value[0]
+        temp['substat'] = []
+        d['substat'].append((temp))
+        self.update_dict(temp, value[1:])
+      else: #base case
+        temp['stat'] = value[0]
+        temp['value'] = value[1]
+        d['substat'].append((temp))
+      
+      return d
+        
+       
+
+    def parse_stat_file(self, filename):
+        """
+        Parses the gem5 stat.txt file and returns the
+        indicated fields.  Currently only works for
+        op classes
+        """
+        master = []
+        temp = {}
+        with open(filename, 'r') as f:
+            next(f)
+            next(f)
+            for line in f:
+              # strip out comment
+              line = line.split("#")[0].strip()
+              #Split into fields
+              fields = re.split('[ ]+', line)
+              fields = re.split('[.:]+', fields[0]) + fields[1:]
+
+              if fields[0] == '':
+                break
+              
+              found = None
+              if len(fields) == 2:
+                temp['stat'] = fields[0]
+                temp['value'] = fields[-1]
+                master.append(copy.copy(temp))
+                temp.clear();
+              
+              else:
+                for i in master:
+                  if i['stat'] == fields[0]:
+                    found = i
+                    break
+
+                if (found == None):    
+                  temp['stat'] = fields[0]
+                  temp['substat'] = []
+                  master.append(copy.copy(self.update_dict(temp, fields[1:])))
+                else:
+                  pass
+                  master.append((self.update_dict(found, fields[1:])))
+
+
+        
+        print json.dumps(master, indent=4, sort_keys=True)
+        return master
 
     def run_simulation(self):
         pass
@@ -66,9 +125,10 @@ class Gem5Sim(SimWrap):
         self.stats = parse_stat_file(filename)
 
 def main():
-    sim = Gem5Sim({"cpu_frequency" : 100})
-    sim.run()
-    print(sim.stats_to_json())
+    sim = Gem5Sim()
+    sim.parse_stat_file("stats.txt")
+    ##sim.run()
+    ##print(sim.stats_to_json())
 
 if __name__ == "__main__":
     main()
