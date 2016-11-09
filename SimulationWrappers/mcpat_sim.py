@@ -46,8 +46,8 @@ class McPatSim(SimWrap):
             raise ValueError("Not a valid McPAT config parameter")
 
     def run_simulation(self, output_csv):
-        #TODO: have better error handling for cacti call
-        subprocess.check_call("./cacti/cacti -infile cache_config.cfg -outfile {0}".format(output_csv), shell=True)
+        #TODO: Have better error handling for cacti call
+        subprocess.check_call("./cacti/cacti -infile cache_config.cfg -outfile {0} > /dev/null".format(output_csv), shell=True)
 
     def gen_cache_config_file(self, template, output_file):
         cache_size = self.config["cache_size"]
