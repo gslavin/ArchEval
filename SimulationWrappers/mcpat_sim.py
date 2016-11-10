@@ -3,6 +3,7 @@
 from simulation_wrapper import SimWrap
 import subprocess
 import csv
+import defs
 
 def parse_csv(filename):
     """
@@ -47,7 +48,7 @@ class McPatSim(SimWrap):
 
     def run_simulation(self, output_csv):
         #TODO: Have better error handling for cacti call
-        subprocess.check_call("./cacti/cacti -infile cache_config.cfg -outfile {0} > /dev/null".format(output_csv), shell=True)
+        subprocess.check_call(defs.ROOT_DIR + "/cacti/cacti -infile cache_config.cfg -outfile {0} > /dev/null".format(output_csv), shell=True)
 
     def gen_cache_config_file(self, template, output_file):
         cache_size = self.config["cache_size"]
@@ -61,7 +62,7 @@ class McPatSim(SimWrap):
         Run the simulation
         Store statistics
         """
-        self.gen_cache_config_file("./cacti/cache_template.cfg", "cache_config.cfg")
+        self.gen_cache_config_file(defs.ROOT_DIR + "/cacti/cache_template.cfg", "cache_config.cfg")
 
         output_csv = "results.csv"
         self.run_simulation(output_csv)
