@@ -6,6 +6,8 @@ test_script() {
 
 export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers
 
+make all
+
 ./Tests/test_sim_wrappers.py
 
 # TODO:  Remove these tests when they are all replaced by unit tests
