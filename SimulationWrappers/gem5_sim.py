@@ -107,9 +107,6 @@ class Gem5Sim():
                 else:
                   master.append((self.update_dict(found, fields[1:])))
 
-
-        
-        print json.dumps(master, indent=4, sort_keys=True)
         return master
 
     def run_simulation(self):
