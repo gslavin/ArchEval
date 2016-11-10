@@ -9,9 +9,7 @@ import json
 PROGRAM_LENGTH = 1000
 
 
-config_defaults = { "cpu_count": 1,
-                    "cpu_frequency": 9000,
-                    "cache_size": 1024}
+config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
 
 class MockSim(SimWrap):
     """
@@ -21,22 +19,21 @@ class MockSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params = config_defaults):
+    def __init__(self, params):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.config = {}
+        self.config = config_defaults
         self.set_config(params)
 
     def set_config(self, params):
         """
         Updates the system configuration with the passed parameters
         """
-        if params is not None:
-            self.validate_params(params)
-            for k in params.keys():
-                self.config[k] = params[k]
+        self.validate_params(params)
+        for k in params.keys():
+            self.config[k] = params[k]
 
     def validate_params(self, params):
         valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
@@ -67,7 +64,7 @@ class MockSim(SimWrap):
 
 
 def main():
-    sim = MockSim()
+    sim = MockSim({"cpu_frequency" : 1000})
     sim.run()
     print(sim.stats_to_json())
 
