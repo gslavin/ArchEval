@@ -73,11 +73,12 @@ class DSE_searcher:
             prev_configs.append(config)
             yield config
 
-    # TODO: Determine how to establish initial target values to optimize
     def gen_rand_config(self):
         """
-        Use the user constraints to generate a random configuration
+        Generate a random configuration within the space of input parameters
         """
+
+        # TODO take into account user constraints?
 
         # Create permuation of all parameters
         self.shuffled_params = copy.deepcopy(self.params)
@@ -94,18 +95,30 @@ class DSE_searcher:
 
         return config
 
+    def strip_sys_config(self, sys_config):
+        """
+        Convert the internal sys config representation to a format the sim
+        wrappers understand implicitly.
+        """
+        stripped = copy.deepcopy(sys_config)
+        for key in stripped:
+            stripped[key] = stripped[key][0]
+
+        return stripped
 
     def search(self, eval_sys_config):
         """
         Top level search
         Each search party starts at its random starting point
         Neighbors around the starting point are tested
-        The best neighbor is chosen
+        A direction is chosen to continue the search
         """
+        
+        # TODO store direction we came from to cut down on superfluous searches
 
         # Initialize fitness scores for each configuration
         for i in range(self.num_search_parties):
-            self.fitness_vals[i] = eval_sys_config(self.sys_configs[i])
+            self.fitness_vals[i] = eval_sys_config(self.strip_sys_config(self.sys_configs[i]))
 
         for _ in range(self.max_iterations):
             for i in range(self.num_search_parties):
@@ -147,8 +160,8 @@ class DSE_searcher:
     def search_neighbors(self, sys_config, current_fitness, eval_sys_config):
         """
         Searches neighbor nodes to see if they provide a better score
-        Uses simulation wrappers
         """
+
         if (self.search_directions == -1):
             search_dirs = len(sys_config)
         elif (self.search_directions == 0):
@@ -165,9 +178,8 @@ class DSE_searcher:
 
         fitnesses = []
         for n in neighbor_configs:
-            # Run simulations (via simulation wrappers)
-            # score simulation results according to user constraints
-            fitnesses.append(eval_sys_config(n))
+            # Evaluate each neighbor according to our evaluation function
+            fitnesses.append(eval_sys_config(self.strip_sys_config(n)))
 
         sys_configs = neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
