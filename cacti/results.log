@@ -1,0 +1,225 @@
+Cache size                    : 2048
+Block size                    : 64
+Associativity                 : 2
+Read only ports               : 0
+Write only ports              : 0
+Read write ports              : 1
+Single ended read ports       : 0
+Cache banks (UCA)             : 1
+Technology                    : 0.022
+User specified HP   Vdd (v)?  : false
+User specified LSTP Vdd (v)?  : false
+User specified LOP  Vdd (v)?  : false
+Temperature                   : 360
+Tag size                      : 42
+array type                    : Cache
+Model as memory               : false
+Access mode                   : 0
+Data array cell type          : 0
+Data array peripheral type    : 0
+Tag array cell type           : 0
+Tag array peripheral type     : 0
+Optimization target           : 2
+Design objective (UCA wt)     : 0 0 0 100 0
+Design objective (UCA dev)    : 20 100000 100000 100000 100000
+Cache model                   : 0
+Nuca bank                     : 0
+Wire inside mat               : 1
+Wire outside mat              : 1
+Interconnect projection       : 1
+Wire signalling               : 1
+Print level                   : 1
+ECC overhead                  : true
+Page size                     : 8192
+Burst length                  : 8
+Internal prefetch width       : 8
+Force cache config            : false
+
+---------- CACTI-P,  with new features: CAM and fully associative cache, power gating, and DVS of June, 2014), Uniform Cache Access SRAM Model ----------
+
+Cache Parameters:
+    Total cache size (bytes): 2048
+    Number of banks: 1
+    Associativity: 2
+    Block size (bytes): 64
+    Read/write Ports: 1
+    Read ports: 0
+    Write ports: 0
+    Technology size (nm): 22
+
+    Access time (ns): 0.176454 (@DVS_Level0); 0.176454 (@DVS_Level1_Vdd=0.8); 0.159794 (@DVS_Level2_Vdd=1.1); 0.152883 (@DVS_Level3_Vdd=1.3); 0.150118 (@DVS_Level4_Vdd=1.4); 0.147687 (@DVS_Level5_Vdd=1.5); 
+    Cycle time (ns):  0.411443 (@DVS_Level0); 0.411443 (@DVS_Level1_Vdd=0.8); 0.392779 (@DVS_Level2_Vdd=1.1); 0.384909 (@DVS_Level3_Vdd=1.3); 0.381741 (@DVS_Level4_Vdd=1.4); 0.378948 (@DVS_Level5_Vdd=1.5); 
+    Total dynamic read energy per access (nJ): 0.0258656 (@DVS_Level0); 0.0258656 (@DVS_Level1_Vdd=0.8); 0.047552 (@DVS_Level2_Vdd=1.1); 0.065682 (@DVS_Level3_Vdd=1.3); 0.0758484 (@DVS_Level4_Vdd=1.4); 0.086749 (@DVS_Level5_Vdd=1.5); 
+    Total dynamic write energy per access (nJ): 0.0263653 (@DVS_Level0); 0.0263653 (@DVS_Level1_Vdd=0.8); 0.0486932 (@DVS_Level2_Vdd=1.1); 0.0673884 (@DVS_Level3_Vdd=1.3); 0.0778787 (@DVS_Level4_Vdd=1.4); 0.0891308 (@DVS_Level5_Vdd=1.5); 
+    Total leakage power of a bank, with power-gating (non state retained), including its network outside (mW): 0
+    Total leakage power of a bank without power gating, including its network outside (mW): 0.933354 (@DVS_Level0); 0.933354 (@DVS_Level1_Vdd=0.8); 2.42636 (@DVS_Level2_Vdd=1.1); 4.00504 (@DVS_Level3_Vdd=1.3); 5.00219 (@DVS_Level4_Vdd=1.4); 6.15248 (@DVS_Level5_Vdd=1.5); 
+    Cache height x width (mm): 0.0685964 x 0.291559
+
+    Power-gating results (The virtual power supply for gated circuit can only retain the state of idle circuit, not for operating the circuit):
+    Warning: user defined power gating voltage is too low to retain state; Please understand the implications of deep sleep state on non state retaining and cold start effects when waking up the structure.
+    	Power gating circuits (sleep transistors) induced area overhead: 6.3831 % 
+    	Power gating Wakeup Latency (ns): 0.0150423
+    	Power gating Wakeup Energy (nJ): 0.00367714
+
+
+    Best Ndwl : 2
+    Best Ndbl : 1
+    Best Nspd : 1
+    Best Ndcm : 1
+    Best Ndsam L1 : 2
+    Best Ndsam L2 : 1
+
+    Best Ntwl : 2
+    Best Ntbl : 2
+    Best Ntspd : 0.5
+    Best Ntcm : 1
+    Best Ntsam L1 : 1
+    Best Ntsam L2 : 1
+    Data array, H-tree wire type: Delay optimized global wires
+    Tag array, H-tree wire type: Global wires with 30% delay penalty
+
+Time Components:
+
+  Data side (with Output driver) (ns): 0.172538 (@DVS_Level0); 0.172538 (@DVS_Level1_Vdd=0.8); 0.155851 (@DVS_Level2_Vdd=1.1); 0.148795 (@DVS_Level3_Vdd=1.3); 0.145952 (@DVS_Level4_Vdd=1.4); 0.143445 (@DVS_Level5_Vdd=1.5); 
+	H-tree delay outside banks (ns): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	H-tree input delay (inside a bank) (ns): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Decoder + wordline delay (ns): 0.0986236 (@DVS_Level0); 0.0986236 (@DVS_Level1_Vdd=0.8); 0.0920477 (@DVS_Level2_Vdd=1.1); 0.0893117 (@DVS_Level3_Vdd=1.3); 0.0882143 (@DVS_Level4_Vdd=1.4); 0.0872478 (@DVS_Level5_Vdd=1.5); 
+	Bitline delay (ns): 0.0335184 (@DVS_Level0); 0.0335184 (@DVS_Level1_Vdd=0.8); 0.0270048 (@DVS_Level2_Vdd=1.1); 0.0241795 (@DVS_Level3_Vdd=1.3); 0.023034 (@DVS_Level4_Vdd=1.4); 0.0220215 (@DVS_Level5_Vdd=1.5); 
+	Sense Amplifier delay (ns): 0.00189739 (@DVS_Level0); 0.00189739 (@DVS_Level1_Vdd=0.8); 0.00195227 (@DVS_Level2_Vdd=1.1); 0.00197615 (@DVS_Level3_Vdd=1.3); 0.00198568 (@DVS_Level4_Vdd=1.4); 0.00199396 (@DVS_Level5_Vdd=1.5); 
+	H-tree output delay (inside a bank) (ns): 0.0384989 (@DVS_Level0); 0.0384989 (@DVS_Level1_Vdd=0.8); 0.0348465 (@DVS_Level2_Vdd=1.1); 0.0333273 (@DVS_Level3_Vdd=1.3); 0.032718 (@DVS_Level4_Vdd=1.4); 0.0321815 (@DVS_Level5_Vdd=1.5); 
+	Power gating wakeup time (ns) - 0.0150423
+
+  Tag side (with Output driver) (ns): 0.0617991 (@DVS_Level0); 0.0617991 (@DVS_Level1_Vdd=0.8); 0.0531996 (@DVS_Level2_Vdd=1.1); 0.0496417 (@DVS_Level3_Vdd=1.3); 0.0482214 (@DVS_Level4_Vdd=1.4); 0.0469746 (@DVS_Level5_Vdd=1.5); 
+	H-tree delay outside banks (ns): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	H-tree input delay (inside a bank) (ns): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Decoder + wordline delay (ns): 0.0394643 (@DVS_Level0); 0.0394643 (@DVS_Level1_Vdd=0.8); 0.034658 (@DVS_Level2_Vdd=1.1); 0.0326588 (@DVS_Level3_Vdd=1.3); 0.0318571 (@DVS_Level4_Vdd=1.4); 0.031151 (@DVS_Level5_Vdd=1.5); 
+	Bitline delay (ns): 0.0122738 (@DVS_Level0); 0.0122738 (@DVS_Level1_Vdd=0.8); 0.00938519 (@DVS_Level2_Vdd=1.1); 0.00820164 (@DVS_Level3_Vdd=1.3); 0.00773354 (@DVS_Level4_Vdd=1.4); 0.00732547 (@DVS_Level5_Vdd=1.5); 
+	Sense Amplifier delay (ns): 0.00189739 (@DVS_Level0); 0.00189739 (@DVS_Level1_Vdd=0.8); 0.00195227 (@DVS_Level2_Vdd=1.1); 0.00197615 (@DVS_Level3_Vdd=1.3); 0.00198568 (@DVS_Level4_Vdd=1.4); 0.00199396 (@DVS_Level5_Vdd=1.5); 
+	Comparator delay (ns): 0.0210677 (@DVS_Level0); 0.0210677 (@DVS_Level1_Vdd=0.8); 0.0183743 (@DVS_Level2_Vdd=1.1); 0.0172635 (@DVS_Level3_Vdd=1.3); 0.0168198 (@DVS_Level4_Vdd=1.4); 0.01643 (@DVS_Level5_Vdd=1.5); 
+	H-tree output delay (inside a bank) (ns): 0.00816358 (@DVS_Level0); 0.00816358 (@DVS_Level1_Vdd=0.8); 0.00720418 (@DVS_Level2_Vdd=1.1); 0.00680513 (@DVS_Level3_Vdd=1.3); 0.00664508 (@DVS_Level4_Vdd=1.4); 0.00650415 (@DVS_Level5_Vdd=1.5); 
+	Power gating wakeup time (ns) - 0.0149719
+
+
+Power Components:
+
+  Data array: Total dynamic read energy/access  (nJ): 0.0256934 (@DVS_Level0); 0.0256934 (@DVS_Level1_Vdd=0.8); 0.0472411 (@DVS_Level2_Vdd=1.1); 0.0652562 (@DVS_Level3_Vdd=1.3); 0.0753585 (@DVS_Level4_Vdd=1.4); 0.0861905 (@DVS_Level5_Vdd=1.5); 
+	Total leakage power of a bank, power gated without retaining memory content, including its network outside (mW): 0
+	Total leakage power of a bank without power gating, including its network outside (mW): 0.892531 (@DVS_Level0); 0.892531 (@DVS_Level1_Vdd=0.8); 2.32023 (@DVS_Level2_Vdd=1.1); 3.82987 (@DVS_Level3_Vdd=1.3); 4.78341 (@DVS_Level4_Vdd=1.4); 5.88339 (@DVS_Level5_Vdd=1.5); 
+	Total energy in H-tree outside banks (that includes both address and data transfer) (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Input H-tree inside bank Energy (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Output Htree inside bank Energy (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Decoder (nJ): 6.37159e-06 (@DVS_Level0); 6.37159e-06 (@DVS_Level1_Vdd=0.8); 1.20463e-05 (@DVS_Level2_Vdd=1.1); 1.6825e-05 (@DVS_Level3_Vdd=1.3); 1.9513e-05 (@DVS_Level4_Vdd=1.4); 2.24001e-05 (@DVS_Level5_Vdd=1.5); 
+	Wordline (nJ): 7.45054e-05 (@DVS_Level0); 7.45054e-05 (@DVS_Level1_Vdd=0.8); 0.000140862 (@DVS_Level2_Vdd=1.1); 0.000196741 (@DVS_Level3_Vdd=1.3); 0.000228173 (@DVS_Level4_Vdd=1.4); 0.000261933 (@DVS_Level5_Vdd=1.5); 
+	Bitline mux & associated drivers (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Sense amp mux & associated drivers (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Bitlines precharge and equalization circuit (nJ): 0.000412868 (@DVS_Level0); 0.000412868 (@DVS_Level1_Vdd=0.8); 0.000780579 (@DVS_Level2_Vdd=1.1); 0.00109023 (@DVS_Level3_Vdd=1.3); 0.00126441 (@DVS_Level4_Vdd=1.4); 0.00145149 (@DVS_Level5_Vdd=1.5); 
+	Bitlines (nJ): 0.000352722 (@DVS_Level0); 0.000352722 (@DVS_Level1_Vdd=0.8); 0.000484993 (@DVS_Level2_Vdd=1.1); 0.000573173 (@DVS_Level3_Vdd=1.3); 0.000617263 (@DVS_Level4_Vdd=1.4); 0.000661354 (@DVS_Level5_Vdd=1.5); 
+	Sense amplifier energy (nJ): 0.000459274 (@DVS_Level0); 0.000459274 (@DVS_Level1_Vdd=0.8); 0.000868315 (@DVS_Level2_Vdd=1.1); 0.00121277 (@DVS_Level3_Vdd=1.3); 0.00140653 (@DVS_Level4_Vdd=1.4); 0.00161463 (@DVS_Level5_Vdd=1.5); 
+	Sub-array output driver (nJ): 0.0243001 (@DVS_Level0); 0.0243001 (@DVS_Level1_Vdd=0.8); 0.0447888 (@DVS_Level2_Vdd=1.1); 0.0619354 (@DVS_Level3_Vdd=1.3); 0.0715546 (@DVS_Level4_Vdd=1.4); 0.081871 (@DVS_Level5_Vdd=1.5); 
+	Total leakage power in H-tree outside a bank when power gated (that includes both address and data network) ((mW)): 0
+	Total leakage power in H-tree outside a bank (that includes both address and data network) ((mW)): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+
+  Tag array:  Total dynamic read energy/access (nJ): 0.000172231 (@DVS_Level0); 0.000172231 (@DVS_Level1_Vdd=0.8); 0.000310862 (@DVS_Level2_Vdd=1.1); 0.00042573 (@DVS_Level3_Vdd=1.3); 0.000489897 (@DVS_Level4_Vdd=1.4); 0.000558554 (@DVS_Level5_Vdd=1.5); 
+	Total leakage power of a bank, power gated without retaining memory content, including its network outside (mW): 0
+	Total leakage power of a bank without power gating, including its network outside (mW): 0.0408226 (@DVS_Level0); 0.0408226 (@DVS_Level1_Vdd=0.8); 0.106123 (@DVS_Level2_Vdd=1.1); 0.17517 (@DVS_Level3_Vdd=1.3); 0.218784 (@DVS_Level4_Vdd=1.4); 0.269094 (@DVS_Level5_Vdd=1.5); 
+	Total energy in H-tree outside banks (that includes both address and data transfer) (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Input H-tree inside banks Energy (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Output Htree inside a bank Energy (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Decoder (nJ): 1.08002e-05 (@DVS_Level0); 1.08002e-05 (@DVS_Level1_Vdd=0.8); 2.04191e-05 (@DVS_Level2_Vdd=1.1); 2.85192e-05 (@DVS_Level3_Vdd=1.3); 3.30755e-05 (@DVS_Level4_Vdd=1.4); 3.79693e-05 (@DVS_Level5_Vdd=1.5); 
+	Wordline (nJ): 7.45125e-06 (@DVS_Level0); 7.45125e-06 (@DVS_Level1_Vdd=0.8); 1.40875e-05 (@DVS_Level2_Vdd=1.1); 1.9676e-05 (@DVS_Level3_Vdd=1.3); 2.28195e-05 (@DVS_Level4_Vdd=1.4); 2.61958e-05 (@DVS_Level5_Vdd=1.5); 
+	Bitline mux & associated drivers (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Sense amp mux & associated drivers (nJ): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+	Bitlines precharge and equalization circuit (nJ): 5.16542e-05 (@DVS_Level0); 5.16542e-05 (@DVS_Level1_Vdd=0.8); 9.76588e-05 (@DVS_Level2_Vdd=1.1); 0.0001364 (@DVS_Level3_Vdd=1.3); 0.000158191 (@DVS_Level4_Vdd=1.4); 0.000181597 (@DVS_Level5_Vdd=1.5); 
+	Bitlines (nJ): 2.81688e-05 (@DVS_Level0); 2.81688e-05 (@DVS_Level1_Vdd=0.8); 3.87321e-05 (@DVS_Level2_Vdd=1.1); 4.57742e-05 (@DVS_Level3_Vdd=1.3); 4.92953e-05 (@DVS_Level4_Vdd=1.4); 5.28164e-05 (@DVS_Level5_Vdd=1.5); 
+	Sense amplifier energy (nJ): 3.66781e-05 (@DVS_Level0); 3.66781e-05 (@DVS_Level1_Vdd=0.8); 6.93446e-05 (@DVS_Level2_Vdd=1.1); 9.68532e-05 (@DVS_Level3_Vdd=1.3); 0.000112327 (@DVS_Level4_Vdd=1.4); 0.000128947 (@DVS_Level5_Vdd=1.5); 
+	Sub-array output driver (nJ): 5.66318e-06 (@DVS_Level0); 5.66318e-06 (@DVS_Level1_Vdd=0.8); 1.04703e-05 (@DVS_Level2_Vdd=1.1); 1.44964e-05 (@DVS_Level3_Vdd=1.3); 1.67559e-05 (@DVS_Level4_Vdd=1.4); 1.91795e-05 (@DVS_Level5_Vdd=1.5); 
+	Total leakage power in H-tree outside a bank when power gated (that includes both address and data network) ((mW)): 0
+	Total leakage power in H-tree outside a bank (that includes both address and data network) without power gating((mW)): 0 (@DVS_Level0); 0 (@DVS_Level1_Vdd=0.8); 0 (@DVS_Level2_Vdd=1.1); 0 (@DVS_Level3_Vdd=1.3); 0 (@DVS_Level4_Vdd=1.4); 0 (@DVS_Level5_Vdd=1.5); 
+
+
+Area Components:
+
+  Data array: Area (mm2): 0.0191584
+	Height (mm): 0.0685964
+	Width (mm): 0.279292
+	Area efficiency (Memory cell area/Total area) - 6.79846 %
+		MAT Height (mm): 0.0685964
+		MAT Length (mm): 0.279292
+		Subarray Height (mm): 0.00830302
+		Subarray Length (mm): 0.13266
+  Power gating circuits (sleep transistors) induced area overhead: 6.332%
+
+  Tag array: Area (mm2): 0.000292298
+	Height (mm): 0.0238275
+	Width (mm): 0.0122672
+	Area efficiency (Memory cell area/Total area) - 35.5861 %
+		MAT Height (mm): 0.0238275
+		MAT Length (mm): 0.0122672
+		Subarray Height (mm): 0.00830302
+		Subarray Length (mm): 0.005225
+  Power gating circuits (sleep transistors) induced area overhead: 39.6968%
+
+
+Wire Properties at DVS level 0:
+
+  Delay Optimal
+	Repeater size - 85.8297 
+	Repeater spacing - 0.0644454 (mm) 
+	Delay - 0.110702 (ns/mm) 
+	PowerD - 0.000291757 (nJ/mm) 
+	PowerL - 0.0224462 (mW/mm) 
+	PowerLgate - 9.54595e-05 (mW/mm)
+	Wire width - 0.044 microns
+	Wire spacing - 0.044 microns
+
+  5% Overhead
+	Repeater size - 34.8297 
+	Repeater spacing - 0.0644454 (mm) 
+	Delay - 0.115776 (ns/mm) 
+	PowerD - 0.00018964 (nJ/mm) 
+	PowerL - 0.00910865 (mW/mm) 
+	PowerLgate - 3.87374e-05 (mW/mm)
+	Wire width - 0.044 microns
+	Wire spacing - 0.044 microns
+
+  10% Overhead
+	Repeater size - 29.8297 
+	Repeater spacing - 0.0644454 (mm) 
+	Delay - 0.121693 (ns/mm) 
+	PowerD - 0.000179993 (nJ/mm) 
+	PowerL - 0.00780105 (mW/mm) 
+	PowerLgate - 3.31765e-05 (mW/mm)
+	Wire width - 0.044 microns
+	Wire spacing - 0.044 microns
+
+  20% Overhead
+	Repeater size - 45.8297 
+	Repeater spacing - 0.164445 (mm) 
+	Delay - 0.13253 (ns/mm) 
+	PowerD - 0.000166338 (nJ/mm) 
+	PowerL - 0.00469701 (mW/mm) 
+	PowerLgate - 1.99755e-05 (mW/mm)
+	Wire width - 0.044 microns
+	Wire spacing - 0.044 microns
+
+  30% Overhead
+	Repeater size - 30.8297 
+	Repeater spacing - 0.164445 (mm) 
+	Delay - 0.143686 (ns/mm) 
+	PowerD - 0.00015181 (nJ/mm) 
+	PowerL - 0.00315969 (mW/mm) 
+	PowerLgate - 1.34376e-05 (mW/mm)
+	Wire width - 0.044 microns
+	Wire spacing - 0.044 microns
+
+  Low-swing wire (1 mm) - Note: Unlike repeated wires, 
+	delay and power values of low-swing wires do not
+	have a linear relationship with length. 
+	delay - 0.0902445 (ns) 
+	powerD - 2.8399e-06 (nJ) 
+	PowerL - 1.71796e-07 (mW) 
+	PowerLgate - 1.29017e-09 (mW)
+	Wire width - 8.8e-08 microns
+	Wire spacing - 8.8e-08 microns
+
+
