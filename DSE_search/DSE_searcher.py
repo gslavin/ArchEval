@@ -12,6 +12,7 @@
 import itertools as it
 import random as r
 import copy
+import os
 
 from enum import Enum
 
@@ -21,6 +22,30 @@ class Neighbor_Policy(Enum):
     Elitism = 1
     Stochastic = 2
 
+def param_has_next(val, param_range):
+    if (not val in param_range):
+        raise ValueError("Current value not in range.")
+    
+    return param_range.index(val) < (len(param_range) - 1)
+
+def param_next(val, param_range):
+    return param_range[param_range.index(val) + 1]
+
+def param_has_prev(val, param_range):
+    if (not val in param_range):
+        raise ValueError("Current value not in range.")
+
+    return param_range.index(val) > 0
+
+def param_prev(val, param_range):
+    return param_range[param_range.index(val) - 1]
+
+default_param_ranges = {
+                       "cpu_count" : list(range(1, 9)),
+                       "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 8))),
+                       "cache_size" : list(map(lambda x: 2**x, range(10, 17))),
+                       }
+
 
 class DSE_searcher:
     """
@@ -28,7 +53,7 @@ class DSE_searcher:
     Uses the simulation wrappers to a run a variety of simulations
     """
 
-    def __init__(self, user_constraints, max_iterations = 20, num_search_parties = 1):
+    def __init__(self, user_constraints, param_ranges, max_iterations = 20, num_search_parties = 1):
 
         self.max_iterations = max_iterations
         self.num_search_parties = num_search_parties
@@ -44,10 +69,9 @@ class DSE_searcher:
         self.fitness_vals = []
 
         # Store configuration parameters and their ranges
-        self.params = []
-        self.params.append(("cpu_count", list(range(1, 8))))
-        self.params.append(("cpu_frequency", list(map(lambda x: x * 10**9, range(1, 7)))))
-        self.params.append(("cache_size", list(map(lambda x: 2**x, range(10, 17)))))
+        self.param_ranges = copy.deepcopy(default_param_ranges)
+        for key in param_ranges.keys():
+            self.param_ranges[key] = param_ranges[key]
 
         # Generate the intial config for each search party
         self.sys_configs = list(it.islice(self.gen_inital_sys_config(),
@@ -61,6 +85,13 @@ class DSE_searcher:
         Generates a stream of non-repeating system configuration
         based on the user constraints
         """
+
+        # Create permuation of all parameters
+        self.shuffled_params = copy.deepcopy(self.param_ranges)
+        for key in self.shuffled_params.keys():
+            # Create a random permutation of the parameter values
+            r.shuffle(self.shuffled_params[key])
+
         #
         # TODO: FIXME This algorithm will loop infinitely if all permutations
         # have been returned already
@@ -79,32 +110,14 @@ class DSE_searcher:
         """
 
         # TODO take into account user constraints?
-
-        # Create permuation of all parameters
-        self.shuffled_params = copy.deepcopy(self.params)
-        for param in self.shuffled_params:
-            # Create a random permutation of the parameter values
-            r.shuffle(param[1])
-
         config = {}
-        for i in range(0, len(self.shuffled_params)):
-            # Config Format: map - name -> (value, [range])
-            config[self.shuffled_params[i][0]] = (self.shuffled_params[i][1][0], self.params[i][1])
-            # Shift the contents of the parameter list
-            param[1].append(param[1].pop())
+        for key in self.shuffled_params.keys():
+            # Assign the first element of the shuffled list to this config
+            config[key] = self.shuffled_params[key][0]
+            # Shift the contents of the shuffled list
+            self.shuffled_params[key].append(self.shuffled_params[key].pop(0))
 
         return config
-
-    def strip_sys_config(self, sys_config):
-        """
-        Convert the internal sys config representation to a format the sim
-        wrappers understand implicitly.
-        """
-        stripped = copy.deepcopy(sys_config)
-        for key in stripped:
-            stripped[key] = stripped[key][0]
-
-        return stripped
 
     def search(self, eval_sys_config):
         """
@@ -118,7 +131,7 @@ class DSE_searcher:
 
         # Initialize fitness scores for each configuration
         for i in range(self.num_search_parties):
-            self.fitness_vals[i] = eval_sys_config(self.strip_sys_config(self.sys_configs[i]))
+            self.fitness_vals[i] = eval_sys_config(self.sys_configs[i])
 
         for _ in range(self.max_iterations):
             for i in range(self.num_search_parties):
@@ -139,20 +152,20 @@ class DSE_searcher:
 
         neighbors = []
 
-        for param in sys_config:
+        for key in sys_config.keys():
 
             # If the parameter has a 'next' element, add a neighbor of the next
             # element
-            if (sys_config[param][1].index(sys_config[param][0]) < len(sys_config[param][1]) - 1):
+            if (param_has_next(sys_config[key], self.param_ranges[key])):
                 config = copy.deepcopy(sys_config)
-                config[param] = (sys_config[param][1][sys_config[param][1].index(sys_config[param][0]) + 1], sys_config[param][1])
+                config[key] = param_next(sys_config[key], self.param_ranges[key])
                 neighbors.append(config)
 
             # If the parameter has a 'prev' element, add a neighbor of the
             # previous element
-            if (sys_config[param][1].index(sys_config[param][0]) != 0):
+            if (param_has_prev(sys_config[key], self.param_ranges[key])):
                 config = copy.deepcopy(sys_config)
-                config[param] = (sys_config[param][1][sys_config[param][1].index(sys_config[param][0]) - 1], sys_config[param][1])
+                config[key] = param_prev(sys_config[key], self.param_ranges[key])
                 neighbors.append(config)
 
         return neighbors
@@ -179,7 +192,7 @@ class DSE_searcher:
         fitnesses = []
         for n in neighbor_configs:
             # Evaluate each neighbor according to our evaluation function
-            fitnesses.append(eval_sys_config(self.strip_sys_config(n)))
+            fitnesses.append(eval_sys_config(n))
 
         sys_configs = neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
@@ -187,7 +200,8 @@ class DSE_searcher:
             # TODO choose best scoring neighbor
             best = min(zip(neighbor_configs, fitnesses), 
                 key = lambda x: x[1])
-            print(best)
+            if ("ArchEval_DBG" in os.environ and os.environ["ArchEval_DBG"] == "1"):
+                print(best)
             next_config = best[0]
             next_fitness = best[1]
         elif (self.policy == Neighbor.Stochastic):
@@ -219,7 +233,7 @@ def mock_eval_sys_config(sys_config):
     return eval_stats(mock_sim.stats)
 
 def main():
-    search = DSE_searcher(None)
+    search = DSE_searcher(user_constraints = None, param_ranges = {})
     search.search(mock_eval_sys_config)
 
 if __name__ == "__main__":

@@ -2,8 +2,8 @@
 
 import unittest
 
-from SimulationWrappers.mock_sim import MockSim
-from SimulationWrappers.mcpat_sim import McPatSim
+from mock_sim import MockSim
+from mcpat_sim import McPatSim
 
 class TestMockSim(unittest.TestCase):
     def test_valid_args(self):

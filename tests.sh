@@ -4,9 +4,11 @@ test_script() {
     ./"$1" &> /dev/null || echo "Test Failed! $1"
 }
 
-export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers
+export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers:${PWD}/DSE_searcher
 
 ./Tests/test_sim_wrappers.py
+
+./Tests/test_searcher.py
 
 # TODO:  Remove these tests when they are all replaced by unit tests
 test_script SimulationWrappers/gem5_sim.py
