@@ -55,6 +55,15 @@ class DSE_searcher:
 
     def __init__(self, user_constraints, param_ranges, max_iterations = 20, num_search_parties = 1):
 
+        if (max_iterations < 1):
+            raise ValueError("Max iterations must be strictly positive.")
+
+        if (num_search_parties < 1):
+            raise ValueError("Number of search parties must be strictly positive.")
+
+        if (not isinstance(param_ranges, dict)):
+            raise ValueError("Parameter ranges takes the form of a dictionary.")
+
         self.max_iterations = max_iterations
         self.num_search_parties = num_search_parties
         self.user_constraints = user_constraints

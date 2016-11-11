@@ -23,6 +23,16 @@ class TestSearcher(unittest.TestCase):
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
 
+    def test_invalid_args(self):
+        with self.assertRaises(ValueError):
+            s = DSE_searcher(None, [])
+
+        with self.assertRaises(ValueError):
+            s = DSE_searcher(None, {}, num_search_parties = -1)
+
+        with self.assertRaises(ValueError):
+            s = DSE_searcher(None, {}, max_iterations = -1)
+
     #def test_valid_args(self):
     	#MockSim({"cpu_frequency" : 1000})
 
