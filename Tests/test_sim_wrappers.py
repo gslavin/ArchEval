@@ -62,6 +62,5 @@ class TestMcPatSim(unittest.TestCase):
         sim_large.run()
         self.assertNotEqual(sim_small.stats, sim_large.stats)
 
-
 if __name__ == '__main__':
     unittest.main()
