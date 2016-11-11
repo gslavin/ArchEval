@@ -4,7 +4,7 @@ test_script() {
     ./"$1" &> /dev/null || echo "Test Failed! $1"
 }
 
-export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers:${PWD}/DSE_searcher
+export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers:${PWD}/DSE_search
 
 ./Tests/test_sim_wrappers.py
 
