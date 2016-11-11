@@ -63,6 +63,7 @@ class DSE_searcher:
         self.policy = Neighbor_Policy.Elitism
         # Default to searching all dimensions to determine best gradient. 
         # (-1 denotes all directions. Range: {-1} ^ [1, D]
+        # TODO: implment this feature (Eric Rock)
         self.search_directions = -1
 
         self.sys_configs = []
@@ -203,7 +204,6 @@ class DSE_searcher:
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
         if (self.policy == Neighbor_Policy.Elitism):
-            # TODO choose best scoring neighbor
             next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
         elif (self.policy == Neighbor.Stochastic):
             # TODO choose neighbor with probability proportional to their
