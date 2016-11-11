@@ -1,0 +1,3823 @@
+{
+    "name": null, 
+    "system": {
+        "l2_cntrl2": {
+            "cntrl_id": 10, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl2", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl2.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 2, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl2", 
+            "type": "L2Cache_Controller"
+        }, 
+        "physmem": {
+            "latency": 3.0000000000000004e-08, 
+            "in_addr_map": true, 
+            "latency_var": 0.0, 
+            "zero": false, 
+            "conf_table_reported": false, 
+            "cxx_class": "SimpleMemory", 
+            "path": "system.physmem", 
+            "null": false, 
+            "type": "SimpleMemory", 
+            "name": "physmem"
+        }, 
+        "cxx_class": "System", 
+        "l1_cntrl4": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl4.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 4, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl4", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl4.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 4, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[4]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 4, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl4.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl4", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l1_cntrl5": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl5.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 5, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl5", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl5.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 5, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[5]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 5, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl5.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl5", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l1_cntrl6": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl6.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 6, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl6", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl6.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 6, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[6]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 6, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl6.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl6", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l1_cntrl7": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl7.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 7, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl7", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl7.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 7, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[7]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 7, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl7.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl7", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l1_cntrl0": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl0.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 0, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl0", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl0.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 0, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[0]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 0, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl0.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl0", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "work_end_ckpt_count": 0, 
+        "l1_cntrl2": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl2.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 2, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl2", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl2.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 2, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[2]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 2, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl2.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl2", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l1_cntrl3": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl3.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 3, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl3", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl3.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 3, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[3]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 3, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl3.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl3", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "l2_cntrl1": {
+            "cntrl_id": 9, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl1", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl1.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 1, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl1", 
+            "type": "L2Cache_Controller"
+        }, 
+        "l2_cntrl0": {
+            "cntrl_id": 8, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl0", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl0.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 0, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl0", 
+            "type": "L2Cache_Controller"
+        }, 
+        "l2_cntrl3": {
+            "cntrl_id": 11, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl3", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl3.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 3, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl3", 
+            "type": "L2Cache_Controller"
+        }, 
+        "work_begin_ckpt_count": 0, 
+        "l2_cntrl5": {
+            "cntrl_id": 13, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl5", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl5.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 5, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl5", 
+            "type": "L2Cache_Controller"
+        }, 
+        "l2_cntrl4": {
+            "cntrl_id": 12, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl4", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl4.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 4, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl4", 
+            "type": "L2Cache_Controller"
+        }, 
+        "l2_cntrl7": {
+            "cntrl_id": 15, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl7", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl7.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 7, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl7", 
+            "type": "L2Cache_Controller"
+        }, 
+        "l2_cntrl6": {
+            "cntrl_id": 14, 
+            "recycle_latency": 10, 
+            "name": "l2_cntrl6", 
+            "number_of_TBEs": 256, 
+            "l2_response_latency": 2, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "L2Cache_Controller", 
+            "L2cacheMemory": {
+                "latency": 15, 
+                "is_icache": false, 
+                "name": "L2cacheMemory", 
+                "assoc": 4, 
+                "start_index_bit": 9, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l2_cntrl6.L2cacheMemory", 
+                "type": "RubyCache", 
+                "size": 131072
+            }, 
+            "l2_request_latency": 2, 
+            "version": 6, 
+            "to_l1_latency": 1, 
+            "buffer_size": 0, 
+            "path": "system.l2_cntrl6", 
+            "type": "L2Cache_Controller"
+        }, 
+        "synchrotrace": 1, 
+        "work_begin_cpu_id_exit": -1, 
+        "work_end_exit_count": 0, 
+        "type": "System", 
+        "tester": {
+            "num_threads": 8, 
+            "name": "tester", 
+            "num_cpus": 8, 
+            "skipLocal": false, 
+            "directory_shared_fraction": 2, 
+            "deadlock_threshold": 50000, 
+            "cpuPort": {
+                "peer": [
+                    "system.l1_cntrl0.sequencer.slave[0]", 
+                    "system.l1_cntrl1.sequencer.slave[0]", 
+                    "system.l1_cntrl2.sequencer.slave[0]", 
+                    "system.l1_cntrl3.sequencer.slave[0]", 
+                    "system.l1_cntrl4.sequencer.slave[0]", 
+                    "system.l1_cntrl5.sequencer.slave[0]", 
+                    "system.l1_cntrl6.sequencer.slave[0]", 
+                    "system.l1_cntrl7.sequencer.slave[0]"
+                ], 
+                "role": "MASTER"
+            }, 
+            "cpi_flops": 2.0, 
+            "cxx_class": "SynchroTrace", 
+            "path": "system.tester", 
+            "cpi_iops": 1.0, 
+            "type": "SynchroTrace", 
+            "masterWakeupFreq": 1
+        }, 
+        "sys_port_proxy": {
+            "access_phys_mem": true, 
+            "support_inst_reqs": true, 
+            "slave": {
+                "peer": [
+                    "system.system_port"
+                ], 
+                "role": "SLAVE"
+            }, 
+            "name": "sys_port_proxy", 
+            "support_data_reqs": true, 
+            "using_ruby_tester": false, 
+            "version": 0, 
+            "cxx_class": "RubyPortProxy", 
+            "path": "system.sys_port_proxy", 
+            "using_network_tester": false, 
+            "type": "RubyPortProxy"
+        }, 
+        "work_cpus_ckpt_count": 0, 
+        "work_begin_exit_count": 0, 
+        "num_work_ids": 16, 
+        "path": "system", 
+        "ruby": {
+            "random_seed": 1234, 
+            "name": "ruby", 
+            "clock": 5e-10, 
+            "mem_size": 1073741824, 
+            "num_cpus": 8, 
+            "block_size_bytes": 64, 
+            "profiler": {
+                "name": "profiler", 
+                "hot_lines": false, 
+                "all_instructions": false, 
+                "num_of_sequencers": 8, 
+                "cxx_class": "Profiler", 
+                "path": "system.ruby.profiler", 
+                "type": "RubyProfiler"
+            }, 
+            "randomization": false, 
+            "cxx_class": "RubySystem", 
+            "path": "system.ruby", 
+            "no_mem_vec": false, 
+            "type": "RubySystem", 
+            "network": {
+                "buffers_per_ctrl_vc": 1, 
+                "enable_fault_model": false, 
+                "name": "network", 
+                "vcs_per_vnet": 4, 
+                "control_msg_size": 8, 
+                "number_of_virtual_networks": 10, 
+                "ni_flit_size": 4, 
+                "cxx_class": "GarnetNetwork_d", 
+                "path": "system.ruby.network", 
+                "type": "GarnetNetwork_d", 
+                "buffers_per_data_vc": 4, 
+                "topology": {
+                    "name": "topology", 
+                    "int_links": [
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links0", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 24, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links0", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 24, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links0.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links1", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 25, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links1", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 25, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links1.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links2", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 26, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links2", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 26, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links2.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links3", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 27, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links3", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 27, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links3.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links4", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 28, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links4", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 28, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links4.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links5", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 29, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links5", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 29, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links5.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "int_links6", 
+                            "weight": 2, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 30, 
+                            "cxx_class": "GarnetIntLink_d", 
+                            "path": "system.ruby.network.topology.int_links6", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 30, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.int_links6.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetIntLink_d", 
+                            "bandwidth_factor": 4
+                        }
+                    ], 
+                    "routers": [
+                        {
+                            "router_id": 0, 
+                            "name": "routers0", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers0", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 1, 
+                            "name": "routers1", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers1", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 2, 
+                            "name": "routers2", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers2", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 3, 
+                            "name": "routers3", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers3", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 4, 
+                            "name": "routers4", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers4", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 5, 
+                            "name": "routers5", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers5", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 6, 
+                            "name": "routers6", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers6", 
+                            "vcs_per_vnet": 4
+                        }, 
+                        {
+                            "router_id": 7, 
+                            "name": "routers7", 
+                            "virt_nets": 10, 
+                            "type": "GarnetRouter_d", 
+                            "cxx_class": "Router_d", 
+                            "path": "system.ruby.network.topology.routers7", 
+                            "vcs_per_vnet": 4
+                        }
+                    ], 
+                    "ext_links": [
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links00", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 0, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links00", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 0, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links00.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links01", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 1, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links01", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 1, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links01.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links02", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 2, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links02", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 2, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links02.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links03", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 3, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links03", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 3, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links03.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links04", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 4, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links04", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 4, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links04.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links05", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 5, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links05", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 5, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links05.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links06", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 6, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links06", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 6, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links06.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links07", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 7, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links07", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 7, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links07.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links08", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 8, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links08", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 8, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links08.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links09", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 9, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links09", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 9, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links09.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links10", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 10, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links10", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 10, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links10.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links11", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 11, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links11", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 11, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links11.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links12", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 12, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links12", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 12, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links12.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links13", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 13, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links13", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 13, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links13.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links14", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 14, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links14", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 14, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links14.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links15", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 15, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links15", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 15, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links15.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links16", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 16, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links16", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 16, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links16.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links17", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 17, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links17", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 17, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links17.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links18", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 18, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links18", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 18, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links18.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links19", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 19, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links19", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 19, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links19.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links20", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 20, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links20", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 20, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links20.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links21", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 21, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links21", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 21, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links21.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links22", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 22, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links22", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 22, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links22.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }, 
+                        {
+                            "latency": 1, 
+                            "nls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.nls0", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "NetworkLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.nls1", 
+                                    "type": "NetworkLink_d", 
+                                    "name": "nls1"
+                                }
+                            ], 
+                            "name": "ext_links23", 
+                            "weight": 1, 
+                            "credit_links": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "link_id": 23, 
+                            "cxx_class": "GarnetExtLink_d", 
+                            "path": "system.ruby.network.topology.ext_links23", 
+                            "cls": [
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.cls0", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls0"
+                                }, 
+                                {
+                                    "channel_width": 4, 
+                                    "link_latency": 1, 
+                                    "virt_nets": 10, 
+                                    "vcs_per_vnet": 4, 
+                                    "link_id": 23, 
+                                    "cxx_class": "CreditLink_d", 
+                                    "path": "system.ruby.network.topology.ext_links23.cls1", 
+                                    "type": "CreditLink_d", 
+                                    "name": "cls1"
+                                }
+                            ], 
+                            "type": "GarnetExtLink_d", 
+                            "bandwidth_factor": 4
+                        }
+                    ], 
+                    "cxx_class": "Topology", 
+                    "path": "system.ruby.network.topology", 
+                    "type": "Topology", 
+                    "print_config": false
+                }
+            }
+        }, 
+        "l1_cntrl1": {
+            "L1DcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1DcacheMemory", 
+                "assoc": 16, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl1.L1DcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "cntrl_id": 1, 
+            "recycle_latency": 10, 
+            "name": "l1_cntrl1", 
+            "number_of_TBEs": 256, 
+            "l1_request_latency": 2, 
+            "cxx_class": "L1Cache_Controller", 
+            "to_l2_latency": 1, 
+            "L1IcacheMemory": {
+                "latency": 3, 
+                "is_icache": false, 
+                "name": "L1IcacheMemory", 
+                "assoc": 2, 
+                "start_index_bit": 6, 
+                "cxx_class": "CacheMemory", 
+                "path": "system.l1_cntrl1.L1IcacheMemory", 
+                "type": "RubyCache", 
+                "size": 8192
+            }, 
+            "l2_select_num_bits": 3, 
+            "version": 1, 
+            "l1_response_latency": 2, 
+            "sequencer": {
+                "access_phys_mem": true, 
+                "support_inst_reqs": true, 
+                "slave": {
+                    "peer": [
+                        "system.tester.cpuPort[1]"
+                    ], 
+                    "role": "SLAVE"
+                }, 
+                "name": "sequencer", 
+                "max_outstanding_requests": 16, 
+                "support_data_reqs": true, 
+                "deadlock_threshold": 500000, 
+                "using_ruby_tester": false, 
+                "version": 1, 
+                "cxx_class": "Sequencer", 
+                "path": "system.l1_cntrl1.sequencer", 
+                "using_network_tester": false, 
+                "type": "RubySequencer"
+            }, 
+            "buffer_size": 0, 
+            "path": "system.l1_cntrl1", 
+            "send_evictions": false, 
+            "type": "L1Cache_Controller", 
+            "transitions_per_cycle": 32
+        }, 
+        "mem_mode": "timing", 
+        "name": "system", 
+        "init_param": 0, 
+        "system_port": {
+            "peer": "system.sys_port_proxy.slave[0]", 
+            "role": "MASTER"
+        }, 
+        "load_addr_mask": 1099511627775, 
+        "work_item_id": -1, 
+        "dir_cntrl7": {
+            "cntrl_id": 23, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 7, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl7.memBuffer"
+            }, 
+            "name": "dir_cntrl7", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 7, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 7, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl7.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl7", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl6": {
+            "cntrl_id": 22, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 6, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl6.memBuffer"
+            }, 
+            "name": "dir_cntrl6", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 6, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 6, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl6.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl6", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl5": {
+            "cntrl_id": 21, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 5, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl5.memBuffer"
+            }, 
+            "name": "dir_cntrl5", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 5, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 5, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl5.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl5", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl4": {
+            "cntrl_id": 20, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 4, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl4.memBuffer"
+            }, 
+            "name": "dir_cntrl4", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 4, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 4, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl4.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl4", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl3": {
+            "cntrl_id": 19, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 3, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl3.memBuffer"
+            }, 
+            "name": "dir_cntrl3", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 3, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 3, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl3.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl3", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl2": {
+            "cntrl_id": 18, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 2, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl2.memBuffer"
+            }, 
+            "name": "dir_cntrl2", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 2, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 2, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl2.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl2", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl1": {
+            "cntrl_id": 17, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 1, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl1.memBuffer"
+            }, 
+            "name": "dir_cntrl1", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 1, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 1, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl1.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl1", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }, 
+        "dir_cntrl0": {
+            "cntrl_id": 16, 
+            "recycle_latency": 10, 
+            "memBuffer": {
+                "basic_bus_busy_time": 2, 
+                "cxx_class": "MemoryControl", 
+                "bank_queue_size": 12, 
+                "version": 0, 
+                "banks_per_rank": 8, 
+                "refresh_period": 1560, 
+                "mem_random_arbitrate": 0, 
+                "dimms_per_channel": 2, 
+                "type": "RubyMemoryControl", 
+                "tFaw": 0, 
+                "mem_ctl_latency": 12, 
+                "mem_fixed_delay": 0, 
+                "rank_bit_0": 11, 
+                "name": "memBuffer", 
+                "bank_busy_time": 11, 
+                "ranks_per_dimm": 2, 
+                "read_write_delay": 2, 
+                "bank_bit_0": 8, 
+                "mem_bus_cycle_multiplier": 10, 
+                "dimm_bit_0": 12, 
+                "rank_rank_delay": 1, 
+                "path": "system.dir_cntrl0.memBuffer"
+            }, 
+            "name": "dir_cntrl0", 
+            "number_of_TBEs": 256, 
+            "transitions_per_cycle": 32, 
+            "cxx_class": "Directory_Controller", 
+            "to_mem_ctrl_latency": 1, 
+            "version": 0, 
+            "buffer_size": 0, 
+            "directory": {
+                "map_levels": 4, 
+                "name": "directory", 
+                "use_map": false, 
+                "version": 0, 
+                "cxx_class": "DirectoryMemory", 
+                "path": "system.dir_cntrl0.directory", 
+                "type": "RubyDirectoryMemory", 
+                "numa_high_bit": 8, 
+                "size": 134217728
+            }, 
+            "path": "system.dir_cntrl0", 
+            "directory_latency": 6, 
+            "type": "Directory_Controller"
+        }
+    }, 
+    "time_sync_period": 0.1, 
+    "time_sync_spin_threshold": 9.999999999999999e-05, 
+    "cxx_class": "Root", 
+    "path": "root", 
+    "time_sync_enable": false, 
+    "type": "Root", 
+    "full_system": false
+}

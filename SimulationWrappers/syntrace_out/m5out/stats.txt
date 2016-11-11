@@ -1,0 +1,25 @@
+
+---------- Begin Simulation Statistics ----------
+sim_seconds                                  0.112012                       # Number of seconds simulated
+sim_ticks                                   112011869                       # Number of ticks simulated
+final_tick                                  112011869                       # Number of ticks from beginning of simulation (restored from checkpoints and never reset)
+sim_freq                                   1000000000                       # Frequency of simulated ticks
+host_tick_rate                                 175184                       # Simulator tick rate (ticks/s)
+host_mem_usage                                1444300                       # Number of bytes of host memory used
+host_seconds                                   639.39                       # Real time elapsed on the host
+system.physmem.bytes_read::tester            92012854                       # Number of bytes read from this memory
+system.physmem.bytes_read::total             92012854                       # Number of bytes read from this memory
+system.physmem.bytes_written::tester         68954324                       # Number of bytes written to this memory
+system.physmem.bytes_written::total          68954324                       # Number of bytes written to this memory
+system.physmem.num_reads::tester             12555188                       # Number of read requests responded to by this memory
+system.physmem.num_reads::total              12555188                       # Number of read requests responded to by this memory
+system.physmem.num_writes::tester             9178823                       # Number of write requests responded to by this memory
+system.physmem.num_writes::total              9178823                       # Number of write requests responded to by this memory
+system.physmem.bw_read::tester              821456287                       # Total read bandwidth from this memory (bytes/s)
+system.physmem.bw_read::total               821456287                       # Total read bandwidth from this memory (bytes/s)
+system.physmem.bw_write::tester             615598370                       # Write bandwidth from this memory (bytes/s)
+system.physmem.bw_write::total              615598370                       # Write bandwidth from this memory (bytes/s)
+system.physmem.bw_total::tester            1437054657                       # Total bandwidth to/from this memory (bytes/s)
+system.physmem.bw_total::total             1437054657                       # Total bandwidth to/from this memory (bytes/s)
+
+---------- End Simulation Statistics   ----------
