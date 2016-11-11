@@ -151,9 +151,7 @@ class DSE_searcher:
         """
 
         neighbors = []
-
         for key in sys_config.keys():
-
             # If the parameter has a 'next' element, add a neighbor of the next
             # element
             if (param_has_next(sys_config[key], self.param_ranges[key])):
@@ -169,6 +167,14 @@ class DSE_searcher:
                 neighbors.append(config)
 
         return neighbors
+
+    def get_best_sys_config(self, sys_configs, fitnesses):
+        best = min(zip(sys_configs, fitnesses),
+                   key = lambda x: x[1])
+        if ("ArchEval_DBG" in os.environ and os.environ["ArchEval_DBG"] == "1"):
+            print(best)
+
+        return best
 
     def search_neighbors(self, sys_config, current_fitness, eval_sys_config):
         """
@@ -194,16 +200,11 @@ class DSE_searcher:
             # Evaluate each neighbor according to our evaluation function
             fitnesses.append(eval_sys_config(n))
 
-        sys_configs = neighbor_configs.append(sys_config)
+        neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
         if (self.policy == Neighbor_Policy.Elitism):
             # TODO choose best scoring neighbor
-            best = min(zip(neighbor_configs, fitnesses), 
-                key = lambda x: x[1])
-            if ("ArchEval_DBG" in os.environ and os.environ["ArchEval_DBG"] == "1"):
-                print(best)
-            next_config = best[0]
-            next_fitness = best[1]
+            next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
         elif (self.policy == Neighbor.Stochastic):
             # TODO choose neighbor with probability proportional to their
             # relative score
