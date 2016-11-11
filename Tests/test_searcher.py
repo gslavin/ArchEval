@@ -23,24 +23,9 @@ class TestSearcher(unittest.TestCase):
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
 
-    #def test_valid_args(self):
-    	#MockSim({"cpu_frequency" : 1000})
 
-    #def test_invalid_args(self):
-        #with self.assertRaises(ValueError):
-            #MockSim({"fake_arg": 100})
+    # TODO: test invalid parameters
 
-#class TestMcPatSim(unittest.TestCase):
-    #def test_valid_args(self):
-        #McPatSim({"cache_size" : 2048})
-
-    #def test_invalid_args(self):
-        #with self.assertRaises(ValueError):
-            #McPatSim({"fake_arg": 56, "cache_size" : 2048})
-
-    #def test_sim_run(self):
-        #sim = McPatSim({"cache_size" : 2048})
-        #sim.run()
 
 if __name__ == '__main__':
     unittest.main()
