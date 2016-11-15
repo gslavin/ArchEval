@@ -8,6 +8,10 @@ export PYTHONPATH=${PYTHONPATH}:${PWD}/SimulationWrappers:${PWD}/DSE_search
 
 make all
 
+if [ ! -d _TestOut ]; then
+    mkdir _TestOut
+fi
+
 ./Tests/test_sim_wrappers.py
 
 ./Tests/test_searcher.py

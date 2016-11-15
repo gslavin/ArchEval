@@ -9,6 +9,7 @@
 # Stochastic Hill Climbing Algorithm
 #
 
+import logging
 import itertools as it
 import random as r
 import copy
@@ -143,17 +144,18 @@ class DSE_searcher:
         for i in range(self.num_search_parties):
             self.fitness_vals[i] = eval_sys_config(self.sys_configs[i])
 
-        for _ in range(self.max_iterations):
-            for i in range(self.num_search_parties):
+        for i in range(self.max_iterations):
+            for j in range(self.num_search_parties):
+                logging.info("Round {0}, Party: {1}".format(i, j))
                 # Each party will start a hill climbing search during each iteration
-                new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[i], self.fitness_vals[i], eval_sys_config)
+                new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[j], self.fitness_vals[j], eval_sys_config)
 
                 # TODO Implement plateau exploration
-                if (new_sys_config == self.sys_configs[i]):
+                if (new_sys_config == self.sys_configs[j]):
                     # Current nodes is a local max or min
                     pass
-                self.sys_configs[i] = new_sys_config
-                self.fitness_vals[i] = new_fitness
+                self.sys_configs[j] = new_sys_config
+                self.fitness_vals[j] = new_fitness
 
     def gen_neighbors(self, sys_config):
         """
@@ -181,8 +183,7 @@ class DSE_searcher:
     def get_best_sys_config(self, sys_configs, fitnesses):
         best = min(zip(sys_configs, fitnesses),
                    key = lambda x: x[1])
-        if ("ArchEval_DBG" in os.environ and os.environ["ArchEval_DBG"] == "1"):
-            print(best)
+        logging.info("Best config: {0}".format(best))
 
         return best
 

@@ -1,9 +1,20 @@
 #!/usr/bin/python3
 
+import datetime
+import logging
 import unittest
+import defs
 
 from DSE_searcher import DSE_searcher
 from mock_sim import MockSim
+
+def log_name(func):
+
+    def wrapper(*args, **kwargs):
+        logging.info("START {}: {:%Y-%m-%d %H:%M:%S}".format(func.__name__, datetime.datetime.now()))
+        func(*args, **kwargs)
+
+    return wrapper
 
 def eval_stats(stats):
     """
@@ -26,24 +37,29 @@ def mock_eval_sys_config(sys_config):
     return eval_stats(mock_sim.stats)
 
 class TestSearcher(unittest.TestCase):
+    @log_name
     def test_defaults(self):
         s = DSE_searcher(None, {})
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
 
+    @log_name
     def test_more_seeds(self):
         s = DSE_searcher(None, {}, num_search_parties = 2)
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
 
+    @log_name
     def test_min_start(self):
         s = DSE_searcher(None, {})
         s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
         
+    @log_name
     def test_max_start(self):
         s = DSE_searcher(None, {})
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
 
+    @log_name
     def test_invalid_args(self):
         s = DSE_searcher(None, {})
 
@@ -59,9 +75,13 @@ class TestSearcher(unittest.TestCase):
         with self.assertRaises(ValueError):
             s = DSE_searcher(None, param_ranges = [1,2,3])
 
+    @log_name
     def test_mock_sim(self):
         search = DSE_searcher(user_constraints = None, param_ranges = {})
         search.search(mock_eval_sys_config)
 
 if __name__ == '__main__':
+    logging.basicConfig(filename=defs.LOG_DIR + '/test_searcher.log', level=logging.INFO)
+    logging.info("START SEARCH TESTS: {:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()))
     unittest.main()
+    logging.info("END SEARCH TESTS")

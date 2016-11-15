@@ -11,3 +11,4 @@ cacti_clean:
 	$(MAKE) -C $(CACTI) clean
 
 clean: cacti_clean
+	rm -fr _TestOut
