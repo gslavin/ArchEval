@@ -1,6 +1,6 @@
 CACTI=cacti
 
-.PHONY: all cacti clean
+.PHONY: all cacti clean test_clean test
 
 all: cacti
 
@@ -10,5 +10,10 @@ cacti:
 cacti_clean:
 	$(MAKE) -C $(CACTI) clean
 
-clean: cacti_clean
+clean: cacti_clean test_clean
+
+test_clean:
 	rm -fr _TestOut
+
+test:
+	./tests.sh
