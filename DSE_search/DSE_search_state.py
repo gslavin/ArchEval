@@ -1,4 +1,5 @@
 import json
+import datetime
 
 
 from mock_sim import MockSim
@@ -61,7 +62,8 @@ class MockSearchState(SearchState):
         The most recent fitness score  
     """
 
-    def __init__(self, sys_config):
+    def __init__(self, constraints, sys_config):
+        self.constraints = constraints
         self.mock_sim = MockSim(sys_config)
         self.stats = {}
         self.fitness = None
@@ -70,7 +72,10 @@ class MockSearchState(SearchState):
         """
         Runs the simulations and places the statistics in the stats dictionary
         """
-        self.mock_sim.set_config(sys_config)
+        # Replace the old system configuration
+        self.sys_config = sys_config
+
+        self.mock_sim.set_config(self.sys_config)
 
         self.mock_sim.run()
     
@@ -81,3 +86,14 @@ class MockSearchState(SearchState):
 
     def stats_to_json(self):
         return json.dumps(self.stats, sort_keys=True, indent=4)
+
+    def generate_job_output(self):
+        job_output = {}
+
+        job_output["job_name"] = "Mock Test"
+        job_output["job_timestamp"] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now())
+        job_output["constraints"] = self.constraints
+        job_output["system_configuration"] = self.sys_config
+        job_output["simulation_results"] = self.stats
+
+        return json.dumps(job_output, sort_keys=True, indent=4)
