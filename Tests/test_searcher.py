@@ -3,18 +3,12 @@
 import datetime
 import logging
 import unittest
+import os
 import defs
 
 from DSE_searcher import DSE_searcher
 from mock_sim import MockSim
-
-def log_name(func):
-
-    def wrapper(*args, **kwargs):
-        logging.info("START {}: {:%Y-%m-%d %H:%M:%S}".format(func.__name__, datetime.datetime.now()))
-        func(*args, **kwargs)
-
-    return wrapper
+from test_utils import log_name
 
 def eval_stats(stats):
     """
@@ -81,7 +75,9 @@ class TestSearcher(unittest.TestCase):
         search.search(mock_eval_sys_config)
 
 if __name__ == '__main__':
-    logging.basicConfig(filename=defs.LOG_DIR + '/test_searcher.log', level=logging.INFO)
-    logging.info("START SEARCH TESTS: {:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now()))
+    script_name = os.path.basename(__file__)
+    script_name = script_name.split(".")[0]
+    logging.basicConfig(filename=defs.LOG_DIR + '/{}.log'.format(script_name), level=logging.INFO)
+    logging.info("START {} TESTS: {:%Y-%m-%d %H:%M:%S}".format(script_name, datetime.datetime.now()))
     unittest.main()
-    logging.info("END SEARCH TESTS")
+    logging.info("END {} TESTS".format(script_name))
