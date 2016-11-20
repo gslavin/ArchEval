@@ -164,45 +164,6 @@ class DSE_searcher:
 
         return configs
 
-    def gen_inital_sys_config(self):
-        """
-        Generates a stream of non-repeating system configuration
-        based on the user constraints
-        """
-
-        # Create permuation of all parameters
-        self.shuffled_params = copy.deepcopy(self.param_ranges)
-        for key in self.shuffled_params.keys():
-            # Create a random permutation of the parameter values
-            r.shuffle(self.shuffled_params[key])
-
-        #
-        # TODO: FIXME This algorithm will loop infinitely if all permutations
-        # have been returned already
-        #
-        prev_configs = []
-        while True:
-            config = self.gen_rand_config()
-            while config in prev_configs:
-               config = self.gen_rand_config()
-            prev_configs.append(config)
-            yield config
-
-    def gen_rand_config(self):
-        """
-        Generate a random configuration within the space of input parameters
-        """
-
-        # TODO take into account user constraints?
-        config = {}
-        for key in self.shuffled_params.keys():
-            # Assign the first element of the shuffled list to this config
-            config[key] = self.shuffled_params[key][0]
-            # Shift the contents of the shuffled list
-            self.shuffled_params[key].append(self.shuffled_params[key].pop(0))
-
-        return config
-
     def search(self, eval_sys_config):
         """
         Top level search
