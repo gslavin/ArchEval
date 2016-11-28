@@ -1,7 +1,6 @@
 {
     "constraints": {
         "max_area (mm2)": "2",
-        "max_execution_time (s)": "0.003",
         "max_execution_time (s)": "0.003"
     }
 }
