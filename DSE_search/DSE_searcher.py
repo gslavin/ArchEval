@@ -42,6 +42,9 @@ def param_prev(val, param_range):
     return param_range[param_range.index(val) - 1]
 
 def seed_dist(A, B):
+    """
+    Calculates the L1 distance between two seeds
+    """
     ret = 0;
     for key in A.keys():
         if (not key in B.keys()):
@@ -51,6 +54,10 @@ def seed_dist(A, B):
     return ret
 
 def seed_repel(A, B, ranges, alpha, min_dist):
+    """
+    Simulates repulsion between two seeds by randomly shifting indices which
+    have distance < min_dist from each other with probability alpha.
+    """
     if (seed_dist(A, B) < min_dist):
         for key in A.keys():
             # Repel a feature at a learning rate of alpha
