@@ -21,14 +21,14 @@ class TestSearcher(unittest.TestCase):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
         mock.eval_fitness(sys_config)
-        logging.info(mock.stats_to_json())
+        logging.info(mock.stats_to_json(sys_config))
 
     @log_name
     def test_generate_job_output(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
         mock.eval_fitness(sys_config)
-        logging.info(mock.generate_job_output())
+        logging.info(mock.generate_job_output(sys_config))
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
