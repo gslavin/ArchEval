@@ -1,6 +1,25 @@
 import json
 import datetime
 
+"""
+The search algorithm expects the user to provide a fitness function.
+This fitness function runs simulations using the simulation wrappers
+in order to determine the score for each node.
+
+After the search is finished, the visualization platform needs the following
+to display meaningful results:
+    user_constraints
+    system_configuration of the final arch
+    simulation results of the final arch
+
+This information is recorded by the SearchState class
+while the search program operates using the SearchState's
+fitness function.
+
+After the search is finished, the SearchState class is
+used to generate the job_output.json file that is sent
+to the visualization platform.
+"""
 
 from mock_sim import MockSim
 
@@ -13,7 +32,7 @@ class SearchState:
         most recent fitness value
 
     Members:
-    eval()
+    eval_fitness()
         fitness function
     stats
         The most recent simulation statistics
@@ -24,7 +43,7 @@ class SearchState:
     def __init__(self):
         pass
 
-    def eval(self, sys_config):
+    def eval_fitness(self, sys_config):
         pass
 
     def stats_to_json(self):
@@ -45,7 +64,7 @@ class SearchState:
 
         return json.dumps(job_output, sort_keys=True, indent=4)
 
-def eval_stats(stats):
+def mock_eval_stats(stats):
     """
     Basic function to minimize
     """
@@ -65,7 +84,7 @@ class MockSearchState(SearchState):
         most recent fitness value
 
     Members:
-    eval()
+    eval_fitness()
         fitness function
     stats
         The most recent simulation statistics
@@ -79,7 +98,7 @@ class MockSearchState(SearchState):
         self.stats = {}
         self.fitness = None
 
-    def eval(self, sys_config):
+    def eval_fitness(self, sys_config):
         """
         Runs the simulations and places the statistics in the stats dictionary
         """
@@ -91,7 +110,7 @@ class MockSearchState(SearchState):
         self.mock_sim.run()
     
         self.stats[self.mock_sim.__class__.__name__] = self.mock_sim.stats
-        self.fitness = eval_stats(self.mock_sim.stats)
+        self.fitness = mock_eval_stats(self.mock_sim.stats)
 
         return self.fitness
 

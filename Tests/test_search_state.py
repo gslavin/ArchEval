@@ -14,20 +14,20 @@ class TestSearcher(unittest.TestCase):
     def test_defaults(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
-        mock.eval(sys_config)
+        mock.eval_fitness(sys_config)
 
     @log_name
     def test_stats_to_json(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
-        mock.eval(sys_config)
+        mock.eval_fitness(sys_config)
         logging.info(mock.stats_to_json())
 
     @log_name
     def test_generate_job_output(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
-        mock.eval(sys_config)
+        mock.eval_fitness(sys_config)
         logging.info(mock.generate_job_output())
 
 if __name__ == '__main__':
