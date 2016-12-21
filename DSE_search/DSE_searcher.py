@@ -55,6 +55,11 @@ class DSE_searcher:
     """
 
     def __init__(self, user_constraints, param_ranges, max_iterations = 20, num_search_parties = 1):
+        """
+        public functions:
+        - search()
+            Finds a locally optimal system configuration
+        """
 
         if (max_iterations < 1):
             raise ValueError("Max iterations must be strictly positive.")
@@ -222,30 +227,3 @@ class DSE_searcher:
             next_fitness = fitnesses
 
         return next_config, next_fitness
-
-def eval_stats(stats):
-    """
-    Basic function to minimize
-    """
-    #TODO:  How to calibrate parameters?
-    a = 10e9
-    b = 1/(1048576)
-    result = a*stats["execution time (s)"] + b*stats["Area (mm2)"]
-    
-    return result
-
-def mock_eval_sys_config(sys_config):
-    """
-    Runs the configuration through the mock simulation
-    """
-    mock_sim = MockSim(sys_config)
-
-    mock_sim.run()
-    return eval_stats(mock_sim.stats)
-
-def main():
-    search = DSE_searcher(user_constraints = None, param_ranges = {})
-    search.search(mock_eval_sys_config)
-
-if __name__ == "__main__":
-    main()

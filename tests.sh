@@ -16,8 +16,9 @@ fi
 
 ./Tests/test_searcher.py
 
+./Tests/test_search_state.py
+
 # TODO:  Remove these tests when they are all replaced by unit tests
 test_script SimulationWrappers/gem5_sim.py
 test_script SimulationWrappers/simulation_wrapper.py
-test_script DSE_search/DSE_searcher.py
 test_script validate_json.py
