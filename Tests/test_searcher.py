@@ -57,6 +57,12 @@ class TestSearcher(unittest.TestCase):
         search.search(search_state.eval_fitness)
 
 
+    @log_name
+    def test_large_num_seeds(self):
+        s = DSE_searcher(None, {}, num_search_parties=100)
+        s.search(lambda x : - x["cache_size"] - x["cpu_frequency"] - x["cpu_count"])
+        
+
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
     script_name = script_name.split(".")[0]

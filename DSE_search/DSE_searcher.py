@@ -41,6 +41,42 @@ def param_has_prev(val, param_range):
 def param_prev(val, param_range):
     return param_range[param_range.index(val) - 1]
 
+def seed_dist(A, B):
+    """
+    Calculates the L1 distance between two seeds
+    """
+    ret = 0;
+    for key in A.keys():
+        if (not key in B.keys()):
+            raise ValueError("Expected key not present.")
+
+        ret += abs(A[key] - B[key])
+    return ret
+
+def seed_repel(A, B, ranges, alpha, min_dist):
+    """
+    Simulates repulsion between two seeds by randomly shifting indices which
+    have distance < min_dist from each other with probability alpha.
+    """
+    if (seed_dist(A, B) < min_dist):
+        for key in A.keys():
+            # Repel a feature at a learning rate of alpha
+            if (r.random() > alpha):
+                continue;
+            # If this feature is being repelled, push each value away from each
+            # other within the range.
+            if (A[key] < B[key]):
+                if (A[key] > 0):
+                    A[key] -= 1
+                if (B[key] < (len(ranges[key]) - 1)):
+                    B[key] += 1
+            else:
+                if (B[key] > 0):
+                    B[key] -= 1
+                if (A[key] < (len(ranges[key]) - 1)):
+                    A[key] += 1
+
+
 default_param_ranges = {
                        "cpu_count" : list(range(1, 9)),
                        "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 8))),
@@ -90,50 +126,55 @@ class DSE_searcher:
             self.param_ranges[key] = param_ranges[key]
 
         # Generate the intial config for each search party
-        self.sys_configs = list(it.islice(self.gen_inital_sys_config(),
-                                                  self.num_search_parties))
+        #self.sys_configs = list(it.islice(self.gen_inital_sys_config(),
+        #                                          self.num_search_parties))
+        
+        self.sys_configs = self.gen_search_parties(self.num_search_parties);
 
         for _ in self.sys_configs:
             self.fitness_vals.append(0)
 
-    def gen_inital_sys_config(self):
+    def gen_search_parties(self, N):
+        """ 
+        Generates a list of system configurations which are some (configurable)
+        distance from each other.
         """
-        Generates a stream of non-repeating system configuration
-        based on the user constraints
-        """
+        # Repelling rate
+        alpha = 0.5
 
-        # Create permuation of all parameters
-        self.shuffled_params = copy.deepcopy(self.param_ranges)
-        for key in self.shuffled_params.keys():
-            # Create a random permutation of the parameter values
-            r.shuffle(self.shuffled_params[key])
+        # Minimum distance within which repelling will occur
+        min_dist = 2
 
-        #
-        # TODO: FIXME This algorithm will loop infinitely if all permutations
-        # have been returned already
-        #
-        prev_configs = []
-        while True:
-            config = self.gen_rand_config()
-            while config in prev_configs:
-               config = self.gen_rand_config()
-            prev_configs.append(config)
-            yield config
+        # num iterations
+        iterations = 10000 * N
+        
+        parties = [];
 
-    def gen_rand_config(self):
-        """
-        Generate a random configuration within the space of input parameters
-        """
+        # Generate seeds of random indices within each parameter range
+        for i in range(0, N):
+            parties.append({})
+            for key in self.param_ranges.keys():
+                parties[i][key] = r.randint(0, len(self.param_ranges[key]) - 1)
 
-        # TODO take into account user constraints?
-        config = {}
-        for key in self.shuffled_params.keys():
-            # Assign the first element of the shuffled list to this config
-            config[key] = self.shuffled_params[key][0]
-            # Shift the contents of the shuffled list
-            self.shuffled_params[key].append(self.shuffled_params[key].pop(0))
+        # Repel seeds from each other randomly for a set number of iterations
+        if (N > 1):
+            for i in range(0, iterations):
+                a = r.randint(0, N - 1)
+                b = r.randint(0, N - 1)
+                while (a == b):
+                    b = r.randint(0, N - 1)
+                
+                seed_repel(parties[a], parties[b], self.param_ranges, alpha, min_dist)
 
-        return config
+        # Convert seed indices into actual sys configs
+        configs = [];
+        for i in range(0, N):
+            configs.append({})
+            for key in parties[i].keys():
+                configs[i][key] = self.param_ranges[key][parties[i][key]]
+            logging.info("initial config{0}: {1}".format(i, configs[i]))
+
+        return configs
 
     def search(self, eval_sys_config):
         """
