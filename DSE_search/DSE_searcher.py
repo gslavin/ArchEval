@@ -176,7 +176,7 @@ class DSE_searcher:
 
         return configs
 
-    def search(self, eval_sys_config):
+    def search(self, search_state):
         """
         Top level search
         Each search party starts at its random starting point
@@ -188,13 +188,13 @@ class DSE_searcher:
 
         # Initialize fitness scores for each configuration
         for i in range(self.num_search_parties):
-            self.fitness_vals[i] = eval_sys_config(self.sys_configs[i])
+            self.fitness_vals[i] = search_state.eval_fitness(self.sys_configs[i])
 
         for i in range(self.max_iterations):
             for j in range(self.num_search_parties):
                 logging.info("Round {0}, Party: {1}".format(i, j))
                 # Each party will start a hill climbing search during each iteration
-                new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[j], self.fitness_vals[j], eval_sys_config)
+                new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[j], self.fitness_vals[j], search_state)
 
                 # TODO Implement plateau exploration
                 if (new_sys_config == self.sys_configs[j]):
@@ -233,7 +233,7 @@ class DSE_searcher:
 
         return best
 
-    def search_neighbors(self, sys_config, current_fitness, eval_sys_config):
+    def search_neighbors(self, sys_config, current_fitness, search_state):
         """
         Searches neighbor nodes to see if they provide a better score
         """
@@ -255,7 +255,7 @@ class DSE_searcher:
         fitnesses = []
         for n in neighbor_configs:
             # Evaluate each neighbor according to our evaluation function
-            fitnesses.append(eval_sys_config(n))
+            fitnesses.append(search_state.eval_fitness(n))
 
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
