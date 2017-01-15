@@ -27,12 +27,14 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_min_start(self):
         s = DSE_searcher(None, {})
+        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
         
     @log_name
     def test_max_start(self):
         s = DSE_searcher(None, {})
+        s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
