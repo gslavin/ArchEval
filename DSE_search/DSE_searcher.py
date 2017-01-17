@@ -23,6 +23,10 @@ class Neighbor_Policy(Enum):
     Elitism = 1
     Stochastic = 2
 
+class Search_Algorithm(Enum):
+    Hill_Climber = 1
+    A_Star = 2
+
 def param_has_next(val, param_range):
     if (not val in param_range):
         raise ValueError("Current value not in range.")
