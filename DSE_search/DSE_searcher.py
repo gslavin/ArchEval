@@ -19,6 +19,10 @@ from enum import Enum
 
 from mock_sim import MockSim
 
+class hashabledict(dict):
+    def __hash__(self):
+        return hash(tuple(sorted(self.items())))
+
 class Search_Algorithm(Enum):
     Elitist_Hill_Climber = 1
     Stochastic_Hill_Climber = 2
@@ -216,7 +220,7 @@ class DSE_searcher:
         Implements A* search algorithm from the first seed configuration given
         for an exhaustive search of the search space.
         """
-        explored = []
+        explored = set()
         frontier = []
 
         frontier.append((search_state.eval_fitness(self.sys_configs[0]), self.sys_configs[0]))
@@ -225,20 +229,21 @@ class DSE_searcher:
 
 
         while (len(frontier) > 0):
-            node = frontier.pop()
+            frontier.sort(key = lambda x: x[0], reverse=True)
+            (fitness, sys_config) = frontier.pop()
 
-            logging.info("Exploring node: {0}".format(node))
+            logging.info("Exploring node: {0}".format((fitness, sys_config)))
 
-            if (node[0] < best[0]):
-                best = node
+            if (fitness < best[0]):
+                best = (fitness, sys_config)
 
-            neighbors = self.gen_neighbors(node[1])
+            neighbors = self.gen_neighbors(sys_config)
 
             for config in neighbors:
-                if (not config in explored):
+                if (not hashabledict(config) in explored):
                     frontier.append( (search_state.eval_fitness(config), config) )
+                    explored.add(hashabledict(config))
 
-            explored.append(node[1])
 
         logging.info("Best config: {0}".format(best))
 

@@ -73,7 +73,12 @@ class TestSearcher(unittest.TestCase):
 
     @log_name
     def test_A_star(self):
-        s = DSE_searcher(None, {}, num_search_parties=100)
+        modified_param_ranges = {
+                                "cpu_count" : list(range(1, 4)),
+                                "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
+                                "cache_size" : list(map(lambda x: 2**x, range(10, 13))),
+                                }
+        s = DSE_searcher(None, modified_param_ranges, num_search_parties=1)
         s.algorithm = Search_Algorithm.A_Star
         search_state = MockSearchState({}, {})
         s.search(search_state)
