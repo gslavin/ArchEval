@@ -67,7 +67,7 @@ class TestSearcher(unittest.TestCase):
 
     @log_name
     def test_large_num_seeds(self):
-        s = DSE_searcher(None, {}, num_search_parties=100)
+        s = DSE_searcher(None, {}, num_search_parties=10)
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
