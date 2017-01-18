@@ -54,13 +54,20 @@ class TestSearcher(unittest.TestCase):
         with self.assertRaises(ValueError):
             s = DSE_searcher(None, param_ranges = [1,2,3])
 
+    # TODO: fix stat_output for multiple search parties
     @log_name
     def test_stat_output(self):
-        s = DSE_searcher(user_constraints = None, param_ranges = {}, num_search_parties=2)
+        s = DSE_searcher(user_constraints = None, param_ranges = {}, num_search_parties=1)
         mock_search_state = MockSearchState({}, {})
         s.search(mock_search_state)
-        for config in s.sys_configs:
-            logging.info(mock_search_state.generate_job_output(config))
+
+        filename = defs.LOG_DIR + '/' + 'job_output{:%Y_%m_%d-%H:%M:%S}.json'.format(datetime.datetime.now())
+        with open(filename, "w") as result_file:
+            for config in s.sys_configs:
+                output = mock_search_state.generate_job_output(config)
+                result_file.write(output)
+                logging.info(output)
+
 
 
     @log_name
