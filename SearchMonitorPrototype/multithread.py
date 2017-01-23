@@ -1,4 +1,4 @@
-from multiprocessing import Process
+from multiprocessing import Process, Lock
 import multiprocessing
 import time
 import random
@@ -7,6 +7,11 @@ class SearchState():
     def __init__(self, config):
         self.config = config
 
+class LockedList(list):
+    def __init__(self, lock, *args):
+        list.__init__(self, *args)
+        self.lock = lock
+
 def run_monitor(search_parties):
     """
     Kills certain processes
@@ -14,9 +19,11 @@ def run_monitor(search_parties):
     """
     while search_parties:
         time.sleep(5 * random.random())
-        kill_target = search_parties.pop(random.randrange(len(search_parties)))
-        print(kill_target[0])
-        kill_target[0].terminate()
+        with search_parties.lock:
+            parties = search_parties
+            kill_target = parties.pop(random.randrange(len(parties)))
+            print(kill_target[0])
+            kill_target[0].terminate()
 
 def run_search_party(search_state):
     # Run simulation
@@ -35,7 +42,7 @@ if __name__ == '__main__':
         initial_sys_configs.append(initial_sys_config)
 
     # Create each search party
-    parties = []
+    parties = LockedList(Lock())
     for config in initial_sys_configs:
         search_state = SearchState(config)
         p = Process(target=run_search_party, args=(search_state,))
@@ -52,8 +59,11 @@ if __name__ == '__main__':
     monitor_thread.start()
 
     # Wait until only the monitor process is active
-    while len(multiprocessing.active_children()) > 1:
-        print("active childen: {}".format(multiprocessing.active_children()))
+    while True:
+        with parties.lock:
+            parties_remaining =  map(lambda x: x[0].is_alive(), parties)
+        if not any(parties_remaining):
+            break
         time.sleep(4)
 
     print("all done!")
