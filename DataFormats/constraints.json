@@ -1,5 +1,5 @@
 {
-    "constraints": {
+    "constraints": [
         {
             "parameter": "area (mm2)",
             "range": "(-inf, 2]"
@@ -8,5 +8,5 @@
             "parameter": "execution_time (s)",
             "range": "(-inf, 0.003]"
         }
-    }
+    ]
 }
