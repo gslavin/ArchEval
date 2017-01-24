@@ -5,6 +5,16 @@ import multiprocessing
 import time
 import random
 
+class SearchParty():
+    def __init__(self, p, search_state):
+        self.process = p
+        self.search_state = search_state
+    def __str__(self):
+        return "Search Party: {}".format(self.process)
+    def __repr__(self):
+        return "Search Party: {}".format(self.process)
+
+
 class SearchState():
     def __init__(self, config):
         self.config = config
@@ -24,12 +34,12 @@ def run_monitor(search_parties):
         with search_parties.lock:
             parties = search_parties
             kill_target = parties.pop(random.randrange(len(parties)))
-            print(kill_target[0])
-            kill_target[0].terminate()
+            print(kill_target)
+            kill_target.process.terminate()
 
 def run_search_party(search_state):
     # Run simulation
-    while True:
+    for i in range(50):
         time.sleep(0.5 * random.random())
         (tid, value) = search_state.config
         search_state.config = (tid, value + 1)
@@ -48,14 +58,14 @@ if __name__ == '__main__':
     for config in initial_sys_configs:
         search_state = SearchState(config)
         p = Process(target=run_search_party, args=(search_state,))
-        parties.append((p, search_state))
+        parties.append(SearchParty(p, search_state))
 
     # Create monitoring thread
     monitor_thread = Process(target=run_monitor, args=(parties, ))
 
     # Run search parties
     for party in parties:
-        party[0].start()
+        party.process.start()
 
     # Run monitor
     monitor_thread.start()
@@ -63,9 +73,10 @@ if __name__ == '__main__':
     # Wait until only the monitor process is active
     while True:
         with parties.lock:
-            parties_remaining =  map(lambda x: x[0].is_alive(), parties)
+            parties_remaining =  map(lambda x: x.process.is_alive(), parties)
         if not any(parties_remaining):
             break
         time.sleep(4)
 
-    print("all done!")
+    monitor_thread.terminate()
+    print("all done: {}".format(parties))
