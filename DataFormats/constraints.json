@@ -1,11 +1,12 @@
 {
     "constraints": {
         {
-            "area (mm2)": "2",
-            "range": "[-inf, 20)"
+            "parameter": "area (mm2)",
+            "range": "(-inf, 2]"
         },
         {
-            "execution_time (s)": "0.003"
+            "parameter": "execution_time (s)",
+            "range": "(-inf, 0.003]"
         }
     }
 }

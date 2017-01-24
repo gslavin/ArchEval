@@ -22,12 +22,14 @@ to the visualization platform.
 """
 
 from mock_sim import MockSim
+from range_string import RangeString
 
 def dict_to_key(d):
     """
     NOTE: This doesn't work for nested dicts
     """
     return tuple(sorted(d.items()))
+
 
 class SearchState:
     """
@@ -46,7 +48,15 @@ class SearchState:
         The most recent fitness score  
     """
 
-    def __init__(self):
+    def __init__(self, constraints):
+
+        if (not isinstance(constraints, dict)):
+            raise ValueError("Parameter ranges takes the form of a dictionary.")
+
+        self.constraints = {}
+        for key in constraints.keys():
+            self.constraints[key] = RangeString(constraints[key])
+
         pass
 
     def eval_fitness(self, sys_config):
@@ -105,7 +115,8 @@ class MockSearchState(SearchState):
         eval_fitness() is perserved in self.stats.  At the end of the search, the output statistics for the winning
         sys_config are retreived by passing the winning sys_config to generate_job_output(sys_config)
         """
-        self.constraints = constraints
+
+        super().__init__(costraints)
         self.mock_sim = MockSim(sys_config)
         self.stats = {}
         self.fitness = None
@@ -124,6 +135,11 @@ class MockSearchState(SearchState):
         self.stats[dict_to_key(sys_config)] = {}
         self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
         self.fitness = mock_eval_stats(self.mock_sim.stats)
+
+        for stat in self.constraints.keys():
+            if stat in self.stats[dict_to_key(sys_config)]:
+                if (not self.constraints[stat].in_range(self.stats[dict_to_key(sys_config)][stat])):
+                    self.fitness = float("inf")
 
         return self.fitness
 
