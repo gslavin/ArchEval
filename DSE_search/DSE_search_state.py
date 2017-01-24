@@ -116,7 +116,7 @@ class MockSearchState(SearchState):
         sys_config are retreived by passing the winning sys_config to generate_job_output(sys_config)
         """
 
-        super().__init__(costraints)
+        super().__init__(constraints)
         self.mock_sim = MockSim(sys_config)
         self.stats = {}
         self.fitness = None

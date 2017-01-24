@@ -57,7 +57,7 @@ class TestSearcher(unittest.TestCase):
     # TODO: fix stat_output for multiple search parties
     @log_name
     def test_stat_output(self):
-        s = DSE_searcher(user_constraints = None, param_ranges = {}, num_search_parties=1)
+        s = DSE_searcher(param_ranges = {}, num_search_parties=1)
         mock_search_state = MockSearchState({}, {})
         s.search(mock_search_state)
 
