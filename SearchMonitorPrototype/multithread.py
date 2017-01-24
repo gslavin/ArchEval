@@ -5,6 +5,9 @@ import multiprocessing
 import time
 import random
 
+# TODO: implement loggging
+#       The logging module is already threadsafe
+
 class SearchParty():
     def __init__(self, p, search_state):
         self.process = p
