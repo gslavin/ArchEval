@@ -128,17 +128,26 @@ class MockSearchState(SearchState):
         """
         # Replace the old system configuration
         self.sys_config = sys_config
-
         self.mock_sim.set_config(self.sys_config)
 
         self.mock_sim.run()
+
+        # If this particular sys_config has already been run, the results will be overwritten
         self.stats[dict_to_key(sys_config)] = {}
+
+        # For each sys_config, each simulation_wrapper has a dictionary of stats.
+        # For this class the only simulation wrapper is the MockSim
         self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
+
         self.fitness = mock_eval_stats(self.mock_sim.stats)
 
+        # We need to search the stats of the current MockSim run for constraint violations
+        mock_stats = self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__]
         for stat in self.constraints.keys():
-            if stat in self.stats[dict_to_key(sys_config)]:
-                if (not self.constraints[stat].in_range(self.stats[dict_to_key(sys_config)][stat])):
+            # TODO: need translation from abstract constraint name -> simulator stat name
+            if stat in mock_stats:
+                stat_value = mock_stats[stat]
+                if (not self.constraints[stat].in_range(stat_value)):
                     self.fitness = float("inf")
 
         return self.fitness
