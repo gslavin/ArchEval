@@ -32,13 +32,12 @@ def run_monitor(search_parties):
     Kills certain processes
     TODO: modify to accept the number of the process to kill
     """
-    while search_parties:
-        time.sleep(5 * random.random())
-        with search_parties.lock:
-            parties = search_parties
-            kill_target = parties.pop(random.randrange(len(parties)))
-            print(kill_target)
-            kill_target.process.terminate()
+    while True:
+        time.sleep(5)
+        cull_parties(search_parties)
+        print("Monitor:")
+        print_parties(search_parties)
+
 
 def run_search_party(search_state):
     # Run simulation
@@ -47,6 +46,16 @@ def run_search_party(search_state):
         (tid, value) = search_state.config
         search_state.config = (tid, value + 1)
         print(search_state.config)
+
+def cull_parties(parties):
+    with parties.lock:
+        x = parties.pop()
+        x.process.terminate()
+
+def print_parties(parties):
+    with parties.lock:
+        for party in parties:
+            print(party)
 
 if __name__ == '__main__':
     num_search_parties = 3
@@ -66,20 +75,24 @@ if __name__ == '__main__':
     # Create monitoring thread
     monitor_thread = Process(target=run_monitor, args=(parties, ))
 
+
     # Run search parties
     for party in parties:
         party.process.start()
 
+    print_parties(parties)
     # Run monitor
     monitor_thread.start()
 
     # Wait until only the monitor process is active
     while True:
+        print("Main:")
+        print_parties(parties)
         with parties.lock:
             parties_remaining =  map(lambda x: x.process.is_alive(), parties)
         if not any(parties_remaining):
             break
         time.sleep(4)
-
+  
     monitor_thread.terminate()
     print("all done: {}".format(parties))
