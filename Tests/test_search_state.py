@@ -31,6 +31,38 @@ class TestSearcher(unittest.TestCase):
         mock.eval_fitness(sys_config)
         logging.info(mock.generate_job_output(sys_config))
 
+    @log_name
+    def test_constraints(self):
+        C = { "Area (mm2)": "[1048576, 1048576]",
+              "execution time (s)": "(0.0, 2.00e-11)"
+            }
+        mock = MockSearchState(C, {})
+        sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}
+        fitness = mock.eval_fitness(sys_config)
+        logging.info(mock.stats_to_json(sys_config))
+        self.assertTrue(fitness < float("inf"))
+
+        C = { "Area (mm2)": "(-inf, 1048575]" }
+        mock = MockSearchState(C, {})
+        fitness = mock.eval_fitness(sys_config)
+        self.assertTrue(fitness == float("inf"))
+
+        C = { "execution time (s)": "(0.0, 1.99e-11]" }
+        mock = MockSearchState(C, {})
+        fitness = mock.eval_fitness(sys_config)
+        self.assertTrue(fitness == float("inf"))
+
+        C = { "Area (mm2)": "(-inf, 1048575]",
+              "execution time (s)": "(0.0, 1.99e-11)"
+            }
+        mock = MockSearchState(C, {})
+        fitness = mock.eval_fitness(sys_config)
+        self.assertTrue(fitness == float("inf"))
+
+
+
+        
+
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
     script_name = script_name.split(".")[0]

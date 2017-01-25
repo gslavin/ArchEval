@@ -76,14 +76,6 @@ class TestSearcher(unittest.TestCase):
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
-    @log_name
-    def test_constraints(self):
-        C = { "area (mm2)": "(-inf, 2]",
-              "execution_time (s)": "(-inf, 0.003]"
-            }
-        s = DSE_searcher(param_ranges = {})
-        mock_search_state = MockSearchState({}, {})
-        s.search(mock_search_state)
         
 
 if __name__ == '__main__':

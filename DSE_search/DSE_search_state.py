@@ -149,6 +149,9 @@ class MockSearchState(SearchState):
                 stat_value = mock_stats[stat]
                 if (not self.constraints[stat].in_range(stat_value)):
                     self.fitness = float("inf")
+            #else:
+                # TODO: Emit warning if a constraint is specified but not found
+                
 
         return self.fitness
 
