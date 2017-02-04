@@ -95,7 +95,7 @@ class DSE_searcher:
     Uses the simulation wrappers to a run a variety of simulations
     """
 
-    def __init__(self, user_constraints, param_ranges, max_iterations = 20, num_search_parties = 1):
+    def __init__(self, param_ranges, max_iterations = 20, num_search_parties = 1):
         """
         public functions:
         - search()
@@ -113,7 +113,6 @@ class DSE_searcher:
 
         self.max_iterations = max_iterations
         self.num_search_parties = num_search_parties
-        self.user_constraints = user_constraints
 
         # Default to elitism policy - best of N search directions is chosen
         self.algorithm = Search_Algorithm.Elitist_Hill_Climber

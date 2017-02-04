@@ -22,12 +22,14 @@ to the visualization platform.
 """
 
 from mock_sim import MockSim
+from range_string import RangeString
 
 def dict_to_key(d):
     """
     NOTE: This doesn't work for nested dicts
     """
     return tuple(sorted(d.items()))
+
 
 class SearchState:
     """
@@ -46,7 +48,15 @@ class SearchState:
         The most recent fitness score  
     """
 
-    def __init__(self):
+    def __init__(self, constraints):
+
+        if (not isinstance(constraints, dict)):
+            raise ValueError("Parameter ranges takes the form of a dictionary.")
+
+        self.constraints = {}
+        for key in constraints.keys():
+            self.constraints[key] = RangeString(constraints[key])
+
         pass
 
     def eval_fitness(self, sys_config):
@@ -105,7 +115,8 @@ class MockSearchState(SearchState):
         eval_fitness() is perserved in self.stats.  At the end of the search, the output statistics for the winning
         sys_config are retreived by passing the winning sys_config to generate_job_output(sys_config)
         """
-        self.constraints = constraints
+
+        super().__init__(constraints)
         self.mock_sim = MockSim(sys_config)
         self.stats = {}
         self.fitness = None
@@ -117,13 +128,30 @@ class MockSearchState(SearchState):
         """
         # Replace the old system configuration
         self.sys_config = sys_config
-
         self.mock_sim.set_config(self.sys_config)
 
         self.mock_sim.run()
+
+        # If this particular sys_config has already been run, the results will be overwritten
         self.stats[dict_to_key(sys_config)] = {}
+
+        # For each sys_config, each simulation_wrapper has a dictionary of stats.
+        # For this class the only simulation wrapper is the MockSim
         self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
+
         self.fitness = mock_eval_stats(self.mock_sim.stats)
+
+        # We need to search the stats of the current MockSim run for constraint violations
+        mock_stats = self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__]
+        for stat in self.constraints.keys():
+            # TODO: need translation from abstract constraint name -> simulator stat name
+            if stat in mock_stats:
+                stat_value = mock_stats[stat]
+                if (not self.constraints[stat].in_range(stat_value)):
+                    self.fitness = float("inf")
+            #else:
+                # TODO: Emit warning if a constraint is specified but not found
+                
 
         return self.fitness
 

@@ -18,6 +18,8 @@ fi
 
 ./Tests/test_search_state.py
 
+./Tests/test_range_string.py
+
 # TODO:  Remove these tests when they are all replaced by unit tests
 test_script SimulationWrappers/gem5_sim.py
 test_script SimulationWrappers/simulation_wrapper.py

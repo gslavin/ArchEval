@@ -16,50 +16,50 @@ from test_utils import log_name
 class TestSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
-        s = DSE_searcher(None, {})
+        s = DSE_searcher({})
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_more_seeds(self):
-        s = DSE_searcher(None, {}, num_search_parties = 2)
+        s = DSE_searcher({}, num_search_parties = 2)
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_min_start(self):
-        s = DSE_searcher(None, {})
+        s = DSE_searcher({})
         s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
         
     @log_name
     def test_max_start(self):
-        s = DSE_searcher(None, {})
+        s = DSE_searcher({})
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_invalid_args(self):
-        s = DSE_searcher(None, {})
+        s = DSE_searcher({})
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher(None, [])
+            s = DSE_searcher([])
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher(None, {}, num_search_parties = -1)
+            s = DSE_searcher({}, num_search_parties = -1)
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher(None, {}, max_iterations = -1)
+            s = DSE_searcher({}, max_iterations = -1)
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher(None, param_ranges = [1,2,3])
+            s = DSE_searcher(param_ranges = [1,2,3])
 
     # TODO: fix stat_output for multiple search parties
     @log_name
     def test_stat_output(self):
-        s = DSE_searcher(user_constraints = None, param_ranges = {}, num_search_parties=1)
+        s = DSE_searcher(param_ranges = {}, num_search_parties=1)
         mock_search_state = MockSearchState({}, {})
         s.search(mock_search_state)
 
@@ -74,7 +74,7 @@ class TestSearcher(unittest.TestCase):
 
     @log_name
     def test_large_num_seeds(self):
-        s = DSE_searcher(None, {}, num_search_parties=10)
+        s = DSE_searcher({}, num_search_parties=10)
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
@@ -85,7 +85,7 @@ class TestSearcher(unittest.TestCase):
                                 "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
                                 "cache_size" : list(map(lambda x: 2**x, range(10, 13))),
                                 }
-        s = DSE_searcher(None, modified_param_ranges, num_search_parties=1)
+        s = DSE_searcher(modified_param_ranges, num_search_parties=1)
         s.algorithm = Search_Algorithm.A_Star
         search_state = MockSearchState({}, {})
         s.search(search_state)
