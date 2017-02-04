@@ -7,9 +7,11 @@ import os
 import defs
 
 from DSE_searcher import DSE_searcher
+from DSE_searcher import Search_Algorithm
 from DSE_search_state import MockSearchState
 from mock_sim import MockSim
 from test_utils import log_name
+
 
 class TestSearcher(unittest.TestCase):
     @log_name
@@ -72,9 +74,22 @@ class TestSearcher(unittest.TestCase):
 
     @log_name
     def test_large_num_seeds(self):
-        s = DSE_searcher(None, {}, num_search_parties=100)
+        s = DSE_searcher(None, {}, num_search_parties=10)
         search_state = MockSearchState({}, {})
         s.search(search_state)
+
+    @log_name
+    def test_A_star(self):
+        modified_param_ranges = {
+                                "cpu_count" : list(range(1, 4)),
+                                "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
+                                "cache_size" : list(map(lambda x: 2**x, range(10, 13))),
+                                }
+        s = DSE_searcher(None, modified_param_ranges, num_search_parties=1)
+        s.algorithm = Search_Algorithm.A_Star
+        search_state = MockSearchState({}, {})
+        s.search(search_state)
+
         
 
 if __name__ == '__main__':

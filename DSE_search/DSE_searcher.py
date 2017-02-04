@@ -19,9 +19,14 @@ from enum import Enum
 
 from mock_sim import MockSim
 
-class Neighbor_Policy(Enum):
-    Elitism = 1
-    Stochastic = 2
+class hashabledict(dict):
+    def __hash__(self):
+        return hash(tuple(sorted(self.items())))
+
+class Search_Algorithm(Enum):
+    Elitist_Hill_Climber = 1
+    Stochastic_Hill_Climber = 2
+    A_Star = 3
 
 def param_has_next(val, param_range):
     if (not val in param_range):
@@ -111,7 +116,7 @@ class DSE_searcher:
         self.user_constraints = user_constraints
 
         # Default to elitism policy - best of N search directions is chosen
-        self.policy = Neighbor_Policy.Elitism
+        self.algorithm = Search_Algorithm.Elitist_Hill_Climber
         # Default to searching all dimensions to determine best gradient. 
         # (-1 denotes all directions. Range: {-1} ^ [1, D]
         # TODO: implment this feature (Eric Rock)
@@ -125,10 +130,6 @@ class DSE_searcher:
         for key in param_ranges.keys():
             self.param_ranges[key] = param_ranges[key]
 
-        # Generate the intial config for each search party
-        #self.sys_configs = list(it.islice(self.gen_inital_sys_config(),
-        #                                          self.num_search_parties))
-        
         self.sys_configs = self.gen_search_parties(self.num_search_parties);
 
         for _ in self.sys_configs:
@@ -179,11 +180,21 @@ class DSE_searcher:
     def search(self, search_state):
         """
         Top level search
-        Each search party starts at its random starting point
-        Neighbors around the starting point are tested
-        A direction is chosen to continue the search
+        Directs search according to chosen search algorithm.
         """
+
+        if ((self.algorithm == Search_Algorithm.Elitist_Hill_Climber) or
+            (self.algorithm == Search_Algorithm.Stochastic_Hill_Climber)):
+            self.search_hill_climber(search_state)
+        elif (self.algorithm == Search_Algorithm.A_Star):
+            self.search_a_star(search_state)
         
+        
+    def search_hill_climber(self, search_state):
+        """
+        Implements a hill climbing search algorithm given the starting seed
+        configurations.
+        """
         # TODO store direction we came from to cut down on superfluous searches
 
         # Initialize fitness scores for each configuration
@@ -202,6 +213,40 @@ class DSE_searcher:
                     pass
                 self.sys_configs[j] = new_sys_config
                 self.fitness_vals[j] = new_fitness
+
+
+    def search_a_star(self, search_state):
+        """
+        Implements A* search algorithm from the first seed configuration given
+        for an exhaustive search of the search space.
+        """
+        explored = set()
+        frontier = []
+
+        frontier.append((search_state.eval_fitness(self.sys_configs[0]), self.sys_configs[0]))
+
+        best = frontier[0]
+
+
+        while (len(frontier) > 0):
+            frontier.sort(key = lambda x: x[0], reverse=True)
+            (fitness, sys_config) = frontier.pop()
+
+            logging.info("Exploring node: {0}".format((fitness, sys_config)))
+
+            if (fitness < best[0]):
+                best = (fitness, sys_config)
+
+            neighbors = self.gen_neighbors(sys_config)
+
+            for config in neighbors:
+                if (not hashabledict(config) in explored):
+                    frontier.append( (search_state.eval_fitness(config), config) )
+                    explored.add(hashabledict(config))
+
+
+        logging.info("Best config: {0}".format(best))
+
 
     def gen_neighbors(self, sys_config):
         """
@@ -259,9 +304,9 @@ class DSE_searcher:
 
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
-        if (self.policy == Neighbor_Policy.Elitism):
+        if (self.algorithm == Search_Algorithm.Elitist_Hill_Climber):
             next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
-        elif (self.policy == Neighbor.Stochastic):
+        elif (self.algorithm == Search_Algorithm.Stochastic_Hill_Climber):
             # TODO choose neighbor with probability proportional to their
             # relative score
             next_config = sys_config
