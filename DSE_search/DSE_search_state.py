@@ -45,7 +45,7 @@ class SearchState:
     stats
         The most recent simulation statistics
     fitness
-        The most recent fitness score  
+        The most recent fitness score
     """
 
     def __init__(self, constraints):
@@ -88,7 +88,7 @@ def mock_eval_stats(stats):
     a = 10e9
     b = 1/(1048576)
     result = a*stats["execution time (s)"] + b*stats["Area (mm2)"]
-    
+
     return result
 
 class MockSearchState(SearchState):
@@ -105,7 +105,7 @@ class MockSearchState(SearchState):
     stats
         The most recent simulation statistics
     fitness
-        The most recent fitness score  
+        The most recent fitness score
     """
 
     def __init__(self, constraints, sys_config):
@@ -151,7 +151,7 @@ class MockSearchState(SearchState):
                     self.fitness = float("inf")
             #else:
                 # TODO: Emit warning if a constraint is specified but not found
-                
+
 
         return self.fitness
 
