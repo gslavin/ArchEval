@@ -4,6 +4,7 @@ import unittest
 
 from mock_sim import MockSim
 from mcpat_sim import McPatSim
+from gem5_sim import Gem5Sim
 
 class TestMockSim(unittest.TestCase):
     def test_valid_args(self):
@@ -61,6 +62,14 @@ class TestMcPatSim(unittest.TestCase):
         sim_small.run()
         sim_large.run()
         self.assertNotEqual(sim_small.stats, sim_large.stats)
+
+class TestGem5Sim(unittest.TestCase):
+    def test_sim_stats(self):
+        sim = Gem5Sim({})
+        sim.run()
+        self.assertNotEqual(sim.stats, None)
+
+
 
 if __name__ == '__main__':
     unittest.main()

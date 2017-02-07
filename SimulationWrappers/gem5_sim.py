@@ -1,13 +1,58 @@
 #!/usr/bin/env python3
 
-#from simulation_wrapper import SimWrap
+from simulation_wrapper import SimWrap
 
 import string
 import re
 import json
-import copy 
+import defs
 
-class Gem5Sim():
+config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
+
+def nested_stats_insert(stats, fields):
+    # Expecting lines with at least 2 fields separated by whitespace
+    if len(fields) < 2:
+        return
+
+    #
+    # First field is the key, which may have nested attributes
+    # Nested attributes are indicated by the fully qualified name separated by '.'
+    # i.e. 'system.voltage_domain.voltage'
+    #
+    if ("." in fields[0]):
+        # Split out the fully qualified name of the attribute
+        nested_keys = fields[0].split(".")
+        # Retrieve the outermost domain name
+        domain = nested_keys[0]
+
+        #
+        # If this domain has been encoutered before, grab the existing dict
+        # Otherwise, create a new one
+        #
+        if (domain in stats.keys()):
+            nest = stats[domain]
+        else:
+            nest = {}
+
+        # Strip the outermost domain from the fully qualified name
+        nested_keys.pop(0)
+        
+        # Insert this value into the nest using the remaining domains
+        nested_stats_insert(nest, [".".join(nested_keys), fields[1]])
+
+        # Update the main dictionary with this updated nested dictionary
+        stats[domain] = nest
+    
+    else:
+        stats[fields[0]] = gem5_parse_value(fields[1])
+
+def gem5_parse_value(string):
+    if ("." in string or "nan" in string):
+        return float(string)
+    return int(string)
+
+
+class Gem5Sim(SimWrap):
     """
     self.config
         simulation configuration
@@ -15,102 +60,54 @@ class Gem5Sim():
         simulation results
     """
 
-    def __init__(self):
+    def __init__(self, params):
         """
         Pass in dictionary of simulation parameters // Expecting a list preferrably
         Store configuration of simulation
         """
-        ## self.validate_params(params)
-        ## self.config = params
-        pass
+        
+        self.config = config_defaults
+        self.set_config(params)
+
+    def set_config(self, params):
+        """
+        Updates the system configuration with the passed parameters
+        """
+        self.validate_params(params)
+        for k in params.keys():
+            self.config[k] = params[k]
 
     def validate_params(self, params):
-        """valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
+        valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
         if not all(k in valid_params for k in params.keys()):
             raise ValueError("Not a valid gem5 config parameter")
-        """
+
         pass
-    
-    def update_dict(self, d, value):
-      temp = {}
-      found = None
-      if(value[1].isdigit() == False and 
-          value[1] != 'nan' and
-          '.' not in value[1]):
-      
-        for i in d['substat']:
-          if(i['stat'] == value[0]):
-            found = i
-            break
-      
-        if (found == None):
-          temp['stat'] = value[0]
-          temp['substat'] = []
-          d['substat'].append((temp))
-          self.update_dict(temp, value[1:])
-        else:
-          self.update_dict(found, value[1:])
-        '''
-        temp['stat'] = value[0]
-        temp['substat'] = []
-        d['substat'].append((temp))
-        self.update_dict(temp, value[1:])
-        '''
-      else: #base case
-        temp['stat'] = value[0]
-        temp['value'] = value[1]
-        d['substat'].append((temp))
-      
-      return d
-        
-       
-
-    def parse_stat_file(self, filename):
-        """
-        Parses the gem5 stat.txt file and returns the
-        indicated fields.  Currently only works for
-        op classes
-        """
-        master = []
-        temp = {}
-        with open(filename, 'r') as f:
-            next(f)
-            next(f)
-            for line in f:
-              # strip out comment
-              line = line.split("#")[0].strip()
-              #Split into fields
-              fields = re.split('[ ]+', line)
-              fields = re.split('[.:]+', fields[0]) + fields[1:]
-
-              if fields[0] == '':
-                break
-              
-              found = None
-              if len(fields) == 2:
-                temp['stat'] = fields[0]
-                temp['value'] = fields[-1]
-                master.append(copy.copy(temp))
-                temp.clear();
-              
-              else:
-                for i in master:
-                  if i['stat'] == fields[0]:
-                    found = i
-                    master.remove(i)
-                    break
-
-                if (found == None):    
-                  temp['stat'] = fields[0]
-                  temp['substat'] = []
-                  master.append(copy.copy(self.update_dict(temp, fields[1:])))
-                else:
-                  master.append((self.update_dict(found, fields[1:])))
-
-        return master
 
     def run_simulation(self):
         pass
+
+    def parse_stats(self, filename):
+        stats = {}
+
+        f = open(filename, 'r')
+
+        try:
+            # First two lines of stat file are not data, but let's be smart
+            # about it and instead search for the start of data indicator
+            while ("Begin Simulation Statistics" not in f.readline()):
+                continue
+
+            s = f.readline()
+            while ("End Simulation Statistics" not in s):
+                nested_stats_insert(stats, s.split())
+
+                s = f.readline()
+
+        finally:
+            f.close()
+
+        return stats
 
     def run(self):
         """
@@ -120,14 +117,13 @@ class Gem5Sim():
         self.run_simulation()
 
         # Collect the statistics
-        filename = "stats.txt"
-        self.stats = parse_stat_file(filename)
+        filename = defs.ROOT_DIR + "/SimulationWrappers/stats.txt"
+        self.stats = self.parse_stats(filename)
 
 def main():
-    sim = Gem5Sim()
-    sim.parse_stat_file("stats.txt")
-    ##sim.run()
-    ##print(sim.stats_to_json())
+    sim = Gem5Sim({})
+    sim.run()
+    print(sim.stats_to_json())
 
 if __name__ == "__main__":
     main()
