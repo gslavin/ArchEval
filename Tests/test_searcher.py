@@ -30,7 +30,7 @@ class TestSearcher(unittest.TestCase):
         s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
-        
+
     @log_name
     def test_max_start(self):
         s = DSE_searcher({})
@@ -97,7 +97,7 @@ class TestSearcher(unittest.TestCase):
         search_state = HighPerformanceSearchState({}, {})
         s.search(search_state)
 
-   
+
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
