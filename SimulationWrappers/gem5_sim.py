@@ -52,6 +52,25 @@ def gem5_parse_value(string):
         return float(string)
     return int(string)
 
+def gem5_parse_freq(freq):
+    prefix = ""
+
+    if (freq >= 1000):
+        freq = int(freq / 1000)
+        prefix = "K"
+
+
+    if (freq >= 1000):
+        freq = int(freq / 1000)
+        prefix = "M"
+
+    
+    if (freq >= 1000):
+        freq = int(freq / 1000)
+        prefix = "G"
+
+    return str(freq) + prefix + "Hz"
+
 
 class Gem5Sim(SimWrap):
     """
@@ -92,6 +111,14 @@ class Gem5Sim(SimWrap):
         pass
 
     def run_simulation(self):
+        NUM_CPUS = " -n " + str(self.config["cpu_count"])
+        FREQ = " --cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"])
+        L1_CACHE = " --l1d_size=" + str(self.config["cache_size"])
+        COMMAND = " -c " + defs.BENCHMARK_PATH
+
+        subprocess.check_call(defs.GEM5_DIR + "/build/X86/gem5.opt " + \
+                            defs.GEM5_DIR + "/configs/example/se.py  " + \
+                            NUM_CPUS + FREQ + L1_CACHE + COMMAND)
         pass
 
     def parse_stats(self, filename):
