@@ -5,6 +5,7 @@ from simulation_wrapper import SimWrap
 import string
 import re
 import json
+import subprocess
 import defs
 
 config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
@@ -65,6 +66,12 @@ class Gem5Sim(SimWrap):
         Pass in dictionary of simulation parameters // Expecting a list preferrably
         Store configuration of simulation
         """
+
+        if (len(defs.GEM5_DIR) == 0):
+            raise ValueError("Please update Gem5 directory in defs.py.")
+
+        if (len(defs.BENCHMARK_PATH) == 0):
+            raise ValueError("Please update benchmark path in defs.py.")
         
         self.config = config_defaults
         self.set_config(params)
