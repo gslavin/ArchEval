@@ -39,6 +39,7 @@ class TestSearcher(unittest.TestCase):
         mock = MockSearchState(C, {})
         sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}
         fitness = mock.eval_fitness(sys_config)
+        logging.info("fitness: {}".format(fitness))
         logging.info(mock.stats_to_json(sys_config))
         self.assertTrue(fitness < float("inf"))
 

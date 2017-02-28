@@ -11,6 +11,15 @@ PROGRAM_LENGTH = 1000
 
 config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
 
+def default_config_to_stats(cpu_count, freq, cache_size):
+    stats = {}
+    stats["Area (mm2)"] = cache_size**2
+    stats["Dynamic read energy (nJ)"] = cache_size
+    stats["Dynamic write energy (nJ)"] = cache_size
+    stats["execution time (s)"] = ((PROGRAM_LENGTH)/(cpu_count*freq))*(1/cache_size)
+
+    return stats
+
 class MockSim(SimWrap):
     """
     self.config
@@ -19,13 +28,15 @@ class MockSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params):
+    # TODO: rename params
+    def __init__(self, params, config_to_stats = default_config_to_stats):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
         self.config = config_defaults
         self.set_config(params)
+        self.config_to_stats = config_to_stats
 
     def set_config(self, params):
         """
@@ -47,12 +58,7 @@ class MockSim(SimWrap):
         cpu_count = self.config["cpu_count"]
         freq = self.config["cpu_frequency"]
         cache_size = self.config["cache_size"]
-        stats = {}
-        stats["Area (mm2)"] = cache_size**2
-        stats["Dynamic read energy (nJ)"] = cache_size
-        stats["Dynamic write energy (nJ)"] = cache_size
-        stats["execution time (s)"] = ((PROGRAM_LENGTH)/(cpu_count*freq))*(1/cache_size)
-        self.stats = stats
+        self.stats = self.config_to_stats(cpu_count, freq, cache_size)
 
     def run(self):
         """
@@ -61,6 +67,32 @@ class MockSim(SimWrap):
         """
         self.run_simulation()
         self.mock_stats()
+
+
+def many_peaks(cpu_count, freq, cache_size):
+    """
+    Creates an interesting topology by zeroing execution time
+    as specific cpu_count values
+    """
+    stats = {}
+    stats["Area (mm2)"] = cache_size**2
+    stats["Dynamic read energy (nJ)"] = cache_size
+    stats["Dynamic write energy (nJ)"] = cache_size
+    stats["execution time (s)"] = ((PROGRAM_LENGTH)/(cpu_count*freq))*(1/cache_size)
+    if cpu_count in [1, 5, 7]:
+        stats["execution time (s)"] = 0
+
+    return stats
+
+class ManyPeaksMockSim(MockSim):
+    """
+    Creates a MockSim that is designed to have search parties find different
+    peaks. The many_peaks functon mocks stats are minimal at [1, 5, 7] cpu
+    cores.
+    """
+
+    def __init__(self, params):
+        super().__init__(params, many_peaks)
 
 
 def main():

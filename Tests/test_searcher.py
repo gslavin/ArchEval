@@ -9,7 +9,7 @@ import defs
 from DSE_searcher import DSE_searcher
 from DSE_searcher import Search_Algorithm
 from DSE_search_state import *
-from mock_sim import MockSim
+from mock_sim import ManyPeaksMockSim, MockSim
 from test_utils import log_name
 
 
@@ -70,12 +70,22 @@ class TestSearcher(unittest.TestCase):
                 result_file.write(output)
                 logging.info(output)
 
-
-
     @log_name
     def test_large_num_seeds(self):
         s = DSE_searcher({}, num_search_parties=10)
         search_state = MockSearchState({}, {})
+        s.search(search_state)
+
+    # TODO: Have an automatic way of showing the search parties haven't converged
+    @log_name
+    def test_large_num_seeds_many_peaks(self):
+        """
+        The search parties in this test should not converge to a single point
+        because the topology of the ManyPeaksMockSim should provide several
+        minimums for the search parties to find.
+        """
+        s = DSE_searcher({}, num_search_parties=10)
+        search_state = MockSearchState({}, {}, sim = ManyPeaksMockSim)
         s.search(search_state)
 
     @log_name
