@@ -24,3 +24,10 @@ fi
 test_script SimulationWrappers/gem5_sim.py
 test_script SimulationWrappers/simulation_wrapper.py
 test_script validate_json.py
+
+
+# Run a single test as follows:
+
+#./Tests/test_searcher.py TestSearcher.test_large_num_seeds_many_peaks
+
+# Need the make sure your PYTHONPATH matches the PYTHONPATH shown above
