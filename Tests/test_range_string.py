@@ -24,7 +24,7 @@ class TestRangeString(unittest.TestCase):
                   "[12, 12)",
                   "(12, 12]"
                 ]
-        
+
         for test_case in tests:
             with self.assertRaises(ValueError):
                 rs = RangeString(test_case)

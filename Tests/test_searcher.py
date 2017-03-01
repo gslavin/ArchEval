@@ -8,7 +8,7 @@ import defs
 
 from DSE_searcher import DSE_searcher
 from DSE_searcher import Search_Algorithm
-from DSE_search_state import MockSearchState
+from DSE_search_state import *
 from mock_sim import MockSim
 from test_utils import log_name
 
@@ -32,7 +32,7 @@ class TestSearcher(unittest.TestCase):
         s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
-        
+
     @log_name
     def test_max_start(self):
         s = DSE_searcher({})
@@ -88,9 +88,41 @@ class TestSearcher(unittest.TestCase):
         s = DSE_searcher(modified_param_ranges, num_search_parties=1)
         s.algorithm = Search_Algorithm.A_Star
         search_state = MockSearchState({}, {})
+    def test_embedded_heuristic(self):
+        s = DSE_searcher({})
+        s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        search_state = EmbeddedSearchState({}, {})
         s.search(search_state)
 
-        
+    @log_name
+    def test_balanced_heuristic(self):
+        s = DSE_searcher({})
+        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        search_state = BalancedSearchState({}, {})
+        s.search(search_state)
+
+    @log_name
+    def test_high_performance_heuristic(self):
+        s = DSE_searcher({})
+        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        search_state = HighPerformanceSearchState({}, {})
+        s.search(search_state)
+
+
+class TestSearcherGem5(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        s = DSE_searcher({})
+        search_state = FullSearchState({}, {})
+        #s.search(search_state)
+
+    def test_A_star(self):
+        s = DSE_searcher({})
+        s.algorithm = Search_Algorithm.A_Star
+        search_state = FullSearchState({}, {})
+        #s.search(search_state)
+
+
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)

@@ -31,7 +31,7 @@ class Search_Algorithm(Enum):
 def param_has_next(val, param_range):
     if (not val in param_range):
         raise ValueError("Current value not in range.")
-    
+
     return param_range.index(val) < (len(param_range) - 1)
 
 def param_next(val, param_range):
@@ -116,7 +116,7 @@ class DSE_searcher:
 
         # Default to elitism policy - best of N search directions is chosen
         self.algorithm = Search_Algorithm.Elitist_Hill_Climber
-        # Default to searching all dimensions to determine best gradient. 
+        # Default to searching all dimensions to determine best gradient.
         # (-1 denotes all directions. Range: {-1} ^ [1, D]
         # TODO: implment this feature (Eric Rock)
         self.search_directions = -1
@@ -135,7 +135,7 @@ class DSE_searcher:
             self.fitness_vals.append(0)
 
     def gen_search_parties(self, N):
-        """ 
+        """
         Generates a list of system configurations which are some (configurable)
         distance from each other.
         """
@@ -147,7 +147,7 @@ class DSE_searcher:
 
         # num iterations
         iterations = 10000 * N
-        
+
         parties = [];
 
         # Generate seeds of random indices within each parameter range
@@ -163,7 +163,7 @@ class DSE_searcher:
                 b = r.randint(0, N - 1)
                 while (a == b):
                     b = r.randint(0, N - 1)
-                
+
                 seed_repel(parties[a], parties[b], self.param_ranges, alpha, min_dist)
 
         # Convert seed indices into actual sys configs
@@ -187,8 +187,8 @@ class DSE_searcher:
             self.search_hill_climber(search_state)
         elif (self.algorithm == Search_Algorithm.A_Star):
             self.search_a_star(search_state)
-        
-        
+
+
     def search_hill_climber(self, search_state):
         """
         Implements a hill climbing search algorithm given the starting seed
@@ -291,7 +291,7 @@ class DSE_searcher:
 
         # Generate possible neighbors
         neighbor_configs = self.gen_neighbors(sys_config)
-        
+
         # Permute order of neighbors, just in case we're not searching through
         # all of them
         r.shuffle(neighbor_configs)

@@ -76,15 +76,17 @@ class Gem5Sim(SimWrap):
     """
     self.config
         simulation configuration
-    self.stats ## dict of information 
+    self.stats ## dict of information
         simulation results
     """
 
     def __init__(self, params):
         """
-        Pass in dictionary of simulation parameters // Expecting a list preferrably
+        Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
+
+        # TODO rename params to sys_config
 
         if (len(defs.GEM5_DIR) == 0):
             raise ValueError("Please update Gem5 directory in defs.py.")

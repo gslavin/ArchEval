@@ -61,7 +61,7 @@ class TestSearcher(unittest.TestCase):
 
 
 
-        
+
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
