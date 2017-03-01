@@ -8,7 +8,7 @@ import json
 import subprocess
 import defs
 
-config_defaults = { "cpu_count": 1, "cpu_frequency": 9000, "cache_size": 1024}
+config_defaults = { "cpu_count": 1, "cpu_frequency": 9000000, "cache_size": 1024}
 
 def nested_stats_insert(stats, fields):
     # Expecting lines with at least 2 fields separated by whitespace
@@ -114,11 +114,13 @@ class Gem5Sim(SimWrap):
         NUM_CPUS = " -n " + str(self.config["cpu_count"])
         FREQ = " --cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"])
         L1_CACHE = " --l1d_size=" + str(self.config["cache_size"])
+        OUTPUT = " -d " + defs.ROOT_DIR
         COMMAND = " -c " + defs.BENCHMARK_PATH
 
-        subprocess.check_call(defs.GEM5_DIR + "/build/X86/gem5.opt " + \
-                            defs.GEM5_DIR + "/configs/example/se.py  " + \
-                            NUM_CPUS + FREQ + L1_CACHE + COMMAND)
+        subprocess.check_call(defs.GEM5_DIR + "/build/X86/gem5.opt" + \
+                            OUTPUT + " " + \
+                            defs.GEM5_DIR + "/configs/example/se.py" + \
+                            NUM_CPUS + FREQ + L1_CACHE + COMMAND, shell=True)
         pass
 
     def parse_stats(self, filename):
@@ -151,7 +153,7 @@ class Gem5Sim(SimWrap):
         self.run_simulation()
 
         # Collect the statistics
-        filename = defs.ROOT_DIR + "/SimulationWrappers/stats.txt"
+        filename = defs.ROOT_DIR + "/stats.txt"
         self.stats = self.parse_stats(filename)
 
 def main():
