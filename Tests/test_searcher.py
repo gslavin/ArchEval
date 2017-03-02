@@ -70,8 +70,6 @@ class TestSearcher(unittest.TestCase):
                 result_file.write(output)
                 logging.info(output)
 
-
-
     @log_name
     def test_large_num_seeds(self):
         s = DSE_searcher({}, num_search_parties=10)
@@ -106,6 +104,13 @@ class TestSearcher(unittest.TestCase):
         s = DSE_searcher({})
         s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = HighPerformanceSearchState({}, {})
+        s.search(search_state)
+
+class TestMcPatSearcher(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        s = DSE_searcher({})
+        search_state = McPatSearchState({}, {})
         s.search(search_state)
 
 

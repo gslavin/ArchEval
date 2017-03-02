@@ -1,5 +1,6 @@
 import json
 import datetime
+import defs
 
 """
 The search algorithm expects the user to provide a fitness function.
@@ -22,6 +23,7 @@ to the visualization platform.
 """
 
 from mock_sim import MockSim
+from mcpat_sim import McPatSim
 from range_string import RangeString
 
 def dict_to_key(d):
@@ -120,7 +122,6 @@ class SearchState:
 """
 Default MockSim class
 """
-
 def mock_eval_stats(stats):
     """
     Basic function to minimize for the Mock Simulator
@@ -240,3 +241,34 @@ class HighPerformanceSearchState(MockSearchState):
 
     def __init__(self, constraints, sys_config):
         super().__init__(constraints, sys_config, eval_high_performance)
+
+
+"""
+Default McPAT class
+"""
+def mcpat_eval_stats(stats):
+    """
+    Basic function to minimize for the McPAT simulator
+    """
+    #TODO:  How to calibrate parameters?
+    a = 1
+    b = 1
+    c = 1
+    result = a*float(stats["Area (mm2)"]) + \
+             b*float(stats["Dynamic read energy (nJ)"]) + \
+             c*float(stats["Dynamic write energy (nJ)"])
+
+    return result
+
+class McPatSearchState(SearchState):
+    """
+    Parent class for all McPatSim classes. Child classes will set set a
+        different fitness_func.
+    """
+
+    def __init__(self, constraints, sys_config, fitness_func = mcpat_eval_stats):
+        super().__init__(constraints)
+        self.sims = [McPatSim(sys_config)]
+        self.stats = {}
+        self.fitness = None
+        self.fitness_func = fitness_func

@@ -26,12 +26,18 @@ class TestMcPatSim(unittest.TestCase):
         """
         McPatSim({"cache_size" : 2048})
 
-    def test_invalid_args(self):
+    def test_one_invalid_arg(self):
+        """
+        Invalid arguments should raise an exception
+        """
+        McPatSim({"fake_arg": 56, "cache_size" : 2048})
+
+    def test_all_invalid_args(self):
         """
         Invalid arguments should raise an exception
         """
         with self.assertRaises(ValueError):
-            McPatSim({"fake_arg": 56, "cache_size" : 2048})
+            McPatSim({"fake_arg": 56, "other_fake_arg" : 2048})
 
     def test_sim_run(self):
         """
