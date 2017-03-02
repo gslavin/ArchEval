@@ -37,12 +37,12 @@ class McPatSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, sys_config):
+    def __init__(self, sys_config = config_defaults):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.config = copy.deepcopy(config_defaults)
+        self.config = {}
         self.set_config(sys_config)
 
     def set_config(self, sys_config):
@@ -55,9 +55,8 @@ class McPatSim(SimWrap):
                 self.config[k] = sys_config[k]
 
     def validate_sys_config(self, sys_config):
-        if sys_config:
-            if not any(k in valid_sys_config_params for k in sys_config.keys()):
-                raise ValueError("Not a valid McPAT config parameter")
+        if not all(k in sys_config.keys() for k in valid_sys_config_params):
+            raise ValueError("Not a valid McPAT config parameter")
 
     def run_simulation(self, output_csv):
         #TODO: Have better error handling for cacti call

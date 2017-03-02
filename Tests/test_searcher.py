@@ -110,7 +110,7 @@ class TestMcPatSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
         s = DSE_searcher({})
-        search_state = McPatSearchState({}, {})
+        search_state = McPatSearchState({})
         s.search(search_state)
 
 

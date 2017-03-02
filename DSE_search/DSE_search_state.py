@@ -266,9 +266,9 @@ class McPatSearchState(SearchState):
         different fitness_func.
     """
 
-    def __init__(self, constraints, sys_config, fitness_func = mcpat_eval_stats):
+    def __init__(self, constraints, fitness_func = mcpat_eval_stats):
         super().__init__(constraints)
-        self.sims = [McPatSim(sys_config)]
+        self.sims = [McPatSim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
