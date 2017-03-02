@@ -61,7 +61,41 @@ class SearchState:
         pass
 
     def eval_fitness(self, sys_config):
-        pass
+        """
+        Runs the simulations and places the statistics in the stats dictionary
+        """
+        # Replace the old system configuration
+        self.sys_config = sys_config
+        for sim in self.sims:
+            sim.set_config(self.sys_config)
+
+            sim.run()
+
+            # If this particular sys_config has already been run, the results will be overwritten
+            self.stats[dict_to_key(sys_config)] = {}
+
+            # For each sys_config, each simulation_wrapper has a dictionary of stats.
+            # For this class the only simulation wrapper is the MockSim
+            self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
+
+            # We need to search the stats of the current MockSim run for constraint violations
+            sim_stats = self.stats[dict_to_key(sys_config)][sim.__class__.__name__]
+            for stat in self.constraints.keys():
+                # TODO: need translation from abstract constraint name -> simulator stat name
+                if stat in sim_stats:
+                    stat_value = sim_stats[stat]
+                    if (not self.constraints[stat].in_range(stat_value)):
+                        self.fitness = float("inf")
+                #else:
+                    # TODO: Emit warning if a constraint is specified but not found
+
+        if self.fitness != float("inf"):
+            all_stats = {}
+            for sim in self.sims:
+                all_stats.update(sim.stats)
+            self.fitness = self.fitness_func(all_stats)
+
+        return self.fitness
 
     def stats_to_json(self, sys_config):
         """
@@ -81,6 +115,7 @@ class SearchState:
         job_output["simulation_results"] = self.stats[dict_to_key(sys_config)]
 
         return json.dumps(job_output, sort_keys=True, indent=4)
+
 
 """
 Default MockSim class
@@ -125,54 +160,10 @@ class MockSearchState(SearchState):
         """
 
         super().__init__(constraints)
-        self.mock_sim = MockSim(sys_config)
+        self.sims = [MockSim(sys_config)]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
-
-
-    def eval_fitness(self, sys_config):
-        """
-        Runs the simulations and places the statistics in the stats dictionary
-        """
-        # Replace the old system configuration
-        self.sys_config = sys_config
-        self.mock_sim.set_config(self.sys_config)
-
-        self.mock_sim.run()
-
-        # If this particular sys_config has already been run, the results will be overwritten
-        self.stats[dict_to_key(sys_config)] = {}
-
-        # For each sys_config, each simulation_wrapper has a dictionary of stats.
-        # For this class the only simulation wrapper is the MockSim
-        self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
-
-        self.fitness = self.fitness_func(self.mock_sim.stats)
-
-        # We need to search the stats of the current MockSim run for constraint violations
-        mock_stats = self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__]
-        for stat in self.constraints.keys():
-            # TODO: need translation from abstract constraint name -> simulator stat name
-            if stat in mock_stats:
-                stat_value = mock_stats[stat]
-                if (not self.constraints[stat].in_range(stat_value)):
-                    self.fitness = float("inf")
-            #else:
-                # TODO: Emit warning if a constraint is specified but not found
-
-        return self.fitness
-
-    def dump(self, stats):
-        for key in self.stats.keys():
-            mock_stats = self.stats[key][self.mock_sim.__class__.__name__]
-            for stat in stats:
-                if stat in mock_stats:
-                    print(str(mock_stats[stat]), end="")
-                    print(" ", end="")
-                else:
-                    print(self.stats[key].keys())
-            print("")
 
 """
 Embedded MockSim Class
@@ -229,7 +220,6 @@ class BalancedSearchState(MockSearchState):
 """
 High performance MockSim Class
 """
-
 def eval_high_performance(stats):
     m = [4.7721E6, 1.7763E3, 1.7763E3, 1.0427E-10]
     s = [1.0044E7, 1.2847E3, 1.2847E3, 1.2395E-10]
