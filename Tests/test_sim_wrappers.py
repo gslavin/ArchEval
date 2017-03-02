@@ -19,6 +19,17 @@ class TestMockSim(unittest.TestCase):
         with self.assertRaises(ValueError):
             MockSim({"fake_arg": 100})
 
+    def test_different_args_different_results(self):
+        """
+        Different cache sizes should give different results
+        """
+        sim_small = MockSim({"cache_size" : 2048})
+        sim_large = MockSim({"cache_size" : 4096})
+
+        sim_small.run()
+        sim_large.run()
+        self.assertNotEqual(sim_small.stats, sim_large.stats)
+
 class TestMcPatSim(unittest.TestCase):
     def test_valid_args(self):
         """
