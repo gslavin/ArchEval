@@ -4,6 +4,7 @@ from simulation_wrapper import SimWrap
 import subprocess
 import csv
 import defs
+import copy
 
 def parse_csv(filename):
     """
@@ -25,6 +26,8 @@ def parse_csv(filename):
 
         return data
 
+config_defaults = { "cache_size": 1024}
+
 class McPatSim(SimWrap):
     """
     self.config
@@ -33,17 +36,26 @@ class McPatSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params):
+    def __init__(self, sys_config):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.validate_params(params)
-        self.config = params
+        self.config = copy.deepcopy(config_defaults)
+        self.set_config(sys_config)
+        cache_size = self.config["cache_size"]
 
-    def validate_params(self, params):
+    def set_config(self, sys_config):
+        """
+        Updates the system configuration with the passed parameters
+        """
+        self.validate_sys_config(sys_config)
+        for k in sys_config.keys():
+            self.config[k] = sys_config[k]
+
+    def validate_sys_config(self, sys_config):
         valid_params = ["cache_size"]
-        if not all(k in valid_params for k in params.keys()):
+        if not all(k in valid_params for k in sys_config.keys()):
             raise ValueError("Not a valid McPAT config parameter")
 
     def run_simulation(self, output_csv):
