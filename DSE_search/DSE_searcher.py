@@ -85,7 +85,7 @@ def seed_repel(A, B, ranges, alpha, min_dist):
 default_param_ranges = {
                        "cpu_count" : list(range(1, 9)),
                        "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 8))),
-                       "cache_size" : list(map(lambda x: 2**x, range(10, 17))),
+                       "cache_size" : list(map(lambda x: 2**x, range(11, 17))),
                        }
 
 

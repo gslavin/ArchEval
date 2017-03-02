@@ -29,7 +29,7 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_min_start(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
@@ -97,17 +97,16 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_balanced_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = BalancedSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_high_performance_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = HighPerformanceSearchState({}, {})
         s.search(search_state)
-
 
 
 if __name__ == '__main__':
