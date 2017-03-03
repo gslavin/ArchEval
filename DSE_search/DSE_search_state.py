@@ -71,14 +71,18 @@ class SearchState:
         return json.dumps(self.stats[dict_to_key(sys_config)], sort_keys=True, indent=4)
 
 
-    def generate_job_output(self, sys_config):
+    def generate_job_output(self, sys_configs):
         job_output = {}
 
         job_output["job_name"] = "Mock Test"
         job_output["job_timestamp"] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now())
         job_output["constraints"] = self.constraints
-        job_output["system_configuration"] = self.sys_config
-        job_output["simulation_results"] = self.stats[dict_to_key(sys_config)]
+        job_output["search_parties"] = []
+        for sys_config in sys_configs:
+            search_party = {}
+            search_party["system_configuration"] = sys_config
+            search_party["simulation_results"] = self.stats[dict_to_key(sys_config)]
+            job_output["search_parties"].append(search_party)
 
         return json.dumps(job_output, sort_keys=True, indent=4)
 

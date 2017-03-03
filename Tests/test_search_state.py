@@ -29,7 +29,7 @@ class TestSearcher(unittest.TestCase):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
         mock = MockSearchState({}, {})
         mock.eval_fitness(sys_config)
-        logging.info(mock.generate_job_output(sys_config))
+        logging.info(mock.generate_job_output([sys_config]))
 
     @log_name
     def test_constraints(self):
