@@ -8,7 +8,6 @@ def check_json_file(filename):
     with open(filename, "r") as f:
         try:
             text = json.load(f)
-            print(text)
         except ValueError:
             print("{} is invalid json".format(filename))
             exit(1)
