@@ -4,6 +4,7 @@ from simulation_wrapper import SimWrap
 import subprocess
 import csv
 import defs
+import copy
 
 def parse_csv(filename):
     """
@@ -25,6 +26,9 @@ def parse_csv(filename):
 
         return data
 
+config_defaults = { "cache_size": 1024}
+valid_sys_config_params = ["cache_size"]
+
 class McPatSim(SimWrap):
     """
     self.config
@@ -33,22 +37,32 @@ class McPatSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, params):
+    def __init__(self, sys_config = config_defaults):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.validate_params(params)
-        self.config = params
+        self.config = {}
+        self.set_config(sys_config)
 
-    def validate_params(self, params):
-        valid_params = ["cache_size"]
-        if not all(k in valid_params for k in params.keys()):
+    def set_config(self, sys_config):
+        """
+        Updates the system configuration with the passed parameters
+        """
+        self.validate_sys_config(sys_config)
+        for k in sys_config.keys():
+            if k in valid_sys_config_params:
+                self.config[k] = sys_config[k]
+
+    def validate_sys_config(self, sys_config):
+        if not all(k in sys_config.keys() for k in valid_sys_config_params):
             raise ValueError("Not a valid McPAT config parameter")
 
     def run_simulation(self, output_csv):
         #TODO: Have better error handling for cacti call
-        subprocess.check_call(defs.ROOT_DIR + "/cacti/cacti -infile cache_config.cfg -outfile {0} > /dev/null".format(output_csv), shell=True)
+        subprocess.check_call(defs.ROOT_DIR + \
+            "/cacti/cacti -infile cache_config.cfg -outfile {0} >> {1}".format(output_csv, defs.LOG_DIR + "/McPat.log"),
+            shell=True)
 
     def gen_cache_config_file(self, template, output_file):
         cache_size = self.config["cache_size"]
