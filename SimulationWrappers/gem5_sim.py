@@ -7,6 +7,7 @@ import re
 import json
 import subprocess
 import defs
+import os
 
 config_defaults = { "cpu_count": 1, "cpu_frequency": 9000000, "cache_size": 1024}
 valid_sys_config_params = [ "cpu_count", "cpu_frequency", "cache_size" ]
@@ -72,6 +73,25 @@ def gem5_parse_freq(freq):
 
     return str(freq) + prefix + "Hz"
 
+def gem5_parse_cache(freq):
+    prefix = ""
+
+    if (freq >= 1024):
+        freq = int(freq / 1024)
+        prefix = "k"
+
+
+    if (freq >= 1024):
+        freq = int(freq / 1024)
+        prefix = "m"
+
+    
+    if (freq >= 1024):
+        freq = int(freq / 1024)
+        prefix = "g"
+
+    return str(freq) + prefix + "B"
+
 
 class Gem5Sim(SimWrap):
     """
@@ -111,16 +131,19 @@ class Gem5Sim(SimWrap):
         pass
 
     def run_simulation(self):
+        CPU_TYPE = """ --cpu-type="DerivO3CPU" """
+        RUBY = " --ruby"
         NUM_CPUS = " -n " + str(self.config["cpu_count"])
         FREQ = " --cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"])
-        L1_CACHE = " --l1d_size=" + str(self.config["cache_size"])
-        OUTPUT = " -d " + defs.ROOT_DIR
+        L1_CACHE = " --l1d_size=" + gem5_parse_cache(self.config["cache_size"])
+        #OUTPUT = " -d " + defs.ROOT_DIR
+        OUTPUT = " --stats-file=" + defs.ROOT_DIR + "/stats.txt"
         COMMAND = " -c " + defs.BENCHMARK_PATH
 
         subprocess.check_call(defs.GEM5_DIR + "/build/X86/gem5.opt" + \
                             OUTPUT + " " + \
                             defs.GEM5_DIR + "/configs/example/se.py" + \
-                            NUM_CPUS + FREQ + L1_CACHE + COMMAND, shell=True)
+                            CPU_TYPE + RUBY + NUM_CPUS + FREQ + L1_CACHE + COMMAND, shell=True)
         pass
 
     def parse_stats(self, filename):
@@ -135,7 +158,12 @@ class Gem5Sim(SimWrap):
                 continue
 
             s = f.readline()
-            while ("End Simulation Statistics" not in s):
+            while (s != "" and "End Simulation Statistics" not in s):
+                # TODO FIXME incorporate new line formats into parser
+                if ("::" in s or "|" in s):
+                    s = f.readline()
+                    continue
+                    
                 nested_stats_insert(stats, s.split())
 
                 s = f.readline()
@@ -155,9 +183,10 @@ class Gem5Sim(SimWrap):
         # Collect the statistics
         filename = defs.ROOT_DIR + "/stats.txt"
         self.stats = self.parse_stats(filename)
+        os.remove(filename)
 
 def main():
-    sim = Gem5Sim({})
+    sim = Gem5Sim()
     sim.run()
     print(sim.stats_to_json())
 
