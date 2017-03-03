@@ -1,6 +1,6 @@
 /**
  * main.c
- * Program which computes the sum of random elements of a matrix.
+ * Program which computes the sum of sequential (wrapping) elements of a matrix.
  */
 
 #include <stdlib.h>
