@@ -1,5 +1,6 @@
 import json
 import datetime
+import defs
 
 """
 The search algorithm expects the user to provide a fitness function.
@@ -63,7 +64,41 @@ class SearchState:
         pass
 
     def eval_fitness(self, sys_config):
-        pass
+        """
+        Runs the simulations and places the statistics in the stats dictionary
+        """
+        # Replace the old system configuration
+        self.sys_config = sys_config
+        for sim in self.sims:
+            sim.set_config(self.sys_config)
+
+            sim.run()
+
+            # If this particular sys_config has already been run, the results will be overwritten
+            self.stats[dict_to_key(sys_config)] = {}
+
+            # For each sys_config, each simulation_wrapper has a dictionary of stats.
+            # For this class the only simulation wrapper is the MockSim
+            self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
+
+            # We need to search the stats of the current MockSim run for constraint violations
+            sim_stats = self.stats[dict_to_key(sys_config)][sim.__class__.__name__]
+            for stat in self.constraints.keys():
+                # TODO: need translation from abstract constraint name -> simulator stat name
+                if stat in sim_stats:
+                    stat_value = sim_stats[stat]
+                    if (not self.constraints[stat].in_range(stat_value)):
+                        self.fitness = float("inf")
+                #else:
+                    # TODO: Emit warning if a constraint is specified but not found
+
+        if self.fitness != float("inf"):
+            all_stats = {}
+            for sim in self.sims:
+                all_stats.update(sim.stats)
+            self.fitness = self.fitness_func(all_stats)
+
+        return self.fitness
 
     def stats_to_json(self, sys_config):
         """
@@ -88,10 +123,10 @@ class SearchState:
 
         return json.dumps(job_output, sort_keys=True, indent=4)
 
+
 """
 Default MockSim class
 """
-
 def mock_eval_stats(stats):
     """
     Basic function to minimize for the Mock Simulator
@@ -131,54 +166,10 @@ class MockSearchState(SearchState):
         """
 
         super().__init__(constraints)
-        self.mock_sim = MockSim(sys_config)
+        self.sims = [MockSim(sys_config)]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
-
-
-    def eval_fitness(self, sys_config):
-        """
-        Runs the simulations and places the statistics in the stats dictionary
-        """
-        # Replace the old system configuration
-        self.sys_config = sys_config
-        self.mock_sim.set_config(self.sys_config)
-
-        self.mock_sim.run()
-
-        # If this particular sys_config has already been run, the results will be overwritten
-        self.stats[dict_to_key(sys_config)] = {}
-
-        # For each sys_config, each simulation_wrapper has a dictionary of stats.
-        # For this class the only simulation wrapper is the MockSim
-        self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
-
-        self.fitness = self.fitness_func(self.mock_sim.stats)
-
-        # We need to search the stats of the current MockSim run for constraint violations
-        mock_stats = self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__]
-        for stat in self.constraints.keys():
-            # TODO: need translation from abstract constraint name -> simulator stat name
-            if stat in mock_stats:
-                stat_value = mock_stats[stat]
-                if (not self.constraints[stat].in_range(stat_value)):
-                    self.fitness = float("inf")
-            #else:
-                # TODO: Emit warning if a constraint is specified but not found
-
-        return self.fitness
-
-    def dump(self, stats):
-        for key in self.stats.keys():
-            mock_stats = self.stats[key][self.mock_sim.__class__.__name__]
-            for stat in stats:
-                if stat in mock_stats:
-                    print(str(mock_stats[stat]), end="")
-                    print(" ", end="")
-                else:
-                    print(self.stats[key].keys())
-            print("")
 
 """
 Embedded MockSim Class
@@ -235,7 +226,6 @@ class BalancedSearchState(MockSearchState):
 """
 High performance MockSim Class
 """
-
 def eval_high_performance(stats):
     m = [4.7721E6, 1.7763E3, 1.7763E3, 1.0427E-10]
     s = [1.0044E7, 1.2847E3, 1.2847E3, 1.2395E-10]
@@ -262,82 +252,46 @@ def eval_temp(stats):
 
     return result
 
-
-
+"""
+Full search state incorporating all included simulators.
+"""
 class FullSearchState(SearchState):
-    """
-    Parent class for all MockSim classes. Child classes will set set a
-        different fitness_func.
 
-    Members:
-        eval_fitness()
-            Applies fitness func to current sys_config and records the stats
-            for the current sys_config in self.stats.
-        stats
-            A dictionary of sys_config -> stats
-        fitness
-            The most recent fitness score
-        fitness_func
-            Heuristic used to the performance of each system configuration
-    """
-
-    def __init__(self, constraints, sys_config, fitness_func = eval_temp):
-        """
-        Each search party has ONE fitness function and ONE set of simulation wrappers,
-        But each sys_config has its own set of associated stats. Every (sys_config, stats) pair that is generated by
-        eval_fitness() is perserved in self.stats.  At the end of the search, the output statistics for the winning
-        sys_config are retreived by passing the winning sys_config to generate_job_output(sys_config)
-        """
-
+    def __init__(self, constraints, fitness_func = eval_temp):
         super().__init__(constraints)
-        self.gem5_sim = Gem5Sim(sys_config)
-        #self.mcpat_sim = McPatSim(sys_config)
+        # TODO add other sims here
+        self.sims = [Gem5Sim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
 
 
-    def eval_fitness(self, sys_config):
-        """
-        Runs the simulations and places the statistics in the stats dictionary
-        """
-        # Replace the old system configuration
-        self.sys_config = sys_config
-        self.gem5_sim.set_config(self.sys_config)
+"""
+Default McPAT class
+"""
+def mcpat_eval_stats(stats):
+    """
+    Basic function to minimize for the McPAT simulator
+    """
+    #TODO:  How to calibrate parameters?
+    a = 1
+    b = 1
+    c = 1
+    result = a*float(stats["Area (mm2)"]) + \
+             b*float(stats["Dynamic read energy (nJ)"]) + \
+             c*float(stats["Dynamic write energy (nJ)"])
 
-        self.gem5_sim.run()
+    return result
 
-        # If this particular sys_config has already been run, the results will be overwritten
-        self.stats[dict_to_key(sys_config)] = {}
+class McPatSearchState(SearchState):
+    """
+    Parent class for all McPatSim classes. Child classes will set set a
+        different fitness_func.
+    """
 
-        # For each sys_config, each simulation_wrapper has a dictionary of stats.
-        # For this class the only simulation wrapper is the MockSim
-        self.stats[dict_to_key(sys_config)][self.gem5_sim.__class__.__name__] = self.gem5_sim.stats
-
-        self.fitness = self.fitness_func(self.gem5_sim.stats)
-
-        # We need to search the stats of the current MockSim run for constraint violations
-        gem5_stats = self.stats[dict_to_key(sys_config)][self.gem5_sim.__class__.__name__]
-        for stat in self.constraints.keys():
-            # TODO: need translation from abstract constraint name -> simulator stat name
-            if stat in gem5_stats:
-                stat_value = gem5_stats[stat]
-                if (not self.constraints[stat].in_range(stat_value)):
-                    self.fitness = float("inf")
-            #else:
-                # TODO: Emit warning if a constraint is specified but not found
-
-        return self.fitness
-
-    def dump(self, stats):
-        for key in self.stats.keys():
-            gem5_stats = self.stats[key][self.gem5_sim.__class__.__name__]
-            for stat in stats:
-                if stat in gem5_stats:
-                    print(str(gem5_stats[stat]), end="")
-                    print(" ", end="")
-                else:
-                    print(self.stats[key].keys())
-            print("")
-
-
+    def __init__(self, constraints, fitness_func = mcpat_eval_stats):
+        super().__init__(constraints)
+        self.sims = [McPatSim()]
+        self.stats = {}
+        self.fitness = None
+        self.fitness_func = fitness_func

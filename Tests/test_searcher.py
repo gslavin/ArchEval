@@ -36,7 +36,7 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_min_start(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
@@ -72,7 +72,6 @@ class TestSearcher(unittest.TestCase):
 
         generate_job_output(s.sys_configs, mock_search_state)
 
-
     @log_name
     def test_large_num_seeds(self):
         s = DSE_searcher({}, num_search_parties=10)
@@ -98,33 +97,37 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_balanced_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = BalancedSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_high_performance_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = HighPerformanceSearchState({}, {})
         s.search(search_state)
-
 
 class TestSearcherGem5(unittest.TestCase):
     @log_name
     def test_defaults(self):
         s = DSE_searcher({}, num_search_parties = 2)
-        search_state = FullSearchState({}, {})
+        search_state = FullSearchState({})
         s.search(search_state)
         generate_job_output(s.sys_configs, search_state)
 
     def test_A_star(self):
         s = DSE_searcher({})
         s.algorithm = Search_Algorithm.A_Star
-        search_state = FullSearchState({}, {})
+        search_state = FullSearchState({})
         #s.search(search_state)
 
-
+class TestMcPatSearcher(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        s = DSE_searcher({})
+        search_state = McPatSearchState({})
+        s.search(search_state)
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
