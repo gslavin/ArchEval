@@ -5,6 +5,9 @@ import logging
 import unittest
 import os
 import defs
+import cProfile
+from pstats import Stats
+
 
 from DSE_searcher import DSE_searcher
 from DSE_searcher import Search_Algorithm
@@ -21,6 +24,21 @@ def generate_job_output(sys_configs, search_state):
             logging.info(output)
 
 class TestSearcher(unittest.TestCase):
+
+    def setUp(self):
+        """init each test"""
+        self.pr = cProfile.Profile()
+        self.pr.enable()
+        print("\n<<<---")
+
+    def tearDown(self):
+        """finish any test"""
+        p = Stats (self.pr)
+        p.strip_dirs()
+        p.sort_stats('cumtime')
+        p.print_stats ()
+        print("\n--->>>")
+
     @log_name
     def test_defaults(self):
         s = DSE_searcher({})
