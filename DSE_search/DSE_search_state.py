@@ -69,13 +69,14 @@ class SearchState:
         """
         # Replace the old system configuration
         self.sys_config = sys_config
+
+        # If this particular sys_config has already been run, the results will be overwritten
+        self.stats[dict_to_key(sys_config)] = {}
+
         for sim in self.sims:
             sim.set_config(self.sys_config)
 
             sim.run()
-
-            # If this particular sys_config has already been run, the results will be overwritten
-            self.stats[dict_to_key(sys_config)] = {}
 
             # For each sys_config, each simulation_wrapper has a dictionary of stats.
             # For this class the only simulation wrapper is the MockSim
@@ -123,6 +124,35 @@ class SearchState:
 
         return json.dumps(job_output, sort_keys=True, indent=4)
 
+    def dump(self, stats):
+        output = {}
+        for stat in stats:
+            output[stat] = []
+
+        for key in self.stats.keys():
+            for sim in self.sims:
+                sim_stats = self.stats[key][sim.__class__.__name__]
+                for stat in stats:
+                    if stat in sim_stats:
+                        output[stat].append(sim_stats[stat])
+
+        for stat in output.keys():
+            print('{0: <10}\t'.format(str(stat)))
+        print("")
+
+        i = 0
+        end = False
+        while (not end):
+            temp_end = True
+            for stat in output.keys():
+                if (i < len(output[stat])):
+                    print('{0: <10}\t'.format(str(output[stat][i])), end="")
+                    temp_end = False
+                else:
+                    print('{0: <10}\t'.format(""), end="")
+            print("")
+            i = i + 1
+            end = temp_end
 
 """
 Default MockSim class
@@ -248,7 +278,15 @@ class HighPerformanceSearchState(MockSearchState):
         super().__init__(constraints, sys_config, eval_high_performance)
 
 def eval_temp(stats):
-    result = ((stats["sim_seconds"]))
+    features = ["sim_seconds", "Area (mm2)", "Dynamic read energy (nJ)"]
+    m = [7.2927E-04, 0.0702, 0.0308]
+    s = [6.7216e-05, 0.0323, 0.001]
+    w = [50, 5, 1]
+
+    result = 0
+
+    for i in range(len(features)):
+        result += ((float(stats[features[i]]) - m[i]) / s[i]) * w[i]
 
     return result
 
@@ -259,8 +297,7 @@ class FullSearchState(SearchState):
 
     def __init__(self, constraints, fitness_func = eval_temp):
         super().__init__(constraints)
-        # TODO add other sims here
-        self.sims = [Gem5Sim()]
+        self.sims = [Gem5Sim(), McPatSim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
