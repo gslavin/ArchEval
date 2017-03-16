@@ -290,6 +290,20 @@ def eval_temp(stats):
 
     return result
 
+def eval_demo(stats):
+    features = ["sim_seconds", "Area (mm2)", "Dynamic read energy (nJ)"]
+    m = [2.1969E-04, 0.0861, 0.0312]
+    s = [9.7346E-06, 0.0318, 8.1234e-04]
+    w = [50, 5, 1]
+
+    result = 0
+
+    for i in range(len(features)):
+        result += ((float(stats[features[i]]) - m[i]) / s[i]) * w[i]
+
+    return result
+
+
 """
 Full search state incorporating all included simulators.
 """

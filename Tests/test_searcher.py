@@ -111,10 +111,11 @@ class TestSearcher(unittest.TestCase):
 class TestSearcherGem5(unittest.TestCase):
     @log_name
     def test_defaults(self):
-        s = DSE_searcher({}, num_search_parties = 3)
+        s = DSE_searcher({}, num_search_parties = 1)
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = FullSearchState({})
         s.search(search_state)
-        generate_job_output(s.sys_configs, search_state)
+        #generate_job_output(s.sys_configs, search_state)
         #search_state.dump(["sim_seconds", 'Area (mm2)', 'Dynamic read energy (nJ)'])
 
 
@@ -123,7 +124,7 @@ class TestSearcherGem5(unittest.TestCase):
         s.algorithm = Search_Algorithm.A_Star
         search_state = FullSearchState({})
         s.search(search_state)
-        generate_job_output(s.sys_configs, search_state)
+        #generate_job_output(s.sys_configs, search_state)
 
 class TestMcPatSearcher(unittest.TestCase):
     @log_name

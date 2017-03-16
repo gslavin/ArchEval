@@ -131,19 +131,28 @@ class Gem5Sim(SimWrap):
         pass
 
     def run_simulation(self):
-        CPU_TYPE = """ --cpu-type="DerivO3CPU" """
-        RUBY = " --ruby"
-        NUM_CPUS = " -n " + str(self.config["cpu_count"])
-        FREQ = " --cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"])
-        L1_CACHE = " --l1d_size=" + gem5_parse_cache(self.config["cache_size"])
+        #CPU_TYPE = """ --cpu-type="DerivO3CPU" """
+        #RUBY = " --ruby"
+        #NUM_CPUS = " -n " + str(self.config["cpu_count"])
+        #FREQ = " --cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"])
+        #L1_CACHE = " --l1d_size=" + gem5_parse_cache(self.config["cache_size"])
         #OUTPUT = " -d " + defs.ROOT_DIR
-        OUTPUT = " --stats-file=" + defs.ROOT_DIR + "/stats.txt"
-        COMMAND = " -c " + defs.BENCHMARK_PATH
+        #OUTPUT = " --stats-file=" + defs.ROOT_DIR + "/stats.txt"
+        #COMMAND = " -c " + defs.BENCHMARK_PATH
 
-        subprocess.check_call(defs.GEM5_DIR + "/build/X86/gem5.opt" + \
-                            OUTPUT + " " + \
-                            defs.GEM5_DIR + "/configs/example/se.py" + \
-                            CPU_TYPE + RUBY + NUM_CPUS + FREQ + L1_CACHE + COMMAND, shell=True)
+        subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} >> {10}".format(\
+                                defs.GEM5_DIR + "/build/X86/gem5.opt", \
+                                "--stats-file=" + defs.ROOT_DIR + "/stats.txt", \
+                                "-r", \
+                                defs.GEM5_DIR + "/configs/example/se.py", \
+                                """--cpu-type="DerivO3CPU" """, \
+                                "--ruby", \
+                                " -n " + str(self.config["cpu_count"]), \
+                                "--cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"]), \
+                                "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \
+                                "-c " + defs.BENCHMARK_PATH, \
+                                defs.LOG_DIR + "/gem5.log"), shell=True)
+        subprocess.check_call("/bin/cat " + defs.ROOT_DIR + "/m5out/simout >> " + defs.LOG_DIR + "/gem5.log", shell=True)
         pass
 
     def parse_stats(self, filename):
