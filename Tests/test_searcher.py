@@ -13,6 +13,13 @@ from mock_sim import ManyPeaksMockSim, MockSim
 from test_utils import log_name
 
 
+def generate_job_output(sys_configs, search_state):
+    filename = defs.LOG_DIR + '/' + 'gem5_job_output{:%Y_%m_%d-%H:%M:%S}.json'.format(datetime.datetime.now())
+    with open(filename, "w") as result_file:
+            output = search_state.generate_job_output(sys_configs)
+            result_file.write(output)
+            logging.info(output)
+
 class TestSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
@@ -29,7 +36,7 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_min_start(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {})
         s.search(search_state)
 
@@ -63,12 +70,7 @@ class TestSearcher(unittest.TestCase):
         mock_search_state = MockSearchState({}, {})
         s.search(mock_search_state)
 
-        filename = defs.LOG_DIR + '/' + 'job_output{:%Y_%m_%d-%H:%M:%S}.json'.format(datetime.datetime.now())
-        with open(filename, "w") as result_file:
-            for config in s.sys_configs:
-                output = mock_search_state.generate_job_output(config)
-                result_file.write(output)
-                logging.info(output)
+        generate_job_output(s.sys_configs, mock_search_state)
 
     @log_name
     def test_large_num_seeds(self):
@@ -107,18 +109,23 @@ class TestSearcher(unittest.TestCase):
     @log_name
     def test_balanced_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = BalancedSearchState({}, {})
         s.search(search_state)
 
     @log_name
     def test_high_performance_heuristic(self):
         s = DSE_searcher({})
-        s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = HighPerformanceSearchState({}, {})
         s.search(search_state)
 
-
+class TestMcPatSearcher(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        s = DSE_searcher({})
+        search_state = McPatSearchState({})
+        s.search(search_state)
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)

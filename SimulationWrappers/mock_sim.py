@@ -5,6 +5,7 @@ from simulation_wrapper import SimWrap
 import string
 import re
 import json
+import copy
 
 PROGRAM_LENGTH = 1000
 
@@ -28,27 +29,26 @@ class MockSim(SimWrap):
         simulation results
     """
 
-    # TODO: rename params
-    def __init__(self, params, config_to_stats = default_config_to_stats):
+    def __init__(self, sys_config, config_to_stats = default_config_to_stats):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
         """
-        self.config = config_defaults
-        self.set_config(params)
+        self.config = copy.deepcopy(config_defaults)
+        self.set_config(sys_config)
         self.config_to_stats = config_to_stats
 
-    def set_config(self, params):
+    def set_config(self, sys_config):
         """
         Updates the system configuration with the passed parameters
         """
-        self.validate_params(params)
-        for k in params.keys():
-            self.config[k] = params[k]
+        self.validate_params(sys_config)
+        for k in sys_config.keys():
+            self.config[k] = sys_config[k]
 
-    def validate_params(self, params):
+    def validate_params(self, sys_config):
         valid_params = [ "cpu_count", "cpu_frequency", "cache_size"]
-        if not all(k in valid_params for k in params.keys()):
+        if not all(k in valid_params for k in sys_config.keys()):
             raise ValueError("Not a valid mock_sim config parameter")
 
     def run_simulation(self):

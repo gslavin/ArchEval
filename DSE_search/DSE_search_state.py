@@ -1,5 +1,6 @@
 import json
 import datetime
+import defs
 
 """
 The search algorithm expects the user to provide a fitness function.
@@ -22,6 +23,7 @@ to the visualization platform.
 """
 
 from mock_sim import MockSim
+from mcpat_sim import McPatSim
 from range_string import RangeString
 
 def dict_to_key(d):
@@ -61,7 +63,41 @@ class SearchState:
         pass
 
     def eval_fitness(self, sys_config):
-        pass
+        """
+        Runs the simulations and places the statistics in the stats dictionary
+        """
+        # Replace the old system configuration
+        self.sys_config = sys_config
+        for sim in self.sims:
+            sim.set_config(self.sys_config)
+
+            sim.run()
+
+            # If this particular sys_config has already been run, the results will be overwritten
+            self.stats[dict_to_key(sys_config)] = {}
+
+            # For each sys_config, each simulation_wrapper has a dictionary of stats.
+            # For this class the only simulation wrapper is the MockSim
+            self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
+
+            # We need to search the stats of the current MockSim run for constraint violations
+            sim_stats = self.stats[dict_to_key(sys_config)][sim.__class__.__name__]
+            for stat in self.constraints.keys():
+                # TODO: need translation from abstract constraint name -> simulator stat name
+                if stat in sim_stats:
+                    stat_value = sim_stats[stat]
+                    if (not self.constraints[stat].in_range(stat_value)):
+                        self.fitness = float("inf")
+                #else:
+                    # TODO: Emit warning if a constraint is specified but not found
+
+        if self.fitness != float("inf"):
+            all_stats = {}
+            for sim in self.sims:
+                all_stats.update(sim.stats)
+            self.fitness = self.fitness_func(all_stats)
+
+        return self.fitness
 
     def stats_to_json(self, sys_config):
         """
@@ -71,21 +107,25 @@ class SearchState:
         return json.dumps(self.stats[dict_to_key(sys_config)], sort_keys=True, indent=4)
 
 
-    def generate_job_output(self, sys_config):
+    def generate_job_output(self, sys_configs):
         job_output = {}
 
         job_output["job_name"] = "Mock Test"
         job_output["job_timestamp"] = "{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime.now())
         job_output["constraints"] = self.constraints
-        job_output["system_configuration"] = self.sys_config
-        job_output["simulation_results"] = self.stats[dict_to_key(sys_config)]
+        job_output["search_parties"] = []
+        for sys_config in sys_configs:
+            search_party = {}
+            search_party["system_configuration"] = sys_config
+            search_party["simulation_results"] = self.stats[dict_to_key(sys_config)]
+            job_output["search_parties"].append(search_party)
 
         return json.dumps(job_output, sort_keys=True, indent=4)
+
 
 """
 Default MockSim class
 """
-
 def mock_eval_stats(stats):
     """
     Basic function to minimize for the Mock Simulator
@@ -129,54 +169,10 @@ class MockSearchState(SearchState):
         """
 
         super().__init__(constraints)
-        self.mock_sim = sim(sys_config)
+        self.sims = [MockSim(sys_config)]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
-
-
-    def eval_fitness(self, sys_config):
-        """
-        Runs the simulations and places the statistics in the stats dictionary
-        """
-        # Replace the old system configuration
-        self.sys_config = sys_config
-        self.mock_sim.set_config(self.sys_config)
-
-        self.mock_sim.run()
-
-        # If this particular sys_config has already been run, the results will be overwritten
-        self.stats[dict_to_key(sys_config)] = {}
-
-        # For each sys_config, each simulation_wrapper has a dictionary of stats.
-        # For this class the only simulation wrapper is the MockSim
-        self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__] = self.mock_sim.stats
-
-        self.fitness = self.fitness_func(self.mock_sim.stats)
-
-        # We need to search the stats of the current MockSim run for constraint violations
-        mock_stats = self.stats[dict_to_key(sys_config)][self.mock_sim.__class__.__name__]
-        for stat in self.constraints.keys():
-            # TODO: need translation from abstract constraint name -> simulator stat name
-            if stat in mock_stats:
-                stat_value = mock_stats[stat]
-                if (not self.constraints[stat].in_range(stat_value)):
-                    self.fitness = float("inf")
-            #else:
-                # TODO: Emit warning if a constraint is specified but not found
-
-        return self.fitness
-
-    def dump(self, stats):
-        for key in self.stats.keys():
-            mock_stats = self.stats[key][self.mock_sim.__class__.__name__]
-            for stat in stats:
-                if stat in mock_stats:
-                    print(str(mock_stats[stat]), end="")
-                    print(" ", end="")
-                else:
-                    print(self.stats[key].keys())
-            print("")
 
 """
 Embedded MockSim Class
@@ -253,3 +249,34 @@ class HighPerformanceSearchState(MockSearchState):
 
     def __init__(self, constraints, sys_config):
         super().__init__(constraints, sys_config, eval_high_performance)
+
+
+"""
+Default McPAT class
+"""
+def mcpat_eval_stats(stats):
+    """
+    Basic function to minimize for the McPAT simulator
+    """
+    #TODO:  How to calibrate parameters?
+    a = 1
+    b = 1
+    c = 1
+    result = a*float(stats["Area (mm2)"]) + \
+             b*float(stats["Dynamic read energy (nJ)"]) + \
+             c*float(stats["Dynamic write energy (nJ)"])
+
+    return result
+
+class McPatSearchState(SearchState):
+    """
+    Parent class for all McPatSim classes. Child classes will set set a
+        different fitness_func.
+    """
+
+    def __init__(self, constraints, fitness_func = mcpat_eval_stats):
+        super().__init__(constraints)
+        self.sims = [McPatSim()]
+        self.stats = {}
+        self.fitness = None
+        self.fitness_func = fitness_func
