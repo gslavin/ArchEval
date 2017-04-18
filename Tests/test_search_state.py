@@ -10,7 +10,7 @@ import defs
 from DSE_search_state import MockSearchState
 from test_utils import log_name
 
-class TestSearcher(unittest.TestCase):
+class TestSearchState(unittest.TestCase):
     @log_name
     def test_defaults(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
