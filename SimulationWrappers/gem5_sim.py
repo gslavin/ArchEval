@@ -39,13 +39,13 @@ def nested_stats_insert(stats, fields):
 
         # Strip the outermost domain from the fully qualified name
         nested_keys.pop(0)
-        
+
         # Insert this value into the nest using the remaining domains
         nested_stats_insert(nest, [".".join(nested_keys), fields[1]])
 
         # Update the main dictionary with this updated nested dictionary
         stats[domain] = nest
-    
+
     else:
         stats[fields[0]] = gem5_parse_value(fields[1])
 
@@ -66,7 +66,7 @@ def gem5_parse_freq(freq):
         freq = int(freq / 1000)
         prefix = "M"
 
-    
+
     if (freq >= 1000):
         freq = int(freq / 1000)
         prefix = "G"
@@ -85,7 +85,7 @@ def gem5_parse_cache(freq):
         freq = int(freq / 1024)
         prefix = "m"
 
-    
+
     if (freq >= 1024):
         freq = int(freq / 1024)
         prefix = "g"
@@ -101,7 +101,7 @@ class Gem5Sim(SimWrap):
         simulation results
     """
 
-    def __init__(self, sys_config = config_defaults):
+    def __init__(self, benchmark, options, sys_config = config_defaults):
         """
         Pass in dictionary of simulation parameters
         Store configuration of simulation
@@ -110,11 +110,10 @@ class Gem5Sim(SimWrap):
         if (len(defs.GEM5_DIR) == 0):
             raise ValueError("Please update Gem5 directory in defs.py.")
 
-        if (len(defs.BENCHMARK_PATH) == 0):
-            raise ValueError("Please update benchmark path in defs.py.")
-        
         self.config = {}
         self.set_config(sys_config)
+        self.benchmark = benchmark
+        self.options = options
 
     def set_config(self, sys_config):
         """
@@ -150,7 +149,7 @@ class Gem5Sim(SimWrap):
                                 " -n " + str(self.config["cpu_count"]), \
                                 "--cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"]), \
                                 "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \
-                                "-c " + defs.BENCHMARK_PATH, \
+                                "-c " + self.benchmark + " --options=" + self.options, \
                                 defs.LOG_DIR + "/gem5.log"), shell=True)
         subprocess.check_call("/bin/cat " + defs.ROOT_DIR + "/m5out/simout >> " + defs.LOG_DIR + "/gem5.log", shell=True)
         pass
@@ -172,7 +171,7 @@ class Gem5Sim(SimWrap):
                 if ("::" in s or "|" in s):
                     s = f.readline()
                     continue
-                    
+
                 nested_stats_insert(stats, s.split())
 
                 s = f.readline()

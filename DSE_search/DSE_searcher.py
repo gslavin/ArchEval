@@ -82,6 +82,17 @@ def seed_repel(A, B, ranges, alpha, min_dist):
                     A[key] += 1
 
 
+def sys_configs_equal( A, B ):
+    if not (all(k in A.keys() for k in B.keys()) and all(k in B.keys() for k in A.keys())):
+        return False
+
+    for key in A.keys():
+        if A[key] != B[key]:
+            return False
+
+    return True
+
+
 default_param_ranges = {
                        "cpu_count" : list(range(1, 9)),
                        "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 8))),
@@ -217,7 +228,7 @@ class DSE_searcher:
                 new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[j], self.fitness_vals[j], search_state)
 
                 # TODO Implement plateau exploration
-                if (new_sys_config == self.sys_configs[j]):
+                if (sys_configs_equal(new_sys_config, self.sys_configs[j])):
                     # Current nodes is a local max or min
                     logging.info("Search party {0} has converged.".format(j))
                     converged.append(j)
@@ -315,15 +326,14 @@ class DSE_searcher:
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
         if (self.algorithm == Search_Algorithm.Elitist_Hill_Climber):
-            
+
+            next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
+
             # If we've hit a plateau, terminate early.
             # TODO Do more informed plateau exploration
-            sorted_fitness = sorted(fitnesses)
-            mn = sorted_fitness[0]
-            if (sorted_fitness[1] == mn and sorted_fitness[2] == mn):
-                next_config, next_fitness = sys_config, current_fitness
-            else:
-                next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
+            if (next_fitness == current_fitness):
+                next_config = sys_config
+                next_fitness = current_fitness
         elif (self.algorithm == Search_Algorithm.Stochastic_Hill_Climber):
             # TODO choose neighbor with probability proportional to their
             # relative score
