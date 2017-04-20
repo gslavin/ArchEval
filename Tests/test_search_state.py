@@ -63,7 +63,6 @@ class TestSearcher(unittest.TestCase):
     def test_memoization(self):
         """
         Tests that redundant simulations aren't run
-
         """
         def call_once(f):
             def one_time_f():
