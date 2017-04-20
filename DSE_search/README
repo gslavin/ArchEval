@@ -1,0 +1,22 @@
+Model Description
+    Model as graph search where each node is a system configuration
+
+Procedure
+    Choose initial node as start of search (based on constraints)
+    Explore neighbor neighbors at random
+    Choose best performing neighbor as new starting point
+
+
+system_config
+    "cpu_count": "1",
+    "cpu_frequency": "3000000000",
+    "cache_size": "16777216"
+
+
+
+# Choose initial system configuration based on constraints
+
+# Visit neighboring nodes based on constraints
+
+
+F(stats(system_configuration(constraints)), constraints)

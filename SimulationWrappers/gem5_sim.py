@@ -1,17 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 #from simulation_wrapper import SimWrap
 
 import string
 import re
 import json
-import copy 
+import copy
 
 class Gem5Sim():
     """
     self.config
         simulation configuration
-    self.stats ## dict of information 
+    self.stats ## dict of information
         simulation results
     """
 
@@ -30,19 +30,19 @@ class Gem5Sim():
             raise ValueError("Not a valid gem5 config parameter")
         """
         pass
-    
+
     def update_dict(self, d, value):
       temp = {}
       found = None
-      if(value[1].isdigit() == False and 
+      if(value[1].isdigit() == False and
           value[1] != 'nan' and
           '.' not in value[1]):
-      
+
         for i in d['substat']:
           if(i['stat'] == value[0]):
             found = i
             break
-      
+
         if (found == None):
           temp['stat'] = value[0]
           temp['substat'] = []
@@ -60,10 +60,10 @@ class Gem5Sim():
         temp['stat'] = value[0]
         temp['value'] = value[1]
         d['substat'].append((temp))
-      
+
       return d
-        
-       
+
+
 
     def parse_stat_file(self, filename):
         """
@@ -85,14 +85,14 @@ class Gem5Sim():
 
               if fields[0] == '':
                 break
-              
+
               found = None
               if len(fields) == 2:
                 temp['stat'] = fields[0]
                 temp['value'] = fields[-1]
                 master.append(copy.copy(temp))
                 temp.clear();
-              
+
               else:
                 for i in master:
                   if i['stat'] == fields[0]:
@@ -100,16 +100,13 @@ class Gem5Sim():
                     master.remove(i)
                     break
 
-                if (found == None):    
+                if (found == None):
                   temp['stat'] = fields[0]
                   temp['substat'] = []
                   master.append(copy.copy(self.update_dict(temp, fields[1:])))
                 else:
                   master.append((self.update_dict(found, fields[1:])))
 
-
-        
-        print json.dumps(master, indent=4, sort_keys=True)
         return master
 
     def run_simulation(self):

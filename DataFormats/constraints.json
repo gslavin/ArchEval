@@ -1,7 +1,12 @@
 {
-    "constraints": {
-        "max_area (mm2)": "2",
-        "max_execution_time (s)": "0.003",
-        "max_execution_time (s)": "0.003"
-    }
+    "constraints": [
+        {
+            "parameter": "area (mm2)",
+            "range": "(-inf, 2]"
+        },
+        {
+            "parameter": "execution_time (s)",
+            "range": "(-inf, 0.003]"
+        }
+    ]
 }

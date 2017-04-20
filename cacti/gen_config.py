@@ -9,7 +9,7 @@ def gen_cache_config(template, output_file, cache_size):
         f_out.write(config)
 
 def run_cacti():
-    return_code = subprocess.call("./cacti -infile new_config.cfg -outfile results.csv", shell=True)  
+    return_code = subprocess.call("./cacti -infile new_config.cfg -outfile results.csv", shell=True)
     if (return_code != 0):
         raise ValueError("cacti failed!")
 
