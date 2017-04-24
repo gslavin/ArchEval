@@ -73,21 +73,20 @@ class SearchState:
 
         # Reset fitness value
         self.fitness = 0
-        for sim in self.sims:
-            # Don't run repeat simulations (just reuse results)
-            if not dict_to_key(sys_config) in self.stats.keys():
+        # Don't run repeat simulations (just reuse results)
+        if not dict_to_key(sys_config) in self.stats.keys():
+            # initialize sub dictionary if it doesn't already
+            # exist
+            self.stats[dict_to_key(sys_config)] = {}
+            for sim in self.sims:
                 sim.set_config(self.sys_config)
-
                 sim.run()
-
-                # initialize sub dictionary if it doesn't already
-                # exist
-                self.stats[dict_to_key(sys_config)] = {}
-
                 # For each sys_config, each simulation_wrapper has a dictionary of stats.
                 self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
 
-            # We need to search the stats of the current MockSim run for constraint violations
+        for sim in self.sims:
+            # We need to search the stats of the current simulation
+            # runs for constraint violations
             sim_stats = self.stats[dict_to_key(sys_config)][sim.__class__.__name__]
             for stat in self.constraints.keys():
                 # TODO: need translation from abstract constraint name -> simulator stat name
@@ -96,7 +95,6 @@ class SearchState:
                     if (not self.constraints[stat].in_range(stat_value)):
                         self.fitness = float("inf")
                 else:
-                    # TODO: Emit warning if a constraint is specified but not found
                     logging.warning("Stat not found: {}".format(stat))
 
         if self.fitness != float("inf"):

@@ -76,7 +76,8 @@ class TestSearchState(unittest.TestCase):
                 return f()
             return one_time_f
 
-        mock = MockSearchState({}, {})
+        mock = MockSearchState({}, {}, default_benchmark,
+                default_options)
         mock.sims[0].run = call_once(mock.sims[0].run)
 
         sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}
