@@ -1,6 +1,7 @@
 import json
 import datetime
 import defs
+import logging
 
 """
 The search algorithm expects the user to provide a fitness function.
@@ -70,17 +71,21 @@ class SearchState:
         # Replace the old system configuration
         self.sys_config = sys_config
 
-        # If this particular sys_config has already been run, the results will be overwritten
-        self.stats[dict_to_key(sys_config)] = {}
-
+        # Reset fitness value
+        self.fitness = 0
         for sim in self.sims:
-            sim.set_config(self.sys_config)
+            # Don't run repeat simulations (just reuse results)
+            if not dict_to_key(sys_config) in self.stats.keys():
+                sim.set_config(self.sys_config)
 
-            sim.run()
+                sim.run()
 
-            # For each sys_config, each simulation_wrapper has a dictionary of stats.
-            # For this class the only simulation wrapper is the MockSim
-            self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
+                # initialize sub dictionary if it doesn't already
+                # exist
+                self.stats[dict_to_key(sys_config)] = {}
+
+                # For each sys_config, each simulation_wrapper has a dictionary of stats.
+                self.stats[dict_to_key(sys_config)][sim.__class__.__name__] = sim.stats
 
             # We need to search the stats of the current MockSim run for constraint violations
             sim_stats = self.stats[dict_to_key(sys_config)][sim.__class__.__name__]
@@ -90,8 +95,9 @@ class SearchState:
                     stat_value = sim_stats[stat]
                     if (not self.constraints[stat].in_range(stat_value)):
                         self.fitness = float("inf")
-                #else:
+                else:
                     # TODO: Emit warning if a constraint is specified but not found
+                    logging.warning("Stat not found: {}".format(stat))
 
         if self.fitness != float("inf"):
             all_stats = {}

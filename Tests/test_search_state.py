@@ -13,7 +13,7 @@ from test_utils import log_name
 default_benchmark = defs.ROOT_DIR + "/Test/test-progs/random_access/random_access"
 default_options = "10000"
 
-class TestSearcher(unittest.TestCase):
+class TestSearchState(unittest.TestCase):
     @log_name
     def test_defaults(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
@@ -62,9 +62,30 @@ class TestSearcher(unittest.TestCase):
         fitness = mock.eval_fitness(sys_config)
         self.assertTrue(fitness == float("inf"))
 
+    @log_name
+    def test_memoization(self):
+        """
+        Tests that redundant simulations aren't run
+        """
+        def call_once(f):
+            def one_time_f():
+                if not hasattr(one_time_f, "called"):
+                    one_time_f.called = True
+                else:
+                    raise ValueError()
+                return f()
+            return one_time_f
 
+        mock = MockSearchState({}, {})
+        mock.sims[0].run = call_once(mock.sims[0].run)
 
+        sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}
+        expected_fitness = mock.eval_fitness(sys_config)
+        # The simulation should not be called again or the call_once
+        # wrapper will throw an exception
+        fitness = mock.eval_fitness(sys_config)
 
+        self.assertTrue(expected_fitness, fitness)
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
