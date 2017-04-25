@@ -6,6 +6,7 @@ import defs
 from mock_sim import MockSim
 from mcpat_sim import McPatSim
 from gem5_sim import Gem5Sim
+from syntrace_sim import SynchroTraceSim
 
 
 default_benchmark = defs.ROOT_DIR + "/Tests/test-progs/random_access/random_access"
@@ -88,6 +89,12 @@ class TestMcPatSim(unittest.TestCase):
 class TestGem5Sim(unittest.TestCase):
     def test_sim_stats(self):
         sim = Gem5Sim(default_benchmark, default_options)
+        sim.run()
+        self.assertNotEqual(sim.stats, None)
+
+class TestSynchrotraceSim(unittest.TestCase):
+    def test_sim_stats(self):
+        sim = SynchroTraceSim()
         sim.run()
         self.assertNotEqual(sim.stats, None)
 
