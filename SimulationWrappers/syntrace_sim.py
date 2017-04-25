@@ -164,7 +164,7 @@ class SynchroTraceSim(SimWrap):
     def run_simulation(self):
 
         subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} "
-            "{9} {10} {11} {12} {13} >> {14}".format( \
+            "{9} {10} {11} {12} {13} {14} {15} >> {16}".format( \
             defs.SYNCHROTRACE_DIR + "/build/X86_MESI_Two_Level/gem5.opt", \
             "-r", \
             defs.SYNCHROTRACE_DIR + "/configs/example/synchrotrace_ruby.py", \
