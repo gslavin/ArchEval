@@ -10,24 +10,27 @@ import defs
 from DSE_search_state import MockSearchState
 from test_utils import log_name
 
+default_benchmark = defs.ROOT_DIR + "/Test/test-progs/random_access/random_access"
+default_options = "10000"
+
 class TestSearchState(unittest.TestCase):
     @log_name
     def test_defaults(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
-        mock = MockSearchState({}, {})
+        mock = MockSearchState({}, {}, default_benchmark, default_options)
         mock.eval_fitness(sys_config)
 
     @log_name
     def test_stats_to_json(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
-        mock = MockSearchState({}, {})
+        mock = MockSearchState({}, {}, default_benchmark, default_options)
         mock.eval_fitness(sys_config)
         logging.info(mock.stats_to_json(sys_config))
 
     @log_name
     def test_generate_job_output(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
-        mock = MockSearchState({}, {})
+        mock = MockSearchState({}, {}, default_benchmark, default_options)
         mock.eval_fitness(sys_config)
         logging.info(mock.generate_job_output([sys_config]))
 
@@ -36,26 +39,26 @@ class TestSearchState(unittest.TestCase):
         C = { "Area (mm2)": "[1048576, 1048576]",
               "execution time (s)": "(0.0, 2.00e-11)"
             }
-        mock = MockSearchState(C, {})
+        mock = MockSearchState(C, {}, default_benchmark, default_options)
         sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}
         fitness = mock.eval_fitness(sys_config)
         logging.info(mock.stats_to_json(sys_config))
         self.assertTrue(fitness < float("inf"))
 
         C = { "Area (mm2)": "(-inf, 1048575]" }
-        mock = MockSearchState(C, {})
+        mock = MockSearchState(C, {}, default_benchmark, default_options)
         fitness = mock.eval_fitness(sys_config)
         self.assertTrue(fitness == float("inf"))
 
         C = { "execution time (s)": "(0.0, 1.99e-11]" }
-        mock = MockSearchState(C, {})
+        mock = MockSearchState(C, {}, default_benchmark, default_options)
         fitness = mock.eval_fitness(sys_config)
         self.assertTrue(fitness == float("inf"))
 
         C = { "Area (mm2)": "(-inf, 1048575]",
               "execution time (s)": "(0.0, 1.99e-11)"
             }
-        mock = MockSearchState(C, {})
+        mock = MockSearchState(C, {}, default_benchmark, default_options)
         fitness = mock.eval_fitness(sys_config)
         self.assertTrue(fitness == float("inf"))
 
@@ -73,7 +76,8 @@ class TestSearchState(unittest.TestCase):
                 return f()
             return one_time_f
 
-        mock = MockSearchState({}, {})
+        mock = MockSearchState({}, {}, default_benchmark,
+                default_options)
         mock.sims[0].run = call_once(mock.sims[0].run)
 
         sys_config = {"cache_size": 1024, "cpu_frequency" : 7e9, "cpu_count" : 7}

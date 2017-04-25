@@ -21,7 +21,6 @@ fi
 ./Tests/test_range_string.py
 
 # TODO:  Remove these tests when they are all replaced by unit tests
-test_script SimulationWrappers/gem5_sim.py
 test_script SimulationWrappers/simulation_wrapper.py
 test_script SimulationWrappers/syntrace_sim.py
 test_script validate_json.py

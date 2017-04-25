@@ -200,16 +200,27 @@ class DSE_searcher:
         for i in range(self.num_search_parties):
             self.fitness_vals[i] = search_state.eval_fitness(self.sys_configs[i])
 
+        converged = []
+
         for i in range(self.max_iterations):
+
+            if (len(converged) == self.num_search_parties):
+                return
+
             for j in range(self.num_search_parties):
+
+                if (j in converged):
+                    continue
                 logging.info("Round {0}, Party: {1}".format(i, j))
+                logging.info("Exploring node: {0}".format((self.fitness_vals[j], self.sys_configs[j])))
                 # Each party will start a hill climbing search during each iteration
                 new_sys_config, new_fitness = self.search_neighbors(self.sys_configs[j], self.fitness_vals[j], search_state)
 
                 # TODO Implement plateau exploration
                 if (new_sys_config == self.sys_configs[j]):
                     # Current nodes is a local max or min
-                    pass
+                    logging.info("Search party {0} has converged.".format(j))
+                    converged.append(j)
                 self.sys_configs[j] = new_sys_config
                 self.fitness_vals[j] = new_fitness
 
@@ -304,7 +315,14 @@ class DSE_searcher:
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
         if (self.algorithm == Search_Algorithm.Elitist_Hill_Climber):
+
             next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
+
+            # If we've hit a plateau, terminate early.
+            # TODO Do more informed plateau exploration
+            if (next_fitness == current_fitness):
+                next_config = sys_config
+                next_fitness = current_fitness
         elif (self.algorithm == Search_Algorithm.Stochastic_Hill_Climber):
             # TODO choose neighbor with probability proportional to their
             # relative score
