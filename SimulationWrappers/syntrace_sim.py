@@ -7,7 +7,7 @@ import defs
 import os
 
 
-config_defaults = { "cpu_count": 1, "cpu_frequency": 9000000,  \
+config_defaults = { "cpu_count": 1, "cpu_frequency": 2e9,  \
     "cache_size": 1024}
 valid_sys_config_params = \
     [ "cpu_count", "cpu_frequency", "cache_size" ]
@@ -63,11 +63,9 @@ def gem5_parse_freq(freq):
         freq = int(freq / 1000)
         prefix = "K"
 
-
     if (freq >= 1000):
         freq = int(freq / 1000)
         prefix = "M"
-
 
     if (freq >= 1000):
         freq = int(freq / 1000)
@@ -75,25 +73,22 @@ def gem5_parse_freq(freq):
 
     return str(freq) + prefix + "Hz"
 
-def gem5_parse_cache(freq):
+def gem5_parse_cache(cache_size):
     prefix = ""
 
-    if (freq >= 1024):
-        freq = int(freq / 1024)
+    if (cache_size >= 1024):
+        cache_size = int(cache_size / 1024)
         prefix = "k"
 
-
-    if (freq >= 1024):
-        freq = int(freq / 1024)
+    if (cache_size >= 1024):
+        cache_size = int(cache_size / 1024)
         prefix = "m"
 
-
-    if (freq >= 1024):
-        freq = int(freq / 1024)
+    if (cache_size >= 1024):
+        cache_size = int(cache_size / 1024)
         prefix = "g"
 
-    return str(freq) + prefix + "B"
-
+    return str(cache_size) + prefix + "B"
 
 
 class SynchroTraceSim(SimWrap):
@@ -163,8 +158,10 @@ class SynchroTraceSim(SimWrap):
 
     def run_simulation(self):
 
-        subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} "
-            "{9} {10} {11} {12} {13} {14} {15} >> {16}".format( \
+        # NOTE: cache_size results in equal sizes for both I-Mem
+        # and D-Mem caches.
+        subprocess.check_call("{}"
+            " >> {}".format(" ".join([\
             defs.SYNCHROTRACE_DIR + "/build/X86_MESI_Two_Level/gem5.opt", \
             "-r", \
             defs.SYNCHROTRACE_DIR + "/configs/example/synchrotrace_ruby.py", \
@@ -180,9 +177,20 @@ class SynchroTraceSim(SimWrap):
             "--num-threads=1", \
             "--num-dirs=8", \
             "--num-l2caches=8", \
-            "--l1d_size=64kB --l1d_assoc=2 --l1i_size=64kB --l1i_assoc=2 --l2_size=4096kB --l2_assoc=8", \
+            "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \
+            "--l1d_assoc=2", \
+            "--l1i_size=" + gem5_parse_cache(self.config["cache_size"]), \
+            "--l1i_assoc=2", \
+            # NOTE: disable L2 cache for now
+            #"--l2_size=4096kB --l2_assoc=8", \
+            # NOTE: Synchrotrace doesn't set a CPU clock domain, so
+            # I'm using the sys clock domain.  (There is also a
+            # separate memory clock domain, should we use this
+            # instead?)
+            "--sys-clock=" + gem5_parse_freq(self.config["cpu_frequency"]), \
             "--cpi-iops=1 --cpi-flops=1", \
-            "--bandwidth-factor=4 --master-freq=1 --cacheline_size=64", \
+            "--bandwidth-factor=4 --master-freq=1", \
+            "--cacheline_size=64"]), \
             defs.LOG_DIR + "/synchrotrace.log"), shell=True)
         # TODO: is this needed for synchrotrace?
         subprocess.check_call("/bin/cat " + defs.ROOT_DIR +
