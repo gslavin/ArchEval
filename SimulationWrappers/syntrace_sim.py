@@ -211,7 +211,7 @@ class SynchroTraceSim(SimWrap):
 # NOTE: Synchrotrace needs to create a new trace evey time the number
 # of cpu cores changes.
 def main():
-    sim = SynchroTraceSim(sys_config = {"cache_size" : 2048, "cpu_count" : 1})
+    sim = SynchroTraceSim()
     sim.run()
 
 if __name__ == "__main__":
