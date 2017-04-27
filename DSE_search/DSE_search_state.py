@@ -170,7 +170,7 @@ class MockSearchState(SearchState):
         sys_config are retreived by passing the winning sys_config to generate_job_output(sys_config)
         """
 
-        super().__init__(constraints, benchmark, options)
+        super().__init__(constraints)
         self.sims = [MockSim(sys_config)]
         self.stats = {}
         self.fitness = None
@@ -285,7 +285,7 @@ Full search state incorporating gem5 and McPat
 class FullSearchState(SearchState):
 
     def __init__(self, constraints, benchmark, options, fitness_func = eval_temp):
-        super().__init__(constraints, benchmark, options)
+        super().__init__(constraints)
         self.sims = [Gem5Sim(benchmark, options), McPatSim()]
         self.stats = {}
         self.fitness = None
@@ -330,7 +330,7 @@ class McPatSearchState(SearchState):
     """
 
     def __init__(self, constraints, benchmark, options, fitness_func = mcpat_eval_stats):
-        super().__init__(constraints, benchmark, options)
+        super().__init__(constraints)
         self.sims = [McPatSim()]
         self.stats = {}
         self.fitness = None

@@ -141,6 +141,19 @@ class TestSearcherGem5(unittest.TestCase):
         s.search(search_state)
         #generate_job_output(s.sys_configs, search_state)
 
+class TestSearcherSynchroTrace(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        modified_param_ranges = {
+                                "cpu_count" : list(map(lambda x: 2**x, range(0, 4))),
+                                "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
+                                "cache_size" : list(map(lambda x: 2**x, range(11, 14))),
+                                }
+        s = DSE_searcher(modified_param_ranges)
+        search_state = FastFullSearchState({}, default_benchmark, default_options)
+        s.search(search_state)
+        #generate_job_output(s.sys_configs, search_state)
+
 class TestMcPatSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
