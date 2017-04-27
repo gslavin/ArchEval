@@ -173,7 +173,8 @@ class SynchroTraceSim(SimWrap):
             "--mesh-rows=1", \
             "--event-dir=" + self.event_dir, \
             "--output-dir=" + defs.ROOT_DIR + "/_OutSynchrotrace", \
-            "--num-cpus=1", \
+            " -n " + str(self.config["cpu_count"]), \
+            # Num threads depends on the benchmark
             "--num-threads=1", \
             "--num-dirs=8", \
             "--num-l2caches=8", \
