@@ -26,6 +26,7 @@ to the visualization platform.
 from mock_sim import MockSim
 from gem5_sim import Gem5Sim
 from mcpat_sim import McPatSim
+from syntrace_sim import SynchroTraceSim
 from range_string import RangeString
 
 def dict_to_key(d):
@@ -53,7 +54,7 @@ class SearchState:
             The most recent fitness score
     """
 
-    def __init__(self, constraints, benchmark, options):
+    def __init__(self, constraints):
 
         if (not isinstance(constraints, dict)):
             raise ValueError("Parameter ranges takes the form of a dictionary.")
@@ -279,13 +280,27 @@ def eval_demo(stats):
 
 
 """
-Full search state incorporating all included simulators.
+Full search state incorporating gem5 and McPat
 """
 class FullSearchState(SearchState):
 
     def __init__(self, constraints, benchmark, options, fitness_func = eval_temp):
         super().__init__(constraints, benchmark, options)
         self.sims = [Gem5Sim(benchmark, options), McPatSim()]
+        self.stats = {}
+        self.fitness = None
+        self.fitness_func = fitness_func
+
+
+"""
+Search state incorporating SynchroTraceSim and McPatSim for fast
+results
+"""
+class FastFullSearchState(SearchState):
+
+    def __init__(self, constraints, benchmark, options, fitness_func = eval_temp):
+        super().__init__(constraints)
+        self.sims = [SynchroTraceSim(), McPatSim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func

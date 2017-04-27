@@ -8,12 +8,13 @@ import os
 import defs
 
 from DSE_search_state import MockSearchState
+from DSE_search_state import FastFullSearchState
 from test_utils import log_name
 
 default_benchmark = defs.ROOT_DIR + "/Test/test-progs/random_access/random_access"
 default_options = "10000"
 
-class TestSearchState(unittest.TestCase):
+class TestMockSearchState(unittest.TestCase):
     @log_name
     def test_defaults(self):
         sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
@@ -87,6 +88,13 @@ class TestSearchState(unittest.TestCase):
         fitness = mock.eval_fitness(sys_config)
 
         self.assertTrue(expected_fitness, fitness)
+
+class TestFastFullSearchState(unittest.TestCase):
+    @log_name
+    def test_defaults(self):
+        sys_config = {"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}
+        search_state = FastFullSearchState({}, default_benchmark, default_options)
+        search_state.eval_fitness(sys_config)
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)
