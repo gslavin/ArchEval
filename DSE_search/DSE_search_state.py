@@ -300,7 +300,7 @@ class FastFullSearchState(SearchState):
 
     def __init__(self, constraints, benchmark, options, fitness_func = eval_temp):
         super().__init__(constraints)
-        self.sims = [SynchroTraceSim(), McPatSim()]
+        self.sims = [SynchroTraceSim(benchmark, options), McPatSim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func

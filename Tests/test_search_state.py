@@ -11,8 +11,8 @@ from DSE_search_state import MockSearchState
 from DSE_search_state import FastFullSearchState
 from test_utils import log_name
 
-default_benchmark = defs.ROOT_DIR + "/Test/test-progs/random_access/random_access"
-default_options = "10000"
+default_benchmark = defs.ROOT_DIR + "/Tests/test-progs/random_access/random_access"
+default_options = "1000"
 
 class TestMockSearchState(unittest.TestCase):
     @log_name

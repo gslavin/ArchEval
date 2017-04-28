@@ -5,6 +5,7 @@ import subprocess
 import csv
 import defs
 import os
+import sys
 
 
 config_defaults = { "cpu_count": 1, "cpu_frequency": 2e9,  \
@@ -99,7 +100,7 @@ class SynchroTraceSim(SimWrap):
         simulation results
     """
 
-    def __init__(self, event_dir = defs.EVENT_DIR,
+    def __init__(self, benchmark, options,
             sys_config = config_defaults):
         """
         Pass in dictionary of simulation parameters
@@ -111,7 +112,10 @@ class SynchroTraceSim(SimWrap):
 
         self.config = {}
         self.set_config(sys_config)
-        self.event_dir = event_dir
+        self.event_dir = defs.EVENT_DIR
+        self.benchmark = benchmark
+        self.options = options
+        self.event_trace_ready = False
 
     # TODO: move this function into the SimWrap class
     def set_config(self, sys_config):
@@ -156,7 +160,20 @@ class SynchroTraceSim(SimWrap):
 
         return stats
 
+    def generate_event_trace(self):
+        subprocess.check_call("{0} 2>> {1} 1>> {1}".format(" ".join([\
+            defs.SIGIL2_DIR + "/bin/sigil2", \
+            "--backend=stgen", \
+            "-o " + self.event_dir, \
+            "--executable=" + self.benchmark, \
+            " "+ self.options]), \
+            defs.LOG_DIR + "/synchrotrace_event_trace.log"),
+            shell=True)
+        self.event_trace_ready = True
+
     def run_simulation(self):
+        if not self.event_trace_ready:
+            self.generate_event_trace()
 
         # NOTE: cache_size results in equal sizes for both I-Mem
         # and D-Mem caches.

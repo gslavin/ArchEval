@@ -10,7 +10,7 @@ from syntrace_sim import SynchroTraceSim
 
 
 default_benchmark = defs.ROOT_DIR + "/Tests/test-progs/random_access/random_access"
-default_options = "10000"
+default_options = "1000"
 
 class TestMockSim(unittest.TestCase):
     def test_valid_args(self):
@@ -94,7 +94,7 @@ class TestGem5Sim(unittest.TestCase):
 
 class TestSynchrotraceSim(unittest.TestCase):
     def test_sim_stats(self):
-        sim = SynchroTraceSim()
+        sim = SynchroTraceSim(default_benchmark, default_options)
         sim.run()
         self.assertNotEqual(sim.stats, None)
 
