@@ -8,6 +8,7 @@ import os
 import defs
 
 from DSE_search_state import MockSearchState
+from DSE_search_state import FullSearchState
 from test_utils import log_name
 
 default_benchmark = defs.ROOT_DIR + "/Test/test-progs/random_access/random_access"
@@ -87,23 +88,6 @@ class TestSearchState(unittest.TestCase):
         fitness = mock.eval_fitness(sys_config)
 
         self.assertTrue(expected_fitness, fitness)
-
-    @log_name
-    def test_parsec(self):
-        """
-        Tests gem5 running a PARSEC benchmark
-        """
-
-        if defs.PARSEC_DIR == "":
-            raise ValueError("PARSEC_DIR is undefined. Please provide a path to your PARSEC installation.")
-
-        benchmark = defs.PARSEC_DIR + "/ext/splash2x/kernels/fft/inst/amd64-linux.gcc/bin/fft"
-        options = "-m18 -p8"
-
-        ss = FullSearchState({}, benchmark, options)
-        sys_config = {"cache_size": 2048, "cpu_frequency" : 7e9, "cpu_count" : 7}
-        ss.eval_fitness(sys_config)
-
 
 if __name__ == '__main__':
     script_name = os.path.basename(__file__)

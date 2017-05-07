@@ -9,8 +9,27 @@ import subprocess
 import defs
 import os
 
-config_defaults = { "cpu_count": 1, "cpu_frequency": 9000000, "cache_size": 1024}
-valid_sys_config_params = [ "cpu_count", "cpu_frequency", "cache_size" ]
+config_defaults = { "cpu_count": 1,\
+                    "cpu_frequency": 9000000,\
+                    "cache_size": 1024,\
+                    "l1d_assoc": 2,\
+                    "l1i_size": 1024,\
+                    "l1i_assoc": 2,\
+                    "num-l2caches": 1,\
+                    "l2_size": 1024,\
+                    "l2_assoc": 2,\
+                  }
+
+valid_sys_config_params = [ "cpu_count",\
+                            "cpu_frequency",\
+                            "cache_size",\
+                            "l1d_assoc",\
+                            "l1i_size",\
+                            "l1i_assoc",\
+                            "num-l2caches",\
+                            "l2_size",\
+                            "l2_assoc"\
+                          ]
 
 def nested_stats_insert(stats, fields):
     # Expecting lines with at least 2 fields separated by whitespace
@@ -139,7 +158,7 @@ class Gem5Sim(SimWrap):
         #OUTPUT = " --stats-file=" + defs.ROOT_DIR + "/stats.txt"
         #COMMAND = " -c " + defs.BENCHMARK_PATH
 
-        subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} >> {10}".format(\
+        subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} >> {16}".format( \
                                 defs.GEM5_DIR + "/build/X86/gem5.opt", \
                                 "--stats-file=" + defs.ROOT_DIR + "/stats.txt", \
                                 "-r", \
@@ -149,6 +168,12 @@ class Gem5Sim(SimWrap):
                                 " -n " + str(self.config["cpu_count"]), \
                                 "--cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"]), \
                                 "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \
+                                "--l1d_assoc=" + str(self.config["l1d_assoc"]), \
+                                "--l1i_size=" + gem5_parse_cache(self.config["l1i_size"]), \
+                                "--l1i_assoc=" + str(self.config["l1i_assoc"]), \
+                                "--num-l2caches=" + str(self.config["num-l2caches"]), \
+                                "--l2_size=" + gem5_parse_cache(self.config["l2_size"]), \
+                                "--l2_assoc=" + str(self.config["l2_assoc"]), \
                                 "-c " + self.benchmark + " --options=" + self.options, \
                                 defs.LOG_DIR + "/gem5.log"), shell=True)
         subprocess.check_call("/bin/cat " + defs.ROOT_DIR + "/m5out/simout >> " + defs.LOG_DIR + "/gem5.log", shell=True)
