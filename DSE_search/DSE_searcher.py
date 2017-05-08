@@ -14,6 +14,7 @@ import itertools as it
 import random as r
 import copy
 import os
+from math import exp
 
 from enum import Enum
 
@@ -27,6 +28,7 @@ class Search_Algorithm(Enum):
     Elitist_Hill_Climber = 1
     Stochastic_Hill_Climber = 2
     A_Star = 3
+    Simulated_Annealing = 4
 
 def param_has_next(val, param_range):
     if (not val in param_range):
@@ -187,12 +189,17 @@ class DSE_searcher:
             self.search_hill_climber(search_state)
         elif (self.algorithm == Search_Algorithm.A_Star):
             self.search_a_star(search_state)
+        elif (self.algorithm == Search_Algorithm.Simmulated_Annealing):
+            self.search_simulated_annealing(search_state)
 
 
     def search_hill_climber(self, search_state):
         """
         Implements a hill climbing search algorithm given the starting seed
         configurations.
+        """
+        """
+        Integrating the option to carry out simulated annealing.
         """
         # TODO store direction we came from to cut down on superfluous searches
 
@@ -257,7 +264,6 @@ class DSE_searcher:
 
         logging.info("Best config: {0}".format(best))
 
-
     def gen_neighbors(self, sys_config):
         """
         Determine all possible neighbors of the given config
@@ -315,11 +321,12 @@ class DSE_searcher:
         neighbor_configs.append(sys_config)
         fitnesses.append(current_fitness)
         if (self.algorithm == Search_Algorithm.Elitist_Hill_Climber):
-
+            
+            # Greedy search on the neighboring search state. 
             next_config, next_fitness = self.get_best_sys_config(neighbor_configs, fitnesses)
 
             # If we've hit a plateau, terminate early.
-            # TODO Do more informed plateau exploration
+            # TODO Do more informued plateau exploration
             if (next_fitness == current_fitness):
                 next_config = sys_config
                 next_fitness = current_fitness
@@ -330,3 +337,47 @@ class DSE_searcher:
             next_fitness = fitnesses
 
         return next_config, next_fitness
+    
+    def search_simulated_annealing(self, search_state):
+        # TODO: Add search using sim anneal`
+
+    def gen_neighbors_randomly(self, sys_config):
+        """
+        Determine all possible neighbors of the given config but is done randomly
+        instead of generating direct neighbors. This is done by choosing a value
+        from the param range at random. 
+        """
+
+        neighbors = []
+        for key in sys_config.keys():
+            # Simply selects a random value for the given key within the param 
+            # ranges
+            config = copy.deepcopy(sys_config)
+            current_index = param_ranges[key].index(sys_config[key])
+            param_len = len(param_ranges[key])
+            rand_index = -1 # sentinel value for the new random index
+            while(rand_index == current_index):
+                rand_index = r.randint(0, param_len-1)
+
+            config[key] = self.param_ranges[key](rand_index)
+            neighbors.append(config)
+
+        return neighbors
+    
+    def acceptance_probability(self, old_fitness, new_fitness, temperature):
+        """
+        This method determines whether a prticular sys_config is to be accepted
+        or not. The idea with simulated annealing is to move to a better sys_config
+        but not to get stuck in a plataeu by allowing the search to accept a slightly 
+        worse state based on the acceptance probability to get out of a plateau. 
+        """
+        ## We are going to implement the standard notation for the acceptance 
+        ## probability
+        
+        alpha = exp((old_fitness - new_fitness)/temperature)
+
+        return alpha
+
+
+
+
