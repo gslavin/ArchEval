@@ -57,8 +57,8 @@ class McPatSim(SimWrap):
                 self.config[k] = sys_config[k]
 
     def validate_sys_config(self, sys_config):
-        if not all(k in valid_sys_config_params for k in sys_config.keys()):
-            raise ValueError(sys_config.keys(), "Not a valid McPAT config parameter")
+        if not any(k in sys_config.keys() for k in valid_sys_config_params):
+            raise ValueError(sys_config.keys(), "Doesn't contain any valid McPat paramters")
 
     def run_simulation(self, output_csv):
         #TODO: Have better error handling for cacti call

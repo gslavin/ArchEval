@@ -45,10 +45,10 @@ class TestMcPatSim(unittest.TestCase):
 
     def test_one_invalid_arg(self):
         """
-        Invalid arguments should raise an exception
+        If at least one valid argument is present,
+        no exception will be raised
         """
-        with self.assertRaises(ValueError):
-            McPatSim({"fake_arg": 56, "cache_size" : 2048})
+        McPatSim({"fake_arg": 56, "cache_size" : 2048})
 
     def test_all_invalid_args(self):
         """
