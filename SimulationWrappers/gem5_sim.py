@@ -164,7 +164,7 @@ class Gem5Sim(SimWrap):
                                 "-r", \
                                 defs.GEM5_DIR + "/configs/example/se.py", \
                                 """--cpu-type="DerivO3CPU" """, \
-                                "--ruby", \
+                                "--ruby --caches", \
                                 " -n " + str(self.config["cpu_count"]), \
                                 "--cpu-clock=" + gem5_parse_freq(self.config["cpu_frequency"]), \
                                 "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \

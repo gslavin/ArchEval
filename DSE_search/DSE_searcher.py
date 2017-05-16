@@ -95,7 +95,7 @@ class DSE_searcher:
     Uses the simulation wrappers to a run a variety of simulations
     """
 
-    def __init__(self, param_ranges, max_iterations = 20, num_search_parties = 1):
+    def __init__(self, param_ranges = default_param_ranges, max_iterations = 20, num_search_parties = 1):
         """
         public functions:
         - search()
@@ -125,9 +125,7 @@ class DSE_searcher:
         self.fitness_vals = []
 
         # Store configuration parameters and their ranges
-        self.param_ranges = copy.deepcopy(default_param_ranges)
-        for key in param_ranges.keys():
-            self.param_ranges[key] = param_ranges[key]
+        self.param_ranges = copy.deepcopy(param_ranges)
 
         self.sys_configs = self.gen_search_parties(self.num_search_parties);
 
@@ -205,7 +203,8 @@ class DSE_searcher:
         for i in range(self.max_iterations):
 
             if (len(converged) == self.num_search_parties):
-                return
+                break
+                
 
             for j in range(self.num_search_parties):
 
@@ -223,6 +222,11 @@ class DSE_searcher:
                     converged.append(j)
                 self.sys_configs[j] = new_sys_config
                 self.fitness_vals[j] = new_fitness
+            
+        logging.info("Final configs:")
+        for i in range(len(self.sys_configs)):
+            logging.info("Party {0}: {1}".format(i, (self.fitness_vals[i], self.sys_configs[i])))
+            
 
 
     def search_a_star(self, search_state):
