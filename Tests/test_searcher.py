@@ -25,42 +25,39 @@ def generate_job_output(sys_configs, search_state):
 class TestSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_more_seeds(self):
-        s = DSE_searcher({}, num_search_parties = 2)
+        s = DSE_searcher(num_search_parties = 2)
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_min_start(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_max_start(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 7e9, "cpu_count" : 8}]
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_invalid_args(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher([])
+            s = DSE_searcher(num_search_parties = -1)
 
         with self.assertRaises(ValueError):
-            s = DSE_searcher({}, num_search_parties = -1)
-
-        with self.assertRaises(ValueError):
-            s = DSE_searcher({}, max_iterations = -1)
+            s = DSE_searcher(max_iterations = -1)
 
         with self.assertRaises(ValueError):
             s = DSE_searcher(param_ranges = [1,2,3])
@@ -68,7 +65,7 @@ class TestSearcher(unittest.TestCase):
     # TODO: fix stat_output for multiple search parties
     @log_name
     def test_stat_output(self):
-        s = DSE_searcher(param_ranges = {}, num_search_parties=1)
+        s = DSE_searcher(num_search_parties=1)
         mock_search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(mock_search_state)
 
@@ -76,7 +73,7 @@ class TestSearcher(unittest.TestCase):
 
     @log_name
     def test_large_num_seeds(self):
-        s = DSE_searcher({}, num_search_parties=10)
+        s = DSE_searcher(num_search_parties=10)
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
@@ -92,21 +89,21 @@ class TestSearcher(unittest.TestCase):
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
 
     def test_embedded_heuristic(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = EmbeddedSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_balanced_heuristic(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = BalancedSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
 
     @log_name
     def test_high_performance_heuristic(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         s.sys_configs = [{"cache_size": 2**11, "cpu_frequency" : 1e9, "cpu_count" : 1}]
         search_state = HighPerformanceSearchState({}, {}, default_benchmark, default_options)
         s.search(search_state)
@@ -128,6 +125,7 @@ class TestSearcherGem5(unittest.TestCase):
         #generate_job_output(s.sys_configs, search_state)
 
 
+    @log_name
     def test_A_star(self):
         modified_param_ranges = {
                                 "cpu_count" : list(range(1, 3)),
@@ -141,10 +139,29 @@ class TestSearcherGem5(unittest.TestCase):
         s.search(search_state)
         #generate_job_output(s.sys_configs, search_state)
 
+    @log_name
+    def test_cache_params(self):
+        modified_param_ranges = {
+                                "cache_size" : list(map(lambda x: 2**x, range(12, 15))),
+                                "l1d_assoc" : [2, 4, 8],
+                                "l2_size" : list(map(lambda x: 2**x, range(14, 17))),
+                                "l2_assoc" : [2, 4, 8],
+                                }
+
+        s = DSE_searcher(modified_param_ranges, num_search_parties=2, max_iterations=3)
+        #s.algorithm = Search_Algorithm.A_Star
+        search_state = Gem5FSSearchState({}, \
+        "/home/solisknight/tmp/blackscholes_8c_simsmall.rcS", \
+        "", \
+        "/dist/m5/system/binaries/x86_64-vmlinux-2.6.22.9.smp", \
+        "/dist/m5/system/disks/x86root.img")
+        s.search(search_state)
+        generate_job_output(s.sys_configs, search_state)
+
 class TestMcPatSearcher(unittest.TestCase):
     @log_name
     def test_defaults(self):
-        s = DSE_searcher({})
+        s = DSE_searcher()
         search_state = McPatSearchState({}, default_benchmark, default_options)
         s.search(search_state)
 

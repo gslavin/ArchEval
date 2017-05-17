@@ -14,7 +14,7 @@ from gem5_sim import gem5_parse_value
 from gem5_sim import gem5_parse_freq
 from gem5_sim import gem5_parse_cache
 
-config_defaults = { "cpu_count": 1,\
+config_defaults = { "cpu_count": 8,\
                     "cpu_frequency": 9000000,\
                     "cache_size": 1024,\
                     "l1d_assoc": 2,\
@@ -87,7 +87,7 @@ class Gem5FSSim(SimWrap):
                                 defs.GEM5_DIR + "/configs/example/fs.py", \
                                 "--kernel=" + self.kernel, \
                                 "--disk-image=" + self.disk_image, \
-                                """--cpu-type="timing" """, \
+                                """--cpu-type="timing" --ruby --caches""", \
                                 " --num-cpus=" + str(self.config["cpu_count"]), \
                                 "--l1d_size=" + gem5_parse_cache(self.config["cache_size"]), \
                                 "--l1d_assoc=" + str(self.config["l1d_assoc"]), \

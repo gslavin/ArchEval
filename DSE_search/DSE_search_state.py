@@ -25,6 +25,7 @@ to the visualization platform.
 
 from mock_sim import MockSim
 from gem5_sim import Gem5Sim
+from gem5_fs_sim import Gem5FSSim
 from mcpat_sim import McPatSim
 from range_string import RangeString
 
@@ -317,6 +318,15 @@ class McPatSearchState(SearchState):
     def __init__(self, constraints, benchmark, options, fitness_func = mcpat_eval_stats):
         super().__init__(constraints, benchmark, options)
         self.sims = [McPatSim()]
+        self.stats = {}
+        self.fitness = None
+        self.fitness_func = fitness_func
+
+class Gem5FSSearchState(SearchState):
+    
+    def __init__(self, constraints, benchmark, options, kernel, disk_image, fitness_func = eval_temp):
+        super().__init__(constraints, benchmark, options)
+        self.sims = [Gem5FSSim(benchmark, options, kernel, disk_image), McPatSim()]
         self.stats = {}
         self.fitness = None
         self.fitness_func = fitness_func
