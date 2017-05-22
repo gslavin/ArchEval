@@ -90,7 +90,19 @@ class TestSearcher(unittest.TestCase):
         s = DSE_searcher(modified_param_ranges, num_search_parties=1)
         s.algorithm = Search_Algorithm.A_Star
         search_state = MockSearchState({}, {}, default_benchmark, default_options)
-
+    
+    @log_name
+    def test_SA(self):
+        modified_param_ranges = {
+                                "cpu_count" : list(range(1, 4)),
+                                "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
+                                "cache_size" : list(map(lambda x: 2**x, range(11, 13))),
+                                }
+        s = DSE_searcher(modified_param_ranges, num_search_parties=1)
+        s.algorithm = Search_Algorithm.Simulated_Annealing 
+        search_state = MockSearchState({}, {}, default_benchmark, default_options)
+        s.search(search_state)
+    
     def test_embedded_heuristic(self):
         s = DSE_searcher({})
         s.sys_configs = [{"cache_size": 2**16, "cpu_frequency" : 1e9, "cpu_count" : 1}]
@@ -127,6 +139,20 @@ class TestSearcherGem5(unittest.TestCase):
         s.search(search_state)
         #generate_job_output(s.sys_configs, search_state)
 
+    def test_simulated_annealing(self):
+        modified_param_ranges = {
+                                "cpu_count" : list(range(1, 4)),
+                                "cpu_frequency" : list(map(lambda x: x * 10**9, range(1, 4))),
+                                "cache_size" : list(map(lambda x: 2**x, range(11, 14))),
+                                }
+
+
+        s = DSE_searcher(modified_param_ranges)
+        #s.sys_configs = [{"cache_size": 2**10, "cpu_frequency" : 1e9, "cpu_count" : 1}]
+        s.algorithm = Search_Algorithm.Simulated_Annealing
+        search_state = FullSearchState({}, default_benchmark, default_options)
+        s.search(search_state)
+        #generate_job_output(s.sys_configs, search_state)
 
     def test_A_star(self):
         modified_param_ranges = {
