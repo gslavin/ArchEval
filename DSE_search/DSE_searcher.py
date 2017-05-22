@@ -15,6 +15,7 @@ import random as r
 import copy
 import os
 from math import exp
+from math import log
 
 from enum import Enum
 
@@ -189,7 +190,7 @@ class DSE_searcher:
             self.search_hill_climber(search_state)
         elif (self.algorithm == Search_Algorithm.A_Star):
             self.search_a_star(search_state)
-        elif (self.algorithm == Search_Algorithm.Simmulated_Annealing):
+        elif (self.algorithm == Search_Algorithm.Simulated_Annealing):
             self.search_simulated_annealing(search_state)
 
 
@@ -197,9 +198,6 @@ class DSE_searcher:
         """
         Implements a hill climbing search algorithm given the starting seed
         configurations.
-        """
-        """
-        Integrating the option to carry out simulated annealing.
         """
         # TODO store direction we came from to cut down on superfluous searches
 
@@ -339,7 +337,88 @@ class DSE_searcher:
         return next_config, next_fitness
     
     def search_simulated_annealing(self, search_state):
-        # TODO: Add search using sim anneal`
+        # TODO: Add search using sim anneal
+
+        converged = [] ## This keeps a track of the optimal values found in each search party
+        # Setting up fitness values of seeds from each search party
+        for i in range(self.num_search_parties):
+            self.fitness_vals[i] = search_state.eval_fitness(self.sys_configs[i])
+            converged.append({'fitness_val': -1000000, 'sys_config': ''})
+
+        logging.info('tester')
+        ## Initial temperature 
+        t = 1.00
+        # Absoute limit for minimum temperature 
+        t_min = 0.1
+        time = 1
+        
+        while t > t_min:
+            for i in range(self.max_iterations):
+
+                # if (len(converged) == self.num_search_parties):
+                    # return
+
+                for j in range(self.num_search_parties):
+
+                    # if (j in converged):
+                        # continue
+                    logging.info("Round {0}, Party: {1}".format(i, j))
+                    logging.info("Exploring node: {0}".format((self.fitness_vals[j], self.sys_configs[j])))
+                    # Each party will start a hill climbing search during each iteration
+                    new_sys_config, new_fitness, optimal_value = self.annealing_search(self.sys_configs[j], self.fitness_vals[j], search_state, t)
+                    logging.info('{0},\n {1},\n'.format(new_fitness, new_sys_config))
+
+                    # Update convergence list with better node if found. 
+                    if (optimal_value['fitness_val'] > converged[j]['fitness_val']):
+                        converged[j] = optimal_value
+                        logging.info("Found new optimal node at temperature {0} for search party {1}".format(t, j))
+                    self.sys_configs[j] = new_sys_config
+                    self.fitness_vals[j] = new_fitness
+            
+            t = t * 0.9 ## reducing the temperature 
+
+    def annealing_search(self, sys_config, fitness_val, search_state, temperature):
+        # Generate possible neighbors
+        neighbor_configs = self.gen_neighbors_randomly(sys_config)
+        logging.info('neighbors generated, {}'.format(neighbor_configs))
+
+        # Permute order of neighbors, just in case we're not searching through
+        # all of them
+        r.shuffle(neighbor_configs)
+
+        fitnesses = []
+        # This is used to keep a track of any peaks, in case SA strays from maxima
+        most_optimum_value = {'fitness_val': -10, 'sys_config': ''}
+        for n in neighbor_configs:
+            # Evaluate each neighbor according to our evaluation function
+            fitnesses.append(search_state.eval_fitness(n))
+
+        neighbor_configs.append(sys_config)
+        fitnesses.append(fitness_val)
+        new_fitness = 100# Sentinel value 
+        new_sys_config = {}
+
+        for index, fitness in enumerate(fitnesses):
+            acceptance = self.acceptance_probability(new_fitness, fitness, temperature)
+            logging.info('fitness values:{0}, acceptance: {1}'.format(fitness, acceptance))
+            ## Neighboring node has a better fitness value, 
+            ## hence, always accept it. 
+            if new_fitness > fitness:
+                new_fitness = fitness
+                new_sys_config = neighbor_configs[index]
+                most_optimum_value['fitness_val'] = new_fitness
+                most_optimum_value['sys_config'] = new_sys_config
+            
+            ## This is the case where the neighboring node is 
+            ## not as good as the current node. Only accept
+            ## less optimal node if it has a high enough 
+            ## acceptance probability. 
+            elif acceptance < 1 and acceptance > r.random():
+                new_fitness = fitness
+                new_sys_config = neighbor_configs(index)
+                
+        return new_sys_config, new_fitness, most_optimum_value
+
 
     def gen_neighbors_randomly(self, sys_config):
         """
@@ -353,13 +432,13 @@ class DSE_searcher:
             # Simply selects a random value for the given key within the param 
             # ranges
             config = copy.deepcopy(sys_config)
-            current_index = param_ranges[key].index(sys_config[key])
-            param_len = len(param_ranges[key])
+            current_index = self.param_ranges[key].index(sys_config[key])
+            param_len = len(self.param_ranges[key])
             rand_index = -1 # sentinel value for the new random index
             while(rand_index == current_index):
                 rand_index = r.randint(0, param_len-1)
 
-            config[key] = self.param_ranges[key](rand_index)
+            config[key] = self.param_ranges[key][rand_index]
             neighbors.append(config)
 
         return neighbors
@@ -373,10 +452,14 @@ class DSE_searcher:
         """
         ## We are going to implement the standard notation for the acceptance 
         ## probability
-        
-        alpha = exp((old_fitness - new_fitness)/temperature)
+        logging.info('old: {}, new: {}'.format(old_fitness, new_fitness))
+        try:
+            alpha = exp(abs(old_fitness - new_fitness)/temperature)
+        except OverflowError:
+            alpha = float('inf')
 
         return alpha
+
 
 
 
