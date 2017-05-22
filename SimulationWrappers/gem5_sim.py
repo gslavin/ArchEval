@@ -8,6 +8,7 @@ import json
 import subprocess
 import defs
 import os
+import time
 
 config_defaults = { "cpu_count": 1, "cpu_frequency": 9000000, "cache_size": 1024}
 valid_sys_config_params = [ "cpu_count", "cpu_frequency", "cache_size" ]
@@ -139,7 +140,7 @@ class Gem5Sim(SimWrap):
         #OUTPUT = " --stats-file=" + defs.ROOT_DIR + "/stats.txt"
         #COMMAND = " -c " + defs.BENCHMARK_PATH
 
-        subprocess.check_call("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} >> {10}".format(\
+        subprocess.run("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} >> {10}".format(\
                                 defs.GEM5_DIR + "/build/X86/gem5.opt", \
                                 "--stats-file=" + defs.ROOT_DIR + "/stats.txt", \
                                 "-r", \
@@ -152,7 +153,13 @@ class Gem5Sim(SimWrap):
                                 "-c " + self.benchmark + " --options=" + self.options, \
                                 defs.LOG_DIR + "/gem5.log"), shell=True)
         subprocess.check_call("/bin/cat " + defs.ROOT_DIR + "/m5out/simout >> " + defs.LOG_DIR + "/gem5.log", shell=True)
-        pass
+        #pass
+        with open(defs.LOG_DIR + '/gem5.log', 'r') as f:
+            for line in f:
+                pass
+            ret_code = line.strip()
+            if ret_code != "0":
+                raise ValueError("Bad gem5 return code: {}".format(ret_code))
 
     def parse_stats(self, filename):
         stats = {}
