@@ -337,19 +337,17 @@ class DSE_searcher:
         return next_config, next_fitness
     
     def search_simulated_annealing(self, search_state):
-        # TODO: Add search using sim anneal
 
         converged = [] ## This keeps a track of the optimal values found in each search party
         # Setting up fitness values of seeds from each search party
         for i in range(self.num_search_parties):
             self.fitness_vals[i] = search_state.eval_fitness(self.sys_configs[i])
-            converged.append({'fitness_val': -1000000, 'sys_config': ''})
+            converged.append({'fitness_val': 1000000, 'sys_config': ''})
 
-        logging.info('tester')
         ## Initial temperature 
-        t = 1.00
+        t = 100
         # Absoute limit for minimum temperature 
-        t_min = 0.1
+        t_min = 5
         time = 1
         
         while t > t_min:
@@ -362,25 +360,28 @@ class DSE_searcher:
 
                     # if (j in converged):
                         # continue
-                    logging.info("Round {0}, Party: {1}".format(i, j))
-                    logging.info("Exploring node: {0}".format((self.fitness_vals[j], self.sys_configs[j])))
+                    # logging.info("Round {0}, Party: {1}".format(i, j))
+                    # logging.info("Exploring node: {0}".format((self.fitness_vals[j], self.sys_configs[j])))
                     # Each party will start a hill climbing search during each iteration
                     new_sys_config, new_fitness, optimal_value = self.annealing_search(self.sys_configs[j], self.fitness_vals[j], search_state, t)
-                    logging.info('{0},\n {1},\n'.format(new_fitness, new_sys_config))
+                    # logging.info('New_fitness: {0},\t Temperature: {1},\nNew_sys_config: {2} '.format(new_fitness, t, new_sys_config))
 
                     # Update convergence list with better node if found. 
-                    if (optimal_value['fitness_val'] > converged[j]['fitness_val']):
+                    if (optimal_value['fitness_val'] < converged[j]['fitness_val']):
                         converged[j] = optimal_value
                         logging.info("Found new optimal node at temperature {0} for search party {1}".format(t, j))
                     self.sys_configs[j] = new_sys_config
                     self.fitness_vals[j] = new_fitness
             
-            t = t * 0.9 ## reducing the temperature 
+            ##logging.info("Round {0}, Party: {1}".format(i, j))
+            # logging.info("Exploring node: {0}".format((self.fitness_vals[j], self.sys_configs[j])))
+            logging.info('New_fitness: {0},\t Temperature: {1},\nNew_sys_config: {2} '.format(new_fitness, t, new_sys_config))
+            t = t * 0.8 ## reducing the temperature 
+        logging.info("Optimal Result: {0}".format(converged))
 
     def annealing_search(self, sys_config, fitness_val, search_state, temperature):
         # Generate possible neighbors
         neighbor_configs = self.gen_neighbors_randomly(sys_config)
-        logging.info('neighbors generated, {}'.format(neighbor_configs))
 
         # Permute order of neighbors, just in case we're not searching through
         # all of them
@@ -393,14 +394,14 @@ class DSE_searcher:
             # Evaluate each neighbor according to our evaluation function
             fitnesses.append(search_state.eval_fitness(n))
 
-        neighbor_configs.append(sys_config)
-        fitnesses.append(fitness_val)
-        new_fitness = 100# Sentinel value 
-        new_sys_config = {}
+        # neighbor_configs.append(sys_config)
+        # fitnesses.append(fitness_val)
+        new_fitness = fitness_val # Sentinel value, as we want the lowest value 
+        new_sys_config = sys_config
 
         for index, fitness in enumerate(fitnesses):
             acceptance = self.acceptance_probability(new_fitness, fitness, temperature)
-            logging.info('fitness values:{0}, acceptance: {1}'.format(fitness, acceptance))
+            # logging.info('fitness values:{0}, acceptance: {1}'.format(fitness, acceptance))
             ## Neighboring node has a better fitness value, 
             ## hence, always accept it. 
             if new_fitness > fitness:
@@ -415,7 +416,7 @@ class DSE_searcher:
             ## acceptance probability. 
             elif acceptance < 1 and acceptance > r.random():
                 new_fitness = fitness
-                new_sys_config = neighbor_configs(index)
+                new_sys_config = neighbor_configs[index]
                 
         return new_sys_config, new_fitness, most_optimum_value
 
@@ -434,9 +435,11 @@ class DSE_searcher:
             config = copy.deepcopy(sys_config)
             current_index = self.param_ranges[key].index(sys_config[key])
             param_len = len(self.param_ranges[key])
-            rand_index = -1 # sentinel value for the new random index
+            rand_index = current_index # sentinel value for the new random index
             while(rand_index == current_index):
                 rand_index = r.randint(0, param_len-1)
+
+            # logging.info('key: {2}, rand index: {0}, current index: {1}'.format(rand_index, current_index, key))
 
             config[key] = self.param_ranges[key][rand_index]
             neighbors.append(config)
@@ -452,11 +455,11 @@ class DSE_searcher:
         """
         ## We are going to implement the standard notation for the acceptance 
         ## probability
-        logging.info('old: {}, new: {}'.format(old_fitness, new_fitness))
         try:
-            alpha = exp(abs(old_fitness - new_fitness)/temperature)
+            alpha = 1/exp(abs(old_fitness - new_fitness)/temperature)
         except OverflowError:
             alpha = float('inf')
+        # logging.info('old: {}, new: {}, alpha: {}'.format(old_fitness, new_fitness, alpha))
 
         return alpha
 

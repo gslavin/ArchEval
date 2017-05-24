@@ -178,6 +178,6 @@ if __name__ == '__main__':
     script_name = os.path.basename(__file__)
     script_name = script_name.split(".")[0]
     logging.basicConfig(filename=defs.LOG_DIR + '/{}.log'.format(script_name), level=logging.INFO)
-    logging.info("START {} TESTS: {:%Y-%m-%d %H:%M:%S}".format(script_name, datetime.datetime.now()))
+    logging.info("\n\nSTART {} TESTS: {:%Y-%m-%d %H:%M:%S}".format(script_name, datetime.datetime.now()))
     unittest.main()
     logging.info("END {} TESTS".format(script_name))
